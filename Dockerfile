@@ -46,6 +46,15 @@ RUN /opt/venv/bin/pip install jupyterlab quarto-cli ipykernel
 # Create an IPython kernel for the virtual environment
 RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name "Python 3.12 (venv)"
 
+# Create the vscode user and group
+RUN groupadd --gid 1000 vscode \
+    && useradd --uid 1000 --gid vscode -m vscode \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER vscode
+
 # Set work directory
 WORKDIR /workspace
 
@@ -55,12 +64,3 @@ EXPOSE 8888
 
 # CMD to start both Jupyter and RStudio
 CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root"]
-
-# Create the vscode user and group
-RUN groupadd --gid 1000 vscode \
-    && useradd --uid 1000 --gid vscode -m vscode \
-    && apt-get update \
-    && apt-get install -y sudo \
-    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-USER vscode
