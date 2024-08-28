@@ -1,8 +1,8 @@
 {
     "name": "Python and R Dev Container",
     "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
+        "dockerfile": "../Dockerfile",
+        "context": "."
     },
     "customizations": {
         "vscode": {
