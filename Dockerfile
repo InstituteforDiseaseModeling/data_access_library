@@ -55,3 +55,12 @@ EXPOSE 8888
 
 # CMD to start both Jupyter and RStudio
 CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root"]
+
+# Create the vscode user and group
+RUN groupadd --gid 1000 vscode \
+    && useradd --uid 1000 --gid vscode -m vscode \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER vscode
