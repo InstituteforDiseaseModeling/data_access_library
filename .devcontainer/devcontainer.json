@@ -2,7 +2,7 @@
     "name": "Python and R Dev Container",
     "build": {
         "dockerfile": "Dockerfile",
-        "context": "."
+        "context": ".."
     },
     "customizations": {
         "vscode": {
@@ -17,7 +17,7 @@
             }
         }
     },
-    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+    "postCreateCommand": "bash ./postCreateCommand.sh",
     "forwardPorts": [8888],
     "remoteUser": "vscode"
 }
