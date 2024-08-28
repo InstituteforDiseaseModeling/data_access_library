@@ -1,0 +1,23 @@
+{
+    "name": "Python and R Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "reditorsupport.r",
+                "quarto.quarto",
+                "ms-toolsai.jupyter"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/venv/bin/python"
+            }
+        }
+    },
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+    "forwardPorts": [8888],
+    "remoteUser": "vscode"
+}
