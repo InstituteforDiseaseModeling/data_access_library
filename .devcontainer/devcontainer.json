@@ -24,6 +24,6 @@
 //    "mounts": [
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
-    "postCreateCommand": "bash ./postCreateCommand.sh",
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
     "forwardPorts": [8787, 8888]
 }
