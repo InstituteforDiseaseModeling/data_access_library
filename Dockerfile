@@ -44,7 +44,7 @@ RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name 
 
 # Expose ports for RStudio (8787) and Jupyter (8888)
 
-WORKDIR /workspaces
+#WORKDIR /workspaces
 
 EXPOSE 8787
 EXPOSE 8888

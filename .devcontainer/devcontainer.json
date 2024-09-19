@@ -17,13 +17,13 @@
             }
         }
     },
-    "workspaceFolder": "${localWorkspaceFolder}",
-    "runArgs": [
-     "--workdir", "/workspaces/${localWorkspaceFolder}"
-     ],
-    "mounts": [
-    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
-    ],
+//    "workspaceFolder": "${localWorkspaceFolder}",
+//    "runArgs": [
+//     "--workdir", "/workspaces/${localWorkspaceFolder}"
+//     ],
+//    "mounts": [
+//    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
+//    ],
     "postCreateCommand": "bash ./postCreateCommand.sh",
     "forwardPorts": [8787, 8888]
 }
