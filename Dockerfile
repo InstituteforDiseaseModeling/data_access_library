@@ -1,5 +1,6 @@
 # Start with Ubuntu base image and setup python and R
-FROM ubuntu:22.04
+FROM rocker/rstudio:latest
+
 
 # Set environment variables to ensure non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
@@ -29,38 +30,24 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     && apt-get clean
 
 # Set up Python virtual environment
-RUN python3.12 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Install R and RStudio Server
-RUN apt-get update && apt-get install -y \
-    r-base-core \
-    && wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.04.2-764-amd64.deb \
-    && gdebi rstudio-server-2024.04.2-764-amd64.deb \
-    && rm rstudio-server-2024.04.2-764-amd64.deb \
-    && apt-get clean
-
 # Install Jupyter, Quarto, and ipykernel
-RUN /opt/venv/bin/pip install jupyterlab quarto-cli ipykernel
+RUN python3.12 -m ensurepip --upgrade
+RUN python3.12 -m pip --version
+RUN python3.12 -m pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
+
+RUN python3.12 -m venv /opt/venv --system-site-packages
+
+ENV PATH="/opt/venv/bin:$PATH"
 
 # Create an IPython kernel for the virtual environment
 RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name "Python 3.12 (venv)"
 
-# Create the vscode user and group
-RUN groupadd --gid 1000 vscode \
-    && useradd --uid 1000 --gid vscode -m vscode \
-    && apt-get update \
-    && apt-get install -y sudo \
-    && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-USER vscode
-
-# Set work directory
-WORKDIR /workspace
-
 # Expose ports for RStudio (8787) and Jupyter (8888)
+
+WORKDIR /workspaces
+
 EXPOSE 8787
 EXPOSE 8888
 
 # CMD to start both Jupyter and RStudio
-CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root"]
+#CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"]

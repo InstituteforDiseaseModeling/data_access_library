@@ -13,10 +13,6 @@ if [ -f "R/renv.lock" ]; then
     cd R && R -e 'renv::restore()'
 fi
 
-# Set up Jupyter notebooks for Python and R
-echo "Setting up Jupyter notebooks..."
-mkdir -p /home/vscode/.jupyter && echo \"c.NotebookApp.token = ''\" >> /home/vscode/.jupyter/jupyter_notebook_config.py
-
-jupyter notebook --config=/home/vscode/jupyter_notebook_config.py
+rstudio-server start && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''
 
 echo "Dev environment setup completed!"
