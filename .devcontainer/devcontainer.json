@@ -25,6 +25,7 @@
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
     "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+	"postStartCommand:": "rstudio-server restart && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab",

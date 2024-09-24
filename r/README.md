@@ -17,7 +17,7 @@ This ensures that you are working with the same package versions as the original
 # Make sure you have the renv package installed
 install.packages("renv")
 
-# Restore the environment
+# Restore the environment from the lock file
 renv::restore()
 ```
 
@@ -71,20 +71,22 @@ This will generate a new `renv` setup, including a fresh `renv.lock` file for yo
 ## Use Quarto to Create Interactive Documents
 
 In this folder we show an example that you can share code and ideas with others using a quarto document. See
-[simple_example.qmd](./simple_example.qmd).
+[simple_plot.qmd](./simple_plot/simple_plot.qmd).
+[simple_example.qmd](./shinylive_demo/simple_example.qmd).
+
 
 To begin with the example, you can open the `simple_example.qmd` file in Rstudio or other IDEs such as VS Code with the Quarto extension installed.
 
-### 1.How to Run the Example
+### How to Run the Example
 
-Since we use shinylive to showcase a shiny app in the quarto document, you need to install the `shinylive` package first. 
+note: if you are running a shinylive that showcases a shiny app in the quarto document, you will need to install the `shinylive` package first. 
 This should already be included in the renv.lock file if you follow the above instructions.
 
 ```bash
 quarto install extension quarto-ext/shinylive
 ```
 
-Then you can preview and render the quarto document by running the following command in the terminal:
+You can preview and render the quarto document by running the following command in the terminal:
 
 ```bash
 quarto preview simple_example.qmd --port 4321
@@ -97,7 +99,7 @@ When you are satisfied with the document, you can render it to a standalone HTML
 quarto render simple_example.qmd
 ```
 
-This will use the `_quarto.yaml_` configuration file to render the document to an HTML file in the `output-dir` directory defined.
+This will use the `_quarto.yaml_` configuration file or the yaml section in your quarto document to render the desired file format and save them in the `output-dir` directory defined.
 
 For more implementation details, please refer to the [Quarto documentation](https://quarto.org/).
 

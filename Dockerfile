@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libpng-dev \
     libxt-dev \
+    libarchive-dev \
     gdebi-core \
     software-properties-common \
     ffmpeg \
