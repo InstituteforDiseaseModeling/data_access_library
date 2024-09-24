@@ -24,6 +24,7 @@
 //    "mounts": [
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab",
