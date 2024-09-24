@@ -13,6 +13,9 @@ if [ -f "R/renv.lock" ]; then
     cd R && R -e 'renv::restore()'
 fi
 
+# change the default working directory for RStudio
+echo "session-default-working-dir=$localworkspace" >> /etc/rstudio/rsession.conf
+
 rstudio-server start && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''
 
 echo "Dev environment setup completed!"

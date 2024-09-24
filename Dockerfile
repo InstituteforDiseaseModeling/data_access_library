@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     libxt-dev \
     gdebi-core \
     software-properties-common \
+    ffmpeg \
     && apt-get clean
 
 # Install Python 3.12.5
@@ -48,6 +49,9 @@ RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name 
 
 EXPOSE 8787
 EXPOSE 8888
+
+# Install renv globally for all users
+RUN R -e "install.packages('renv', repos='https://cran.rstudio.com/')"
 
 # CMD to start both Jupyter and RStudio
 #CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"]

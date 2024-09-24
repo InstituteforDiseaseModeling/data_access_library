@@ -24,6 +24,15 @@
 //    "mounts": [
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
-    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+    "portsAttributes": {
+        "8888": {
+            "label": "Jupyter Lab",
+            "onAutoForward": "always",
+        },
+        "8787": {
+          "label": "R studio",
+          "onAutoForward": "always"
+        }
+    },
     "forwardPorts": [8787, 8888]
 }
