@@ -95,5 +95,5 @@ jobs:
 
         # Add, commit, and push changes
         git add gallery
-        git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha:0:7 }})"
+        git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
         git push origin docs --force
