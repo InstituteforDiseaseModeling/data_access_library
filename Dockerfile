@@ -60,6 +60,10 @@ RUN dpkg -i quarto-1.5.57-linux-amd64.deb
 WORKDIR /app
 
 COPY r /app/r
+COPY python /app/python
+
+# Install python packages in venv
+RUN /opt/venv/bin/pip install -r python/requirements.txt
 
 EXPOSE 8787
 EXPOSE 8888
