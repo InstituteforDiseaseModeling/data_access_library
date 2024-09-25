@@ -57,13 +57,18 @@ RUN dpkg -i quarto-1.5.57-linux-amd64.deb
 
 # Expose ports for RStudio (8787) and Jupyter (8888)
 
-#WORKDIR /workspaces
+WORKDIR /app
+
+COPY r /app/r
 
 EXPOSE 8787
 EXPOSE 8888
 
 # Install renv globally for all users
 RUN R -e "install.packages('renv', repos='https://cran.rstudio.com/')"
+
+# Install R packages
+RUN Rscript /app/r/install_packages.R
 
 # Add /usr/local/bin to the PATH for all users
 ENV PATH="/usr/local/bin:$PATH"

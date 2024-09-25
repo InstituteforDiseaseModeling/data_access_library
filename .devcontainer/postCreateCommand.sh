@@ -9,9 +9,9 @@ if [ -f "python/requirements.txt" ]; then
 fi
 
 # Install R dependencies
-if [ -f "r/install_packages.R" ]; then
-    Rscript r/install_packages.R
-fi
+#if [ -f "r/install_packages.R" ]; then
+#    Rscript r/install_packages.R
+#fi
 
 # This may be done by the user
 # Set up renv for R
@@ -20,8 +20,9 @@ fi
 #fi
 
 # change the default working directory for RStudio
-echo "session-default-working-dir=${CODESPACE_VSCODE_FOLDER}" >> /etc/rstudio/rsession.conf
+echo "session-default-working-dir=${CODESPACE_VSCODE_FOLDER}" | sudo tee -a /etc/rstudio/rsession.conf
 
-rstudio-server start && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''
+rstudio-server start > rstudio_server.log 2>&1 &
+jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' 2>&1 &
 
 echo "Dev environment setup completed!"

@@ -23,12 +23,12 @@ jobs:
 
     - name: Run Quarto in Docker container
       run: |
-        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace my-quarto-image bash -c "
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace demo-quarto-image bash -c "
           echo 'Creating gallery directory...'
           mkdir -p gallery && \
           echo 'gallery directory created.'
 
-          FOLDERS=(python, R)
+          FOLDERS=(python R)
           echo 'Folders to process: ${FOLDERS[@]}'
 
           for FOLDER in \"\${FOLDERS[@]}\"; do
