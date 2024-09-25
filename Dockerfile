@@ -16,8 +16,15 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libjpeg-dev \
     libpng-dev \
+    libtiff5-dev \
+    libproj-dev \
+    libgdal-dev \
     libxt-dev \
     libarchive-dev \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libfreetype6-dev \
     gdebi-core \
     software-properties-common \
     ffmpeg \
@@ -44,6 +51,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Create an IPython kernel for the virtual environment
 RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name "Python 3.12 (venv)"
 
+# Install latest Quarto
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-linux-amd64.deb
+RUN dpkg -i quarto-1.5.57-linux-amd64.deb
+
 # Expose ports for RStudio (8787) and Jupyter (8888)
 
 #WORKDIR /workspaces
@@ -53,6 +64,13 @@ EXPOSE 8888
 
 # Install renv globally for all users
 RUN R -e "install.packages('renv', repos='https://cran.rstudio.com/')"
+
+# Add /usr/local/bin to the PATH for all users
+ENV PATH="/usr/local/bin:$PATH"
+
+# Ensure the rstudio user's profile contains the updated PATH
+RUN echo 'export PATH="/usr/local/bin:$PATH"' >> /home/rstudio/.bashrc
+RUN usermod -aG sudo rstudio
 
 # CMD to start both Jupyter and RStudio
 #CMD ["bash", "-c", "rstudio-server start; jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"]

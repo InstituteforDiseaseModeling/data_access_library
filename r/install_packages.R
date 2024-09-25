@@ -8,7 +8,7 @@ if (.Platform$OS.type == "unix") {
 
 
 pkgnames <- c(
-'devtools', 'DT', 
+'devtools', 'DT', 'languageserver', 'styler', 'httpgd',
 'shiny', 'shinyjs', 'shinyalert', 'shinyWidgets', 'shinythemes', 'shinycssloaders', 'shinyBS', 'shinylive',
 'dplyr','ggplot2', 'plotly', 'tidyr', 'stringr', 'logr', 'tidyverse', 
 'knitr', 'rmarkdown'
