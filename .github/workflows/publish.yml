@@ -34,6 +34,7 @@ jobs:
           source /opt/venv/bin/activate
           echo 'activated virtualenv.'
           
+          chmod +x ./r/install_quarto_extensions.expect
           ./r/install_quarto_extensions.expect
           quarto list extensions
           
@@ -66,8 +67,9 @@ jobs:
 
     - name: Generate Index HTML
       run: |
+        ls -laR gallery
         echo "<html><body><h1>Gallery Index</h1><ul>" > gallery/index.html
-        find gallery -name "*.html" | while read file; do
+        find gallery -name "*.html" | while read -r file; do
           file_name=$(basename "$file")
           echo "<li><a href=\"./$file\">$file_name</a></li>" >> gallery/index.html
         done
@@ -87,7 +89,9 @@ jobs:
     - name: Commit and Push to docs branch
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      working-directory: gallery
       run: |
+        ls -laR .
         # Fetch all branches
         git fetch origin
 
@@ -97,11 +101,14 @@ jobs:
         else
           git checkout --orphan docs
         fi
-
-        # Copy the gallery folder to the root of the docs branch
-        cp -r gallery/* .
-
+        
         # Add, commit, and push changes
-        git add gallery
-        git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
-        git push origin docs --force
+        # Check if there are changes to commit
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit."
+        else
+          # Commit and push changes
+          git add .
+          git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
+          git push origin docs --force
+        fi
