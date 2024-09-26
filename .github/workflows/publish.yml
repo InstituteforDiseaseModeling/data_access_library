@@ -21,15 +21,21 @@ jobs:
       run: |
         docker build -t demo-quarto-image .
 
+    - name: Create gallery directory on the host
+      run: |
+        echo 'Creating gallery directory...'
+        mkdir -p gallery && chmod -R 777 gallery
+        echo 'gallery directory created.'
+
     - name: Run Quarto in Docker container
       run: |
         docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace demo-quarto-image bash -c "
-          echo 'Creating gallery directory...'
-          mkdir -p gallery && chmod -R 777 gallery && \
-          echo 'gallery directory created.'
-          
+        
           source /opt/venv/bin/activate
           echo 'activated virtualenv.'
+          
+          ./r/install_quarto_extensions.expect
+          quarto list extensions
           
           FOLDERS=(python r)
           echo 'Folders to process: \${FOLDERS[@]}'
@@ -58,7 +64,6 @@ jobs:
             done
           done"
 
-
     - name: Generate Index HTML
       run: |
         echo "<html><body><h1>Gallery Index</h1><ul>" > gallery/index.html
@@ -69,10 +74,10 @@ jobs:
         echo "</ul></body></html>" >> gallery/index.html
         
     - name: Upload HTML output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: gallery
-        path: gallery
+        path: gallery/
 
     - name: Set up Git user
       run: |

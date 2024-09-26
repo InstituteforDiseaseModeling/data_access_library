@@ -11,7 +11,8 @@ pkgnames <- c(
 'devtools', 'DT', 'languageserver', 'styler', 'httpgd',
 'shiny', 'shinyjs', 'shinyalert', 'shinyWidgets', 'shinythemes', 'shinycssloaders', 'shinyBS', 'shinylive',
 'dplyr','ggplot2', 'plotly', 'tidyr', 'stringr', 'logr', 'tidyverse', 
-'knitr', 'rmarkdown'
+'knitr', 'rmarkdown',
+"leaflet", "leaflet.extras"
 )
 
 print(paste0("Install Packages from Cran : ", pkgnames))

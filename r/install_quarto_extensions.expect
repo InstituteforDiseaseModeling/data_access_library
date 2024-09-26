@@ -1,0 +1,22 @@
+#!/usr/bin/expect
+
+# Start the quarto command
+spawn quarto install extension quarto-ext/shinylive
+
+# Look for the prompt and send "y"
+expect "*Do you trust the authors of this extension*" {
+    send "Y\r"; exp_continue
+}
+
+# Expect the second prompt and send "y" again
+expect "*Would you like to continue*" {
+    send "Y\r"; exp_continue
+}
+
+# Expect the third prompt and send "y"
+expect "*View documentation using default browser?*" {
+    send "n\r";
+}
+
+# Wait for the process to finish
+expect eof
