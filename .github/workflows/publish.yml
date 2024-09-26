@@ -37,7 +37,11 @@ jobs:
           chmod +x /workspace/r/install_quarto_extensions.expect
           /workspace/r/install_quarto_extensions.expect
           quarto list extensions
-          
+          echo 'Check Quarto status:'
+          quarto check
+          echo 'Check R script path:'
+          which Rscript
+        
           FOLDERS=(python r)
           echo 'Folders to process: \${FOLDERS[@]}'
 
@@ -91,35 +95,9 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Commit and Push to docs branch
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        ls -laR .
-        # Fetch all branches
-        git fetch origin
-
-        # Check if the docs branch exists, create it if not
-        if git show-ref --quiet refs/heads/docs; then
-          git checkout docs
-        else
-          git checkout --orphan docs
-        fi
-        
-        if [ -d gallery ]; then
-          git rm -r --cached gallery
-        else
-          echo "gallery folder not found, No cleanup, continue to commit...."
-        fi
-        
-        # Add, commit, and push changes
-        # Check if there are changes to commit
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit."
-        else
-          # Commit and push changes
-          # Add all current changes from the gallery folder
-          git add -A gallery
-          git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
-          git push origin docs --force
-        fi
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./gallery  # Path to the folder that you want to publish (the gallery folder)
+        publish_branch: docs  # The branch used for GitHub Pages
