@@ -106,15 +106,18 @@ jobs:
           git checkout --orphan docs
         fi
         
+        if [ -d gallery ]; then
+          git rm -r --cached gallery
+        else
+          echo "gallery folder not found, No cleanup, continue to commit...."
+        fi
+        
         # Add, commit, and push changes
         # Check if there are changes to commit
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit."
         else
           # Commit and push changes
-          # First Remove any files in the gallery directory that no longer exist locally
-          git rm -r --cached gallery
-
           # Add all current changes from the gallery folder
           git add -A gallery
           git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
