@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
     gdebi-core \
     software-properties-common \
     ffmpeg \
+    expect \
     && apt-get clean
 
 # Install Python 3.12.5

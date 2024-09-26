@@ -46,7 +46,9 @@ jobs:
             find \"/workspace/\$FOLDER\" \( -name '*.qmd' -o -name '*.ipynb' \) | while read -r file; do
               
               echo \"Processing file: \$file\"
-              target_dir=\"/workspace/gallery/\$(dirname \"\$file\")\"
+              # Remove the /workspace prefix from the file path
+              relative_dir=\$(dirname \"\${file#'/workspace/'}\")
+              target_dir=\"/workspace/gallery/\$relative_dir\"
               echo \"Creating target directory: \$target_dir\"
               mkdir -p \"\$target_dir\" && echo \"Directory \$target_dir created.\"
 
@@ -71,8 +73,10 @@ jobs:
         ls -laR gallery
         echo "<html><body><h1>Gallery Index</h1><ul>" > gallery/index.html
         find gallery -name "*.html" | while read -r file; do
+          # Remove the 'gallery/' prefix from the file path
+          relative_path="${file#gallery/}"
           file_name=$(basename "$file")
-          echo "<li><a href=\"./$file\">$file_name</a></li>" >> gallery/index.html
+          echo "<li><a href=\"./$relative_path\">$file_name</a></li>" >> gallery/index.html
         done
         echo "</ul></body></html>" >> gallery/index.html
 
@@ -108,7 +112,11 @@ jobs:
           echo "No changes to commit."
         else
           # Commit and push changes
-          git add gallery
+          # First Remove any files in the gallery directory that no longer exist locally
+          git rm -r --cached gallery
+
+          # Add all current changes from the gallery folder
+          git add -A gallery
           git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
           git push origin docs --force
         fi
