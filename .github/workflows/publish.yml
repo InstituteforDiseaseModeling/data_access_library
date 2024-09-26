@@ -34,19 +34,19 @@ jobs:
           source /opt/venv/bin/activate
           echo 'activated virtualenv.'
           
-          chmod +x ./r/install_quarto_extensions.expect
-          ./r/install_quarto_extensions.expect
+          chmod +x /workspace/r/install_quarto_extensions.expect
+          /workspace/r/install_quarto_extensions.expect
           quarto list extensions
           
           FOLDERS=(python r)
           echo 'Folders to process: \${FOLDERS[@]}'
 
           for FOLDER in \"\${FOLDERS[@]}\"; do
-            echo \"Searching for .qmd and .ipynb files in \$FOLDER...\"
-            find \"\$FOLDER\" \( -name '*.qmd' -o -name '*.ipynb' \) | while read -r file; do
+            echo \"Searching for .qmd and .ipynb files in /workspace/\$FOLDER...\"
+            find \"/workspace/\$FOLDER\" \( -name '*.qmd' -o -name '*.ipynb' \) | while read -r file; do
               
               echo \"Processing file: \$file\"
-              target_dir=\"gallery/\$(dirname \"\$file\")\"
+              target_dir=\"/workspace/gallery/\$(dirname \"\$file\")\"
               echo \"Creating target directory: \$target_dir\"
               mkdir -p \"\$target_dir\" && echo \"Directory \$target_dir created.\"
 
@@ -65,6 +65,7 @@ jobs:
             done
           done"
 
+
     - name: Generate Index HTML
       run: |
         ls -laR gallery
@@ -74,7 +75,7 @@ jobs:
           echo "<li><a href=\"./$file\">$file_name</a></li>" >> gallery/index.html
         done
         echo "</ul></body></html>" >> gallery/index.html
-        
+
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
       with:
@@ -89,7 +90,6 @@ jobs:
     - name: Commit and Push to docs branch
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      working-directory: gallery
       run: |
         ls -laR .
         # Fetch all branches
@@ -108,7 +108,7 @@ jobs:
           echo "No changes to commit."
         else
           # Commit and push changes
-          git add .
+          git add gallery
           git commit -m "Update rendered Quarto files for GitHub Pages (commit: ${{ github.sha }})"
           git push origin docs --force
         fi
