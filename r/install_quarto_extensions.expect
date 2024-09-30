@@ -1,7 +1,7 @@
 #!/usr/bin/expect
 
 # Start the quarto command
-spawn quarto install extension quarto-ext/shinylive
+spawn quarto add extension quarto-ext/shinylive
 
 # Look for the prompt and send "y"
 expect "*Do you trust the authors of this extension*" {
