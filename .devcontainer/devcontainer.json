@@ -25,15 +25,15 @@
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
     "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-	"postStartCommand:": "rstudio-server restart && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''",
+	"postStartCommand": "rstudio-server restart && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab",
-            "onAutoForward": "always",
+            "onAutoForward": "openBrowser",
         },
         "8787": {
           "label": "R studio",
-          "onAutoForward": "always"
+          "onAutoForward": "openBrowser"
         }
     },
     "forwardPorts": [8787, 8888]
