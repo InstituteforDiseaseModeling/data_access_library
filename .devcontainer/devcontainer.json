@@ -1,9 +1,10 @@
 {
     "name": "Python and R Dev Container",
-    "build": {
-        "dockerfile": "../Dockerfile",
-        "context": "."
-    },
+    "image": "mewu/data_access:latest",   // Use pre-built image
+//    "build": {
+//        "dockerfile": "../Dockerfile",
+//        "context": ".."
+//    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -25,15 +26,13 @@
 //    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
 //    ],
     "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-	"postStartCommand:": "rstudio-server restart && jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''",
+	"postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
     "portsAttributes": {
         "8888": {
-            "label": "Jupyter Lab",
-            "onAutoForward": "always",
+            "label": "Jupyter Lab"
         },
         "8787": {
-          "label": "R studio",
-          "onAutoForward": "always"
+          "label": "R studio"
         }
     },
     "forwardPorts": [8787, 8888]

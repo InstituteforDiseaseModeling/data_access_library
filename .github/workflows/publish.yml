@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+    paths-ignore:
+      - '.devcontainer/**'  
   workflow_dispatch: # Manual trigger
 
 jobs:
@@ -17,9 +16,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Build Docker image
-      run: |
-        docker build -t demo-quarto-image .
+    # - name: Build Docker image
+    #   run: |
+    #     docker build -t demo-quarto-image .
 
     - name: Create gallery directory on the host
       run: |
@@ -29,7 +28,7 @@ jobs:
 
     - name: Run Quarto in Docker container
       run: |
-        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace demo-quarto-image bash -c "
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "
         
           source /opt/venv/bin/activate
           echo 'activated virtualenv.'
@@ -52,6 +51,12 @@ jobs:
               echo \"Processing file: \$file\"
               # Remove the /workspace prefix from the file path
               relative_dir=\$(dirname \"\${file#'/workspace/'}\")
+        
+              # Install extension to the folder directly
+              pushd \$relative_dir
+              /workspace/r/install_quarto_extensions.expect
+              popd
+        
               target_dir=\"/workspace/gallery/\$relative_dir\"
               echo \"Creating target directory: \$target_dir\"
               mkdir -p \"\$target_dir\" && echo \"Directory \$target_dir created.\"
@@ -76,11 +81,11 @@ jobs:
       run: |
         ls -laR gallery
         echo "<html><body><h1>Gallery Index</h1><ul>" > gallery/index.html
-        find gallery -name "*.html" | while read -r file; do
+        find gallery -name "*.html" -not -name "index.html" | while read -r file; do
           # Remove the 'gallery/' prefix from the file path
           relative_path="${file#gallery/}"
           file_name=$(basename "$file")
-          echo "<li><a href=\"./$relative_path\">$file_name</a></li>" >> gallery/index.html
+          echo "<li><a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
         done
         echo "</ul></body></html>" >> gallery/index.html
 
