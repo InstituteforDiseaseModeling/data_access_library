@@ -4,6 +4,7 @@
 echo "session-default-working-dir=${CODESPACE_VSCODE_FOLDER}" | sudo tee -a /etc/rstudio/rsession.conf
 
 # Start RStudio Server
+echo "Start R studeio Server"
 rstudio-server start > rstudio_server.log 2>&1 &
 sleep 5  # Give some time for the service to start
 if ! pgrep -x "rstudio-server" > /dev/null; then
@@ -11,6 +12,8 @@ if ! pgrep -x "rstudio-server" > /dev/null; then
     rstudio-server restart > rstudio_server.log 2>&1 &
 fi
 
+sleep 5
+echo "Setup Jupyter-lab"
 # Start Jupyter Lab
 jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 sleep 5
