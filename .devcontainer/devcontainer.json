@@ -1,9 +1,10 @@
 {
     "name": "Python and R Dev Container",
-    "build": {
-        "dockerfile": "../Dockerfile",
-        "context": ".."
-    },
+    "image": "mewu/data_access:latest",   // Use pre-built image
+//    "build": {
+//        "dockerfile": "../Dockerfile",
+//        "context": ".."
+//    },
     "customizations": {
         "vscode": {
             "extensions": [
