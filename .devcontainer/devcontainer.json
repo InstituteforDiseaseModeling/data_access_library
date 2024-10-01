@@ -29,12 +29,10 @@
 	"postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
     "portsAttributes": {
         "8888": {
-            "label": "Jupyter Lab",
-            "onAutoForward": "openBrowser",
+            "label": "Jupyter Lab"
         },
         "8787": {
-          "label": "R studio",
-          "onAutoForward": "openBrowser"
+          "label": "R studio"
         }
     },
     "forwardPorts": [8787, 8888]
