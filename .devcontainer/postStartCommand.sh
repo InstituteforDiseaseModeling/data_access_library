@@ -15,11 +15,11 @@ fi
 sleep 5
 echo "Setup Jupyter-lab"
 # Start Jupyter Lab
-jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
+jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 sleep 5
 if ! pgrep -x "jupyter-lab" > /dev/null; then
     echo "Jupyter Lab failed to start. Restarting..."
-    jupyter lab --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
+    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 fi
 
 echo "Dev environment startup completed!"
