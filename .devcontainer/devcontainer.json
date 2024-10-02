@@ -1,10 +1,13 @@
 {
     "name": "Python and R Dev Container",
-    "image": "mewu/data_access:latest",   // Use pre-built image
-//    "build": {
-//        "dockerfile": "../Dockerfile",
-//        "context": ".."
-//    },
+    "image": "rocker/rstudio", 
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12",
+            "installJupyterlab": true
+        },
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -14,25 +17,18 @@
                 "ms-toolsai.jupyter"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/opt/venv/bin/python"
+                "python.defaultInterpreterPath": "/usr/local/bin/python3.12"  // Default Python path
             }
         }
     },
-//    "workspaceFolder": "${localWorkspaceFolder}",
-//    "runArgs": [
-//     "--workdir", "/workspaces/${localWorkspaceFolder}"
-//     ],
-//    "mounts": [
-//    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
-//    ],
-    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-	"postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
-    "portsAttributes": {
+    "postCreateCommand": "",
+    "postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
+     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab"
         },
         "8787": {
-          "label": "R studio"
+          "label": "R Studio"
         }
     },
     "forwardPorts": [8787, 8888]
