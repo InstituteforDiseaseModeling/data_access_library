@@ -28,54 +28,7 @@ jobs:
 
     - name: Run Quarto in Docker container
       run: |
-        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "
-        
-          source /opt/venv/bin/activate
-          echo 'activated virtualenv.'
-          
-          chmod +x /workspace/r/install_quarto_extensions.expect
-          /workspace/r/install_quarto_extensions.expect
-          quarto list extensions
-          echo 'Check Quarto status:'
-          quarto check
-          echo 'Check R script path:'
-          which Rscript
-        
-          FOLDERS=(python r)
-          echo 'Folders to process: \${FOLDERS[@]}'
-
-          for FOLDER in \"\${FOLDERS[@]}\"; do
-            echo \"Searching for .qmd and .ipynb files in /workspace/\$FOLDER...\"
-            find \"/workspace/\$FOLDER\" \( -name '*.qmd' -o -name '*.ipynb' \) | while read -r file; do
-              
-              echo \"Processing file: \$file\"
-              # Remove the /workspace prefix from the file path
-              relative_dir=\$(dirname \"\${file#'/workspace/'}\")
-        
-              # Install extension to the folder directly
-              pushd \$relative_dir
-              /workspace/r/install_quarto_extensions.expect
-              popd
-        
-              target_dir=\"/workspace/gallery/\$relative_dir\"
-              echo \"Creating target directory: \$target_dir\"
-              mkdir -p \"\$target_dir\" && echo \"Directory \$target_dir created.\"
-
-              echo \"Attempting to render \$file with execution...\"
-              if quarto render \"\$file\" --to html --output-dir \"\$target_dir\"; then
-                echo \"Successfully rendered \$file with execution.\"
-              else
-                echo \"Failed to render \$file with execution. Rendering without execution...\"
-                if quarto render \"\$file\" --to html --no-execute --output-dir \"\$target_dir\"; then
-                  echo \"Successfully rendered \$file without execution.\"
-                else
-                  echo \"Rendering failed for \$file, even without execution.\"
-                fi
-              fi
-
-            done
-          done"
-
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "run_quarto_publish.sh"
 
     - name: Generate Index HTML
       run: |
@@ -101,6 +54,7 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

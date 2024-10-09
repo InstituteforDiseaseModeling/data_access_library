@@ -6,6 +6,7 @@
             "version": "3.12",
             "installJupyterlab": true
         },
+        "ghcr.io/devcontainers/features/anaconda:1": {},
         "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
     },
     "customizations": {
@@ -21,7 +22,7 @@
             }
         }
     },
-    "postCreateCommand": "",
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand_r.sh",
     "postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
      "portsAttributes": {
         "8888": {

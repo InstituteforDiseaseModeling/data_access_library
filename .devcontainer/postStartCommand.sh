@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # change the default working directory for RStudio
-echo "session-default-working-dir=${CODESPACE_VSCODE_FOLDER}" | sudo tee -a /etc/rstudio/rsession.conf
+echo "session-default-working-dir=/workspaces/quarto_demo/" | sudo tee -a /etc/rstudio/rsession.conf
 
 # Start RStudio Server
 echo "Start R studeio Server"
@@ -15,11 +15,11 @@ fi
 sleep 5
 echo "Setup Jupyter-lab"
 # Start Jupyter Lab
-jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
+nohup jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 sleep 5
 if ! pgrep -x "jupyter-lab" > /dev/null; then
     echo "Jupyter Lab failed to start. Restarting..."
-    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
+    nohup jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 fi
 
 echo "Dev environment startup completed!"

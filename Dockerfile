@@ -25,6 +25,15 @@ RUN apt-get update && apt-get install -y \
     libharfbuzz-dev \
     libfribidi-dev \
     libfreetype6-dev \
+    libgl1-mesa-glx \
+    libegl1-mesa \
+    libxrandr2 \
+    libxss1 \
+    libxcursor1 \
+    libxcomposite1 \
+    libasound2 \
+    libxi6 \
+    libxtst6 \
     gdebi-core \
     software-properties-common \
     ffmpeg \
@@ -56,24 +65,39 @@ RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name 
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.57/quarto-1.5.57-linux-amd64.deb
 RUN dpkg -i quarto-1.5.57-linux-amd64.deb
 
-# Expose ports for RStudio (8787) and Jupyter (8888)
+# Install Anaconda
+# Set environment variable for non-interactive Anaconda install
+ENV PATH /opt/conda/bin:$PATH
+
+# Download and install Anaconda
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh -O ~/anaconda.sh && \
+    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
+    rm ~/anaconda.sh && \
+    /opt/conda/bin/conda clean -i -t -p -y
+
+# Update conda to the latest version
+RUN conda update -n base -c defaults conda
+
+# Set the default shell to bash and activate Conda environment
+SHELL ["/bin/bash", "-c"]
+
+# Ensure conda is activated on startup
+RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
 
 WORKDIR /app
 
 COPY r /app/r
 COPY python /app/python
 
-# Install python packages in venv
-RUN /opt/venv/bin/pip install -r python/requirements.txt
-
+# Expose ports for RStudio (8787) and Jupyter (8888)
 EXPOSE 8787
 EXPOSE 8888
 
-# Install renv globally for all users
+# Install essentials globally for all users
 RUN R -e "install.packages('renv', repos='https://cran.rstudio.com/')"
-
-# Install R packages
-RUN Rscript /app/r/install_packages.R
+RUN R -e "install.packages('knitr', repos='https://cran.rstudio.com/')"
+RUN R -e "install.packages('rmarkdown', repos='https://cran.rstudio.com/')"
+RUN R -e ".libPaths()"
 
 # Add /usr/local/bin to the PATH for all users
 ENV PATH="/usr/local/bin:$PATH"
