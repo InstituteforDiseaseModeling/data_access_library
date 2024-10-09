@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Quarto in Docker container
       run: |
-        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "./run_quarto_publish.sh"
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "chmod +x ./run_quarto_publish.sh && ./run_quarto_publish.sh"
 
     - name: Generate Index HTML
       run: |
