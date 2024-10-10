@@ -1,10 +1,12 @@
 # Data Access and Analysis Library Demo
 
-This library provides a set of samples for accessing and analyzing data, including Python and R. 
+This library aims to provide a set of samples for accessing and analyzing data, including Python and R. 
 It demonstrates the interactive and reproducible code snippets that can be shared with IDM reserachers.
 The usage of `devcontainer` to set up a consistent development environment in Github codespaces can help you to get started quickly.
+Below is the instruction and some examples to show how to standardize the development environment and share your work with others using Quarto. 
+You are encouraged to submit your own examples in the `r/samples` or `python/samples`.
 
-## 1. Usage of Devcontainer
+## 1. Use of Devcontainer
 
 The `devcontainer` feature in VS Code allows you to define the development environment using a Docker-based configuration. 
 This ensures that all contributors to a project have a consistent setup, eliminating the "works only on my machine" problem. 
@@ -12,17 +14,38 @@ By using `devcontainer.json`, you can specify the required dependencies for Pyth
 and set up additional tools like Jupyter and Quarto for sharing your work.
 
 **How to:**
-- TBD
+
+In this repo, we have a template "Python and R Dev Container" that you can use to create a consistent development environment. 
+Go to github codespaces and create a new codespace using this template as shown below: 
+**(This may take 5-10 minutes, and please be aware of codespace [costs](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts) )**
+
+![](assets/codespace.png)
+
+If you choose to clone the repo locally, you can also setup your local container to use the same environment, 
+follow this [tutorial](https://code.visualstudio.com/docs/devcontainers/tutorial) to set it up.
 
 ## 2. Quarto Examples Using Jupyter Notebook
 
 Quarto is an open-source tool for technical publishing that enables you to create interactive, data-driven documents. 
 It is built on top of the R Markdown format and supports Jupyter notebooks as part of its ecosystem.
 This section provides examples of using Quarto with Jupyter notebooks for Python-based data analysis. 
-The integration allows you to create rich, interactive documents that blend code, analysis, and markdown.
+The integration allows you to create rich, interactive documents that blend code, analysis, and markdown. for more information, go to [Quarto.org](https://quarto.org/).
 
 **How to:**
-- TBD
+
+In this repo, we have a sample Jupyter notebook [sir_model_simulation.ipynb](python/samples/sir/sir_model_simulation.ipynb) 
+that demonstrates how you can insert a yaml at the top of a markdown cell to specify metadata for quarto publishing.
+If you are using codespace, a jupyterlab instance is running on port 8888 and you can edit the notebook in the browser or add your own:
+
+![](assets/jupyter.png)
+
+It is a good practice to add required dependencies in the [requirements.txt](python/samples/sir/requirements.txt) file 
+so that your example will be easily reproducible by others. You can also choose to use the magic command `!` or `%` inside your notebook.
+
+```python
+!pip install numpy~=2.1
+%pip install matplotlib>=3.9
+```
 
 ## 3. Quarto Examples Using `.qmd` for R
 
@@ -32,4 +55,68 @@ The `.qmd` files serve as an efficient way to write and maintain both the narrat
 It is very similar to R Markdown but offers additional features and flexibility for publishing.
 
 **How to:**
-- TBD
+
+In this repo, we have a sample Quarto document [simple_plot.qmd](r/samples/simple_plot/simple_plot.qmd) that shows how add metadata and use R code chunks.
+If you are using codespace, an Rstudio Server instance is running on port 8787 (username: **rstudio**, password: **rstudio**)
+and you can edit the `.qmd` file directly in the browser or add your own:
+
+![](assets/rstudio_login.png)
+
+You should handle `install.packages` and `library` commands to install and load the required R packages for reporducibilty, or provide 
+a [install_packages.R](r/samples/simple_plot/install_packages.R) file so that others can reproduce your code easily.
+
+
+## 4. Basic Quarto commands
+
+You can open a terminal window in the codespace and run the following commands to build the quarto document, for example:
+
+```bash
+quarto render your_example.qmd
+quarto render your_example.ipynb --to html
+```
+Quarto allows you to customize the rendering of documents using both the `quarto render` command and the YAML header within a file. Here's a brief overview:
+
+### Quarto Render Command Options:
+- **Output Format:** You can specify the format (HTML, PDF, DOCX, etc.) by adding the `--to` flag. For example:
+  ```bash
+  quarto render file.qmd --to pdf
+  ```
+  This converts your `.qmd` or `.ipynb` file to PDF.
+
+- **Output Directory:** Control where the output file is saved using `--output-dir`:
+  ```bash
+  quarto render file.qmd --output-dir output/
+  ```
+
+### YAML Header Options:
+- **Document Metadata:** Set properties like title, author, and date in the YAML header:
+  ```yaml
+  ---
+  title: "My Report"
+  author: "Jane Doe"
+  ---
+  ```
+
+- **Table of Contents (TOC):** Enable and position the table of contents:
+  ```yaml
+  ---
+  toc: true
+  toc-location: left
+  ---
+  ```
+
+- **Code Execution:** Control whether code is executed or shown in the final document:
+  ```yaml
+  ---
+  execute:
+    echo: true
+  ---
+  ```
+
+These options give you flexibility to control how your documents are rendered, either through the command line or the YAML configuration in your file.
+
+
+## 5. Github Page hosting
+All examples checked in to this repo under `r/samples` or `python/samples` 
+will be published to [Github Pages](https://institutefordiseasemodeling.github.io/data_access_library/). automatically when merged to main branch.
+

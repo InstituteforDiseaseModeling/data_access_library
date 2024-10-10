@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # change the default working directory for RStudio
-echo "session-default-working-dir=/workspaces/quarto_demo/" | sudo tee -a /etc/rstudio/rsession.conf
+echo "session-default-working-dir=/workspaces/data_access_library/" | sudo tee -a /etc/rstudio/rsession.conf
 
 # Start RStudio Server
 echo "Start R studeio Server"
