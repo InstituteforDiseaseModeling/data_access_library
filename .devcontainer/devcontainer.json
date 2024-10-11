@@ -22,11 +22,8 @@
             ]
         }
     },
-     "postAttachCommand": {
-        "rstudio-start": "rserver"
-     },
     "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-    "postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
+    "postAttachCommand": "bash ./.devcontainer/postAttachCommand.sh",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab"

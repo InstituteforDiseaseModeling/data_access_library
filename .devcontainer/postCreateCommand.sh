@@ -13,3 +13,6 @@ sudo apt-get install ffmpeg -y
 # Allow JupyterLab and IRkernel ro run R workbook
 R -e "install.packages('IRkernel')"
 R -e "IRkernel::installspec()"
+
+# change the default working directory for RStudio
+echo "session-default-working-dir=/workspaces/data_access_library/" | sudo tee -a /etc/rstudio/rsession.conf
