@@ -1,22 +1,15 @@
 #!/bin/bash
 
-# Activate the Python virtual environment
-source /opt/venv/bin/activate
+# Install ZeroMQ
+sudo apt-get update -y
+sudo apt-get install libzmq3-dev -y
 
-# Install Python dependencies
-if [ -f "python/requirements.txt" ]; then
-    pip install -r python/requirements.txt
-fi
+# Install ffmpeg
+sudo apt-get install ffmpeg -y
 
-# Install R dependencies
-#if [ -f "r/install_packages.R" ]; then
-#    Rscript r/install_packages.R
-#fi
+# Setup bash to allow conda to run
+#conda init bash && conda install -y ipykernel
 
-# This may be done by the user
-# Set up renv for R
-#if [ -f "r/renv.lock" ]; then
-#    cd r && R -e 'renv::restore()'
-#fi
-
-echo "Dev environment setup completed!"
+# Allow JupyterLab and IRkernel ro run R workbook
+R -e "install.packages('IRkernel')"
+R -e "IRkernel::installspec()"

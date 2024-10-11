@@ -1,13 +1,16 @@
 {
     "name": "Python and R Dev Container",
-    "image": "rocker/rstudio", 
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
+        "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {},
+        "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {},
         "ghcr.io/devcontainers/features/python:1": {
             "version": "3.12",
             "installJupyterlab": true
         },
-        "ghcr.io/devcontainers/features/anaconda:1": {},
-        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+        "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+        "ghcr.io/rocker-org/devcontainer-features/renv-cache:0": {}
     },
     "customizations": {
         "vscode": {
@@ -16,15 +19,15 @@
                 "reditorsupport.r",
                 "quarto.quarto",
                 "ms-toolsai.jupyter"
-            ],
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python3.12"  // Default Python path
-            }
+            ]
         }
     },
-    "postCreateCommand": "bash ./.devcontainer/postCreateCommand_r.sh",
+     "postAttachCommand": {
+        "rstudio-start": "rserver"
+     },
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
     "postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
-     "portsAttributes": {
+    "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab"
         },
