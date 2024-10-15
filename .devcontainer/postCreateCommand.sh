@@ -1,22 +1,23 @@
 #!/bin/bash
 
-# Activate the Python virtual environment
-source /opt/venv/bin/activate
+# Install ZeroMQ
+sudo apt-get update -y
+sudo apt-get install libzmq3-dev -y
 
-# Install Python dependencies
-if [ -f "python/requirements.txt" ]; then
-    pip install -r python/requirements.txt
-fi
+# Install GDAL
+sudo apt-get install gdal-bin libgdal-dev -y
 
-# Install R dependencies
-#if [ -f "r/install_packages.R" ]; then
-#    Rscript r/install_packages.R
-#fi
+# Install a few common dependencies
+sudo apt-get install libharfbuzz-dev libfribidi-dev libfreetype6-dev pkg-config libarchive-dev -y
+# Install ffmpeg
+sudo apt-get install ffmpeg -y
 
-# This may be done by the user
-# Set up renv for R
-#if [ -f "r/renv.lock" ]; then
-#    cd r && R -e 'renv::restore()'
-#fi
+# Setup bash to allow conda to run
+#conda init bash && conda install -y ipykernel
 
-echo "Dev environment setup completed!"
+# Allow JupyterLab and IRkernel ro run R workbook
+R -e "install.packages('IRkernel')"
+R -e "IRkernel::installspec()"
+
+# change the default working directory for RStudio
+echo "session-default-working-dir=/workspaces/data_access_library/" | sudo tee -a /etc/rstudio/rsession.conf

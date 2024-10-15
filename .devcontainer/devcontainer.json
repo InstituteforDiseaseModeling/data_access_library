@@ -1,10 +1,20 @@
 {
     "name": "Python and R Dev Container",
-    "image": "mewu/data_access:latest",   // Use pre-built image
-//    "build": {
-//        "dockerfile": "../Dockerfile",
-//        "context": ".."
-//    },
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {},
+        "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {},
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+        "packages": "knitr, markdown, tinytex"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12",
+            "installJupyterlab": true
+        },
+        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+        "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+        "ghcr.io/rocker-org/devcontainer-features/renv-cache:0": {}
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -12,27 +22,17 @@
                 "reditorsupport.r",
                 "quarto.quarto",
                 "ms-toolsai.jupyter"
-            ],
-            "settings": {
-                "python.defaultInterpreterPath": "/opt/venv/bin/python"
-            }
+            ]
         }
     },
-//    "workspaceFolder": "${localWorkspaceFolder}",
-//    "runArgs": [
-//     "--workdir", "/workspaces/${localWorkspaceFolder}"
-//     ],
-//    "mounts": [
-//    "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolder},type=bind,consistency=cached"
-//    ],
     "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-	"postStartCommand": "bash ./.devcontainer/postStartCommand.sh",
+    "postAttachCommand": "bash ./.devcontainer/postAttachCommand.sh",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab"
         },
         "8787": {
-          "label": "R studio"
+          "label": "R Studio"
         }
     },
     "forwardPorts": [8787, 8888]
