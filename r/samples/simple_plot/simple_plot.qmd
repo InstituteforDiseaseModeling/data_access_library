@@ -19,7 +19,7 @@ library(ggplot2)
 # Create a simple dataset
 data <- data.frame(
   category = c("A", "B", "C", "D"),
-  values = c(3, 7, 9, 4)
+  values = c(3, 7, 9, 100)
 )
 
 # Create a bar plot
