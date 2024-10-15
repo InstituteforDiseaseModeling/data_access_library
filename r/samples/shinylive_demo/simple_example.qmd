@@ -8,7 +8,7 @@ filters:
   - shinylive
 ---
 <script>
-  navigator.serviceWorker.register('/shinylive-sw.js')
+  navigator.serviceWorker.register('./shinylive-sw.js')
 </script>
 
 ```{shinylive-r}
