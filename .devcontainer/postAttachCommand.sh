@@ -2,7 +2,11 @@
 
 echo "Restarting Rstudio server..."
 sudo rm -rf  /var/run/rstudio-server.id
-rstudio-server restart > rstudio_server.log 2>&1 &
+sleep 1
+rstudio-server start > rstudio_server.log 2>&1 &
+
+echo "Install quarto tinytex extension"
+quarto install tinytex
 
 pip install jupyterlab jupyter_core
 sleep 5

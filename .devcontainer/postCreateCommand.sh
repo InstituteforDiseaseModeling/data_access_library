@@ -4,6 +4,11 @@
 sudo apt-get update -y
 sudo apt-get install libzmq3-dev -y
 
+# Install GDAL
+sudo apt-get install gdal-bin libgdal-dev -y
+
+# Install a few common dependencies
+sudo apt-get install libharfbuzz-dev libfribidi-dev libfreetype6-dev pkg-config libarchive-dev -y
 # Install ffmpeg
 sudo apt-get install ffmpeg -y
 

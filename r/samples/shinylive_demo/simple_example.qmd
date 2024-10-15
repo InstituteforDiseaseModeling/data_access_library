@@ -7,13 +7,16 @@ format:
 filters:
   - shinylive
 ---
-
+<script>
+  navigator.serviceWorker.register('/shinylive-sw.js')
+</script>
 
 ```{shinylive-r}
 #| standalone: true
 #| viewerHeight: 600
 #| layout: full
 
+library(tidyr)
 library(shiny)
 library(dplyr)
 library(ggplot2)
@@ -28,6 +31,13 @@ washington_covid_data <- covid_data %>%
   filter(state == "Washington") %>%
   select(date, county, cases) %>%
   mutate(year_month = format(as.Date(date), "%Y%m"))  # Create year_month column
+
+# Preprocess the data to ensure all counties and year-month combinations are present
+washington_covid_data <- washington_covid_data %>%
+  # Create a complete dataset with all combinations of counties and year-month
+  complete(county = unique(washington_covid_data$county),
+           year_month = unique(washington_covid_data$year_month),
+           fill = list(cases = 0))
 
 # Create a vector of unique year_month values from the dataset
 valid_year_months <- sort(unique(washington_covid_data$year_month))
@@ -67,6 +77,10 @@ server <- function(input, output) {
     
     ggplot(filtered_data, aes(x = county, y = total_cases)) +
       geom_bar(stat = "identity", fill = "steelblue") +
+       scale_y_log10(
+        breaks = c(1, 10, 100, 1000, 10000, 100000, 1000000),
+        labels = c("1", "10", "100", "1k", "10k", "100k", "1M")
+      ) +
       labs(title = paste("COVID Cases in", input$selected_year_month),
            x = "County", 
            y = "Total Case Count") +
@@ -97,6 +111,7 @@ filters:
 #| viewerHeight: 600
 #| layout: full
 
+library(tidyr)
 library(shiny)
 library(dplyr)
 library(ggplot2)
@@ -112,6 +127,12 @@ washington_covid_data <- covid_data %>%
   select(date, county, cases) %>%
   mutate(year_month = format(as.Date(date), "%Y%m"))  # Create year_month column
 
+# Preprocess the data to ensure all counties and year-month combinations are present
+washington_covid_data <- washington_covid_data %>%
+  # Create a complete dataset with all combinations of counties and year-month
+  complete(county = unique(washington_covid_data$county),
+           year_month = unique(washington_covid_data$year_month),
+           fill = list(cases = 0))
 # Create a vector of unique year_month values from the dataset
 valid_year_months <- sort(unique(washington_covid_data$year_month))
 valid_year_months_index <- seq_along(valid_year_months)
@@ -150,6 +171,10 @@ server <- function(input, output) {
     
     ggplot(filtered_data, aes(x = county, y = total_cases)) +
       geom_bar(stat = "identity", fill = "steelblue") +
+      scale_y_log10(
+        breaks = c(1, 10, 100, 1000, 10000, 100000, 1000000),
+        labels = c("1", "10", "100", "1k", "10k", "100k", "1M")
+      ) +
       labs(title = paste("COVID Cases in", input$selected_year_month),
            x = "County", 
            y = "Total Case Count") +
@@ -168,10 +193,10 @@ shinyApp(ui = ui, server = server)
 This is a demo of a Shiny app embedded in a Quarto document using the `shinylive` filter. The app displays COVID case counts by month-year in Washington state counties. Use the slider to select a month-year and see the case counts for each county in that month-year period.
 <br>
 
-The code first import the libraries:  
+The code first import the libraries:
 ```{r}
 #| eval: false
-
+library(tidyr)
 library(shiny)
 library(dplyr)
 library(ggplot2)
