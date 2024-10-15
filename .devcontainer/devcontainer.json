@@ -4,6 +4,9 @@
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {},
         "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {},
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+        "packages": "knitr, markdown, tinytex"
+        },
         "ghcr.io/devcontainers/features/python:1": {
             "version": "3.12",
             "installJupyterlab": true

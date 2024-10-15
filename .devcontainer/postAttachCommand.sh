@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "RStudio Server failed to start. Restarting..."
+echo "Restarting Rstudio server..."
+sudo rm -rf  /var/run/rstudio-server.id
 rstudio-server restart > rstudio_server.log 2>&1 &
 
 pip install jupyterlab jupyter_core
