@@ -125,7 +125,8 @@ Quarto allows you to customize the rendering of documents using both the `quarto
 These options give you flexibility to control how your documents are rendered, either through the command line or the YAML configuration in your file.
 
 
-## 5. Github Page hosting
-All examples checked in to this repo under `r/samples` or `python/samples` 
+## 5. Contribute your example and Github Page hosting
+You are encouraged to check in your example to this repo! Please create your own folder under `r/samples` or `python/samples` and add your jupyter notebook or .qmd (quarto markdown) file, you do not need to include the html files as 
+all examples checked in to this repo
 will be published to [Github Pages](https://institutefordiseasemodeling.github.io/data_access_library/). automatically when merged to main branch.
 
