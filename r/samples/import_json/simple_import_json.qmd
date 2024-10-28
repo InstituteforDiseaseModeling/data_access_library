@@ -1,0 +1,53 @@
+---
+title: "Simple R Example to Import JSON"
+date: "2024-10-24"
+output: html
+execute:
+  echo: true
+---
+
+# This is a very basic quarto document for sharing your code
+
+This is a simple example of how to import a json.
+JavaScript Object Notation, or JSON, is a semi-structured format often used by web applications and REST APIs to exchange data.
+To run this, pacman and rmarkdown will need to be installed.
+
+```{r, prep-for-example}
+
+# Install some packages
+if (!require("pacman")) install.packages("pacman")
+
+# Load necessary library
+pacman::p_load(pacman, readr, rmarkdown, tidyverse, jsonlite, rmarkdown)
+```
+
+Fetch some data by calling an API
+
+```{r, get-some-data}
+
+# Call an API to get JSON data in a tabular format
+data <- "https://ghoapi.azureedge.net/api/Dimension" %>%
+  fromJSON() %>%
+  print()
+
+```
+
+::: {.callout-note}
+This API call only shows available dimensions. 
+:::
+
+That is how to fetch and read a JSON file.
+
+```{r, reformat-data-for-vis}
+# Re-format the content
+data %>% 
+  toJSON(pretty = T) %>%
+  print()
+
+```
+
+::: {.callout-tip}
+You can create callout-tips! Just use the `callout-tip` class.
+:::
+
+
