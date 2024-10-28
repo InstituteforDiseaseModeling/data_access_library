@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-10-24">
+
+<title>Simple R Example to Import JSON</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="simple_import_json_files/libs/clipboard/clipboard.min.js"></script>
+<script src="simple_import_json_files/libs/quarto-html/quarto.js"></script>
+<script src="simple_import_json_files/libs/quarto-html/popper.min.js"></script>
+<script src="simple_import_json_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="simple_import_json_files/libs/quarto-html/anchor.min.js"></script>
+<link href="simple_import_json_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="simple_import_json_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="simple_import_json_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="simple_import_json_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="simple_import_json_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Simple R Example to Import JSON</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="this-is-a-very-basic-quarto-document-for-sharing-your-code" class="level1">
+<h1>This is a very basic quarto document for sharing your code</h1>
+<p>This is a simple example of how to import a json. JavaScript Object Notation, or JSON, is a semi-structured format often used by web applications and REST APIs to exchange data. To run this, pacman and rmarkdown will need to be installed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install some packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: pacman</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
+logical.return = TRUE, : there is no package called 'pacman'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary library</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(pacman, readr, rmarkdown, tidyverse, jsonlite, rmarkdown)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Fetch some data by calling an API</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call an API to get JSON data in a tabular format</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="st">"https://ghoapi.azureedge.net/api/Dimension"</span> <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fromJSON</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`@odata.context`
+[1] "https://ghoapi.azureedge.net/api/$metadata#DIMENSION"
+
+$value
+                                 Code
+1                     ADVERTISINGTYPE
+2                            AGEGROUP
+3                         ALCOHOLTYPE
+4                    AMRGLASSCATEGORY
+5                             ARCHIVE
+6                ASSISTIVETECHBARRIER
+7                ASSISTIVETECHFUNDING
+8                ASSISTIVETECHPRODUCT
+9           ASSISTIVETECHSATIACTIVITY
+10           ASSISTIVETECHSATISERVICE
+11                ASSISTIVETECHSOURCE
+12           ASSISTIVETECHSUBQUESTION
+13        ASSISTIVETECHTRAVELDISTANCE
+14              AWARENESSACTIVITYTYPE
+15                           BACGROUP
+16                           BEVERAGE
+17                       BEVERAGETYPE
+18                        CAREPATIENT
+19                         CARESECTOR
+20                    CCH_SUBQUESTION
+21                         CHILDCAUSE
+22                CLINICALSUPERVISION
+23                COMMUNITYACTIONTYPE
+24                    CONSUMPTIONTYPE
+25               COORDINATINGENTITIES
+26                            COUNTRY
+27                             COUNTY
+28                         DATANATURE
+29                         DATASOURCE
+30                   DHSMICSGEOREGION
+31                          DONORTYPE
+32         DRINKDRIVINGDEFINITIONTYPE
+33                         DRIVERTYPE
+34                    DRIVINGTESTTYPE
+35                               DRUG
+36                   DRUGPRESCRIPTION
+37                    DRUGSUPERVISION
+38                     EDUCATIONLEVEL
+39                        EMFBODYPART
+40                         EMFEXPOSED
+41                       EMFFREQUENCY
+42                       EMFRADIOBAND
+43                           ENVCAUSE
+44                      EXCISETAXTYPE
+45                          FAOREGION
+46                  FOODBORNE_HAZARD1
+47                  FOODBORNE_HAZARD2
+48                  FOODBORNE_HAZARD3
+49                     GBDCHILDCAUSES
+50                          GBDREGION
+51                           GHECAUSE
+52                     GHECAUSELEVEL1
+53                     GHECAUSELEVEL2
+54                     GHECAUSELEVEL3
+55                     GHECAUSELEVEL4
+56                          GHECAUSES
+57                                GHO
+58     GLASSAMCAWARE_ANTIBIOTICSGROUP
+59                             GLOBAL
+60                        GOEQUESTION
+61                  GOVERNMENTBENEFIT
+62                              GROUP
+63                 HARMANDCONSEQUENCE
+64                 HEALTHCAREFACILITY
+65                       HEALTHSTATUS
+66              HOUSEHOLD_COMP_BY_AGE
+67               HOUSEHOLDCOOKINGFUEL
+68                    HOUSEHOLDWEALTH
+69               IHRSPARCAPACITYLEVEL
+70                         INADEQUACY
+71                            KE_CORE
+72                          KE_COUNTY
+73                    LEGISLATIONTYPE
+74              MEASUREIMPORTANCETYPE
+75                            MGHEREG
+76              MOTOCYCLEOCCUPANTTYPE
+77                 NATIONALSYSTEMTYPE
+78                                NGO
+79                  OPENACCESSSERVICE
+80   PATIENTSAFETY_STRATEGICOBJECTIVE
+81             PATIENTSAFETY_STRATEGY
+82       PATIENTSAFETY_SURVEYQUESTION
+83                        PENALTYTYPE
+84                    PHONEACCESSTYPE
+85                POLICYADOPTIONLEVEL
+86                    POLICYFRAMEWORK
+87                       POLICYSECTOR
+88                           POP_TYPE
+89                              PRICE
+90                   PRICEMEASURETYPE
+91                          PROGRAMME
+92                        PUBLICPLACE
+93               PUBLICPRIVATESETTING
+94                       PUBLISHSTATE
+95                  RADONSUBQUESTIONS
+96                           RCREGION
+97                             REGION
+98                  RESIDENCEAREATYPE
+99                       ROADUSERTYPE
+100                    RSUD_HIVHEP_CT
+101                           RSUDHWF
+102      RSUDMAINSUBSTANCEATTREATMENT
+103 RSUDMAINTENANCEACCESSRESTRICTIONS
+104                    RSUDMONITORING
+105         RSUDPHARMACOTHERAPYOPTION
+106           RSUDPREVENTIONPROGRAMME
+107                           RSUDREP
+108                     RSUDREPORTING
+109            RSUDSPECIFICPOPULATION
+110           RSUDSUBSTANCEDEPENDENCE
+111                     RSUDTREATMENT
+112             RSUDTREATMENTLOCATION
+113              SCSUDSURVEYQUESTIONS
+114                          SEATTYPE
+115                          SEVERITY
+116                               SEX
+117                    SOCIALCOSTTYPE
+118                     SOCIOECONOMIC
+119                 SPECIALPOPULATION
+120             SPONSORSHIPORIGINATOR
+121                    STANDARDOFCARE
+122                         SUBREGION
+123                     SUBSTANCETYPE
+124             SUBSTANCETYPEDISORDER
+125                     SUNBED_ACCESS
+126                    SUNBED_CONTROL
+127                       SUNBED_INFO
+128                     SUNBED_SAFETY
+129                   SUNBED_TRAINING
+130                      TB_BENCHMARK
+131                       TB_CASETYPE
+132                   TB_TREATHISTORY
+133                  TB_TREATMENTTYPE
+134                        TIMEPERIOD
+135          TOBACCO_NICOTINE_PRODUCT
+136              UNCERTAINTY_INTERVAL
+137                      UNICEFREGION
+138                          UNREGION
+139                       UNSDGREGION
+140                 VACCINATIONSTATUS
+141                   VEHICLESTANDARD
+142                      WEALTHDECILE
+143                    WEALTHQUINTILE
+144                     WEALTHTERCILE
+145                   WHOINCOMEREGION
+146              WORLDBANKINCOMEGROUP
+147                   WORLDBANKREGION
+148                    WPR_DATASOURCE
+149                      WPR_DEMO_IND
+150                              YEAR
+                                                                             Title
+1                                                SUBSTANCE_ABUSE_ADVERTISING_TYPES
+2                                                                        Age Group
+3                                                                   Beverage Types
+4                                                               AMR GLASS Category
+5                                                                     Archive date
+6                                         Barriers to accessing assistive products
+7                                              Funding for assistive tech products
+8                                                     Assistive technology product
+9   Satisfaction with assistive products for different environments and activities
+10                       Satisfaction with assistive products and related services
+11                                                   Sources of assistive products
+12                                                Assistive technology subquestion
+13                                    Travel distance to obtain assistive products
+14                                        SUBSTANCE_ABUSE_AWARENESS_ACTIVITY_TYPES
+15                                                      SUBSTANCE_ABUSE_BAC_GROUPS
+16                                                                        Beverage
+17                                                                   Beverage type
+18                                                                    Patient type
+19                                                                     Care sector
+20                                                         CCH Survey sub-question
+21                                                                  Cause of death
+22                                                       RSUD_CLINICAL_SUPERVISION
+23                                                                Community Action
+24                                                                Consumption type
+25                                           SUBSTANCE_ABUSE_COORDINATING_ENTITIES
+26                                                                         Country
+27                                                                          County
+28                                                                     Data nature
+29                                                                     Data source
+30                            DHS/MICS subnational regions (Health equity monitor)
+31                                                                      Donor type
+32                                            Drinking and Driving Definition Type
+33                                                                     Driver Type
+34                                                               Driving Test Type
+35                                                                      RSUD_DRUGS
+36                                                          RSUD_DRUG_PRESCRIPTION
+37                                                           RSUD_DRUG_SUPERVISION
+38                                                                 Education Level
+39                                                                       Body part
+40                                                                         Exposed
+41                                                                       Frequency
+42                                                                      Radio band
+43                                                                           Cause
+44                                                                 Excise tax type
+45                                                                      FAO region
+46                                                      Foodborne hazard (Level 1)
+47                                                      Foodborne hazard (Level 2)
+48                                                      Foodborne hazard (Level 3)
+49                                                                     Child cause
+50                                                                      GBD Region
+51                                                        GHE cause of death codes
+52                                                                     Cause group
+53                                                                           Cause
+54                                                                  Subcause group
+55                                                                        Subcause
+56                                                                          Causes
+57                                                                       Indicator
+58                                                         AWARE Antibiotics group
+59                                                                          Global
+60                                                                    Goe question
+61                                                        RSUD_GOVERNMENT_BENEFITS
+62                                                                     RSUD_GROUPS
+63                                           SUBSTANCE_ABUSE_HARM_AND_CONSEQUENCES
+64                                                       Health care facility type
+65                                                                   Health Status
+66                                                    Household composition by age
+67                                                                    Cooking fuel
+68                                                                Household wealth
+69                                                         IHR SPAR Capacity Level
+70                                                                      Inadequacy
+71                                                           Kenya Core Indicators
+72                                                                  Kenya Counties
+73                                                                Legislation type
+74                                         SUBSTANCE_ABUSE_MEASURE_IMPORTANCE_TYPE
+75                                                                     MGHE Region
+76                                                        Motorcycle Occupant Type
+77                                                            National System Type
+78                                                                       RSUD_NGOS
+79                                                       RSUD_OPEN_ACCESS_SERVICES
+80                                              Patient safety strategic objective
+81                                                         Patient safety strategy
+82                                                  Patient safety core indicators
+83                                                                    Penalty Type
+84                                                               Phone Access Type
+85                                          SUBSTANCE_ABUSE_POLICY_ADOPTION_LEVELS
+86                                               SUBSTANCE_ABUSE_POLICY_FRAMEWORKS
+87                                                  SUBSTANCE_ABUSE_POLICY_SECTORS
+88                                                                 Population type
+89                                                                           Price
+90                                                             Price measure types
+91                                                                 RSUD_PROGRAMMES
+92                                                   SUBSTANCE_ABUSE_PUBLIC_PLACES
+93                                                    RSUD_PUBLIC_PRIVATE_SETTINGS
+94                                                                   Publish state
+95                                                              Radon subquestions
+96                                                                       RC Region
+97                                                                     WHO regions
+98                                                             Residence Area Type
+99                                                                  Road User Type
+100                                      HIV / Hepatitis counselling and treatment
+101                                             Human resources / health workforce
+102                                               RSUD Main substance at treatment
+103                                                Maintenance access restrictions
+104                                                              Monitoring system
+105                                                        Pharmacotherapy options
+106                                                          Prevention programmes
+107                                                                Representatives
+108                                                           Sources of reporting
+109                                                           Specific populations
+110                                                           Substance dependence
+111                                                                      Treatment
+112                                                             Treatment location
+113                            Service coverage for substance use disorders survey
+114                                                                      Seat Type
+115                                                                       Severity
+116                                                                            Sex
+117                                              SUBSTANCE_ABUSE_SOCIAL_COST_TYPES
+118                                                            SOCIOECONOMIC_TYPES
+119                                                       RSUD_SPECIAL_POPULATIONS
+120                                                         Sponsorship originator
+121                                                         RSUD_STANDARDS_OF_CARE
+122                              WHO subregions by child and adult mortality (GBD)
+123                                                           RSUD_SUBSTANCE_TYPES
+124                                                  RSUD_SUBSTANCE_TYPE_DISORDERS
+125                                                     Sunbed access restrictions
+126                                Restriction and inspection of sunbed facilities
+127                                         Sunbed public information requirements
+128                                            Sunbed facility safety requirements
+129                                    Sunbed facility staff training requirements
+130                                                                   TB Benchmark
+131                                                                   TB Case type
+132                                                           TB Treatment history
+133                                                              TB Treatment type
+134                                                                    Time period
+135                                                   Tobacco and nicotine product
+136                                                           Uncertainty interval
+137                                                                  UNICEF region
+138                                                                      UN Region
+139                                                                  UN SDG Region
+140                                                             Vaccination status
+141                                                              Vehicle standards
+142                                                                  Wealth decile
+143                                                                Wealth Quintile
+144                                                                 Wealth tercile
+145                                                              WHO Income Region
+146                                                        World Bank income group
+147                                                              World Bank Region
+148                                                               WPRO Data Source
+149                                                            WPRO Demo Indicator
+150                                                                           Year</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This API call only shows available dimensions.</p>
+</div>
+</div>
+<p>That is how to fetch and read a JSON file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-format the content</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">toJSON</span>(<span class="at">pretty =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+  "@odata.context": ["https://ghoapi.azureedge.net/api/$metadata#DIMENSION"],
+  "value": [
+    {
+      "Code": "ADVERTISINGTYPE",
+      "Title": "SUBSTANCE_ABUSE_ADVERTISING_TYPES"
+    },
+    {
+      "Code": "AGEGROUP",
+      "Title": "Age Group"
+    },
+    {
+      "Code": "ALCOHOLTYPE",
+      "Title": "Beverage Types"
+    },
+    {
+      "Code": "AMRGLASSCATEGORY",
+      "Title": "AMR GLASS Category"
+    },
+    {
+      "Code": "ARCHIVE",
+      "Title": "Archive date"
+    },
+    {
+      "Code": "ASSISTIVETECHBARRIER",
+      "Title": "Barriers to accessing assistive products"
+    },
+    {
+      "Code": "ASSISTIVETECHFUNDING",
+      "Title": "Funding for assistive tech products"
+    },
+    {
+      "Code": "ASSISTIVETECHPRODUCT",
+      "Title": "Assistive technology product"
+    },
+    {
+      "Code": "ASSISTIVETECHSATIACTIVITY",
+      "Title": "Satisfaction with assistive products for different environments and activities"
+    },
+    {
+      "Code": "ASSISTIVETECHSATISERVICE",
+      "Title": "Satisfaction with assistive products and related services"
+    },
+    {
+      "Code": "ASSISTIVETECHSOURCE",
+      "Title": "Sources of assistive products"
+    },
+    {
+      "Code": "ASSISTIVETECHSUBQUESTION",
+      "Title": "Assistive technology subquestion"
+    },
+    {
+      "Code": "ASSISTIVETECHTRAVELDISTANCE",
+      "Title": "Travel distance to obtain assistive products"
+    },
+    {
+      "Code": "AWARENESSACTIVITYTYPE",
+      "Title": "SUBSTANCE_ABUSE_AWARENESS_ACTIVITY_TYPES"
+    },
+    {
+      "Code": "BACGROUP",
+      "Title": "SUBSTANCE_ABUSE_BAC_GROUPS"
+    },
+    {
+      "Code": "BEVERAGE",
+      "Title": "Beverage"
+    },
+    {
+      "Code": "BEVERAGETYPE",
+      "Title": "Beverage type"
+    },
+    {
+      "Code": "CAREPATIENT",
+      "Title": "Patient type"
+    },
+    {
+      "Code": "CARESECTOR",
+      "Title": "Care sector"
+    },
+    {
+      "Code": "CCH_SUBQUESTION",
+      "Title": "CCH Survey sub-question"
+    },
+    {
+      "Code": "CHILDCAUSE",
+      "Title": "Cause of death"
+    },
+    {
+      "Code": "CLINICALSUPERVISION",
+      "Title": "RSUD_CLINICAL_SUPERVISION"
+    },
+    {
+      "Code": "COMMUNITYACTIONTYPE",
+      "Title": "Community Action"
+    },
+    {
+      "Code": "CONSUMPTIONTYPE",
+      "Title": "Consumption type"
+    },
+    {
+      "Code": "COORDINATINGENTITIES",
+      "Title": "SUBSTANCE_ABUSE_COORDINATING_ENTITIES"
+    },
+    {
+      "Code": "COUNTRY",
+      "Title": "Country"
+    },
+    {
+      "Code": "COUNTY",
+      "Title": "County"
+    },
+    {
+      "Code": "DATANATURE",
+      "Title": "Data nature"
+    },
+    {
+      "Code": "DATASOURCE",
+      "Title": "Data source"
+    },
+    {
+      "Code": "DHSMICSGEOREGION",
+      "Title": "DHS/MICS subnational regions (Health equity monitor)"
+    },
+    {
+      "Code": "DONORTYPE",
+      "Title": "Donor type"
+    },
+    {
+      "Code": "DRINKDRIVINGDEFINITIONTYPE",
+      "Title": "Drinking and Driving Definition Type"
+    },
+    {
+      "Code": "DRIVERTYPE",
+      "Title": "Driver Type"
+    },
+    {
+      "Code": "DRIVINGTESTTYPE",
+      "Title": "Driving Test Type"
+    },
+    {
+      "Code": "DRUG",
+      "Title": "RSUD_DRUGS"
+    },
+    {
+      "Code": "DRUGPRESCRIPTION",
+      "Title": "RSUD_DRUG_PRESCRIPTION"
+    },
+    {
+      "Code": "DRUGSUPERVISION",
+      "Title": "RSUD_DRUG_SUPERVISION"
+    },
+    {
+      "Code": "EDUCATIONLEVEL",
+      "Title": "Education Level"
+    },
+    {
+      "Code": "EMFBODYPART",
+      "Title": "Body part"
+    },
+    {
+      "Code": "EMFEXPOSED",
+      "Title": "Exposed"
+    },
+    {
+      "Code": "EMFFREQUENCY",
+      "Title": "Frequency"
+    },
+    {
+      "Code": "EMFRADIOBAND",
+      "Title": "Radio band"
+    },
+    {
+      "Code": "ENVCAUSE",
+      "Title": "Cause"
+    },
+    {
+      "Code": "EXCISETAXTYPE",
+      "Title": "Excise tax type"
+    },
+    {
+      "Code": "FAOREGION",
+      "Title": "FAO region"
+    },
+    {
+      "Code": "FOODBORNE_HAZARD1",
+      "Title": "Foodborne hazard (Level 1)"
+    },
+    {
+      "Code": "FOODBORNE_HAZARD2",
+      "Title": "Foodborne hazard (Level 2)"
+    },
+    {
+      "Code": "FOODBORNE_HAZARD3",
+      "Title": "Foodborne hazard (Level 3)"
+    },
+    {
+      "Code": "GBDCHILDCAUSES",
+      "Title": "Child cause"
+    },
+    {
+      "Code": "GBDREGION",
+      "Title": "GBD Region"
+    },
+    {
+      "Code": "GHECAUSE",
+      "Title": "GHE cause of death codes"
+    },
+    {
+      "Code": "GHECAUSELEVEL1",
+      "Title": "Cause group"
+    },
+    {
+      "Code": "GHECAUSELEVEL2",
+      "Title": "Cause"
+    },
+    {
+      "Code": "GHECAUSELEVEL3",
+      "Title": "Subcause group"
+    },
+    {
+      "Code": "GHECAUSELEVEL4",
+      "Title": "Subcause"
+    },
+    {
+      "Code": "GHECAUSES",
+      "Title": "Causes"
+    },
+    {
+      "Code": "GHO",
+      "Title": "Indicator"
+    },
+    {
+      "Code": "GLASSAMCAWARE_ANTIBIOTICSGROUP",
+      "Title": "AWARE Antibiotics group"
+    },
+    {
+      "Code": "GLOBAL",
+      "Title": "Global"
+    },
+    {
+      "Code": "GOEQUESTION",
+      "Title": "Goe question"
+    },
+    {
+      "Code": "GOVERNMENTBENEFIT",
+      "Title": "RSUD_GOVERNMENT_BENEFITS"
+    },
+    {
+      "Code": "GROUP",
+      "Title": "RSUD_GROUPS"
+    },
+    {
+      "Code": "HARMANDCONSEQUENCE",
+      "Title": "SUBSTANCE_ABUSE_HARM_AND_CONSEQUENCES"
+    },
+    {
+      "Code": "HEALTHCAREFACILITY",
+      "Title": "Health care facility type"
+    },
+    {
+      "Code": "HEALTHSTATUS",
+      "Title": "Health Status"
+    },
+    {
+      "Code": "HOUSEHOLD_COMP_BY_AGE",
+      "Title": "Household composition by age"
+    },
+    {
+      "Code": "HOUSEHOLDCOOKINGFUEL",
+      "Title": "Cooking fuel"
+    },
+    {
+      "Code": "HOUSEHOLDWEALTH",
+      "Title": "Household wealth"
+    },
+    {
+      "Code": "IHRSPARCAPACITYLEVEL",
+      "Title": "IHR SPAR Capacity Level"
+    },
+    {
+      "Code": "INADEQUACY",
+      "Title": "Inadequacy"
+    },
+    {
+      "Code": "KE_CORE",
+      "Title": "Kenya Core Indicators"
+    },
+    {
+      "Code": "KE_COUNTY",
+      "Title": "Kenya Counties"
+    },
+    {
+      "Code": "LEGISLATIONTYPE",
+      "Title": "Legislation type"
+    },
+    {
+      "Code": "MEASUREIMPORTANCETYPE",
+      "Title": "SUBSTANCE_ABUSE_MEASURE_IMPORTANCE_TYPE"
+    },
+    {
+      "Code": "MGHEREG",
+      "Title": "MGHE Region"
+    },
+    {
+      "Code": "MOTOCYCLEOCCUPANTTYPE",
+      "Title": "Motorcycle Occupant Type"
+    },
+    {
+      "Code": "NATIONALSYSTEMTYPE",
+      "Title": "National System Type"
+    },
+    {
+      "Code": "NGO",
+      "Title": "RSUD_NGOS"
+    },
+    {
+      "Code": "OPENACCESSSERVICE",
+      "Title": "RSUD_OPEN_ACCESS_SERVICES"
+    },
+    {
+      "Code": "PATIENTSAFETY_STRATEGICOBJECTIVE",
+      "Title": "Patient safety strategic objective"
+    },
+    {
+      "Code": "PATIENTSAFETY_STRATEGY",
+      "Title": "Patient safety strategy"
+    },
+    {
+      "Code": "PATIENTSAFETY_SURVEYQUESTION",
+      "Title": "Patient safety core indicators"
+    },
+    {
+      "Code": "PENALTYTYPE",
+      "Title": "Penalty Type"
+    },
+    {
+      "Code": "PHONEACCESSTYPE",
+      "Title": "Phone Access Type"
+    },
+    {
+      "Code": "POLICYADOPTIONLEVEL",
+      "Title": "SUBSTANCE_ABUSE_POLICY_ADOPTION_LEVELS"
+    },
+    {
+      "Code": "POLICYFRAMEWORK",
+      "Title": "SUBSTANCE_ABUSE_POLICY_FRAMEWORKS"
+    },
+    {
+      "Code": "POLICYSECTOR",
+      "Title": "SUBSTANCE_ABUSE_POLICY_SECTORS"
+    },
+    {
+      "Code": "POP_TYPE",
+      "Title": "Population type"
+    },
+    {
+      "Code": "PRICE",
+      "Title": "Price"
+    },
+    {
+      "Code": "PRICEMEASURETYPE",
+      "Title": "Price measure types"
+    },
+    {
+      "Code": "PROGRAMME",
+      "Title": "RSUD_PROGRAMMES"
+    },
+    {
+      "Code": "PUBLICPLACE",
+      "Title": "SUBSTANCE_ABUSE_PUBLIC_PLACES"
+    },
+    {
+      "Code": "PUBLICPRIVATESETTING",
+      "Title": "RSUD_PUBLIC_PRIVATE_SETTINGS"
+    },
+    {
+      "Code": "PUBLISHSTATE",
+      "Title": "Publish state"
+    },
+    {
+      "Code": "RADONSUBQUESTIONS",
+      "Title": "Radon subquestions"
+    },
+    {
+      "Code": "RCREGION",
+      "Title": "RC Region"
+    },
+    {
+      "Code": "REGION",
+      "Title": "WHO regions"
+    },
+    {
+      "Code": "RESIDENCEAREATYPE",
+      "Title": "Residence Area Type"
+    },
+    {
+      "Code": "ROADUSERTYPE",
+      "Title": "Road User Type"
+    },
+    {
+      "Code": "RSUD_HIVHEP_CT",
+      "Title": "HIV / Hepatitis counselling and treatment"
+    },
+    {
+      "Code": "RSUDHWF",
+      "Title": "Human resources / health workforce"
+    },
+    {
+      "Code": "RSUDMAINSUBSTANCEATTREATMENT",
+      "Title": "RSUD Main substance at treatment"
+    },
+    {
+      "Code": "RSUDMAINTENANCEACCESSRESTRICTIONS",
+      "Title": "Maintenance access restrictions"
+    },
+    {
+      "Code": "RSUDMONITORING",
+      "Title": "Monitoring system"
+    },
+    {
+      "Code": "RSUDPHARMACOTHERAPYOPTION",
+      "Title": "Pharmacotherapy options"
+    },
+    {
+      "Code": "RSUDPREVENTIONPROGRAMME",
+      "Title": "Prevention programmes"
+    },
+    {
+      "Code": "RSUDREP",
+      "Title": "Representatives"
+    },
+    {
+      "Code": "RSUDREPORTING",
+      "Title": "Sources of reporting"
+    },
+    {
+      "Code": "RSUDSPECIFICPOPULATION",
+      "Title": "Specific populations"
+    },
+    {
+      "Code": "RSUDSUBSTANCEDEPENDENCE",
+      "Title": "Substance dependence"
+    },
+    {
+      "Code": "RSUDTREATMENT",
+      "Title": "Treatment"
+    },
+    {
+      "Code": "RSUDTREATMENTLOCATION",
+      "Title": "Treatment location"
+    },
+    {
+      "Code": "SCSUDSURVEYQUESTIONS",
+      "Title": "Service coverage for substance use disorders survey"
+    },
+    {
+      "Code": "SEATTYPE",
+      "Title": "Seat Type"
+    },
+    {
+      "Code": "SEVERITY",
+      "Title": "Severity"
+    },
+    {
+      "Code": "SEX",
+      "Title": "Sex"
+    },
+    {
+      "Code": "SOCIALCOSTTYPE",
+      "Title": "SUBSTANCE_ABUSE_SOCIAL_COST_TYPES"
+    },
+    {
+      "Code": "SOCIOECONOMIC",
+      "Title": "SOCIOECONOMIC_TYPES"
+    },
+    {
+      "Code": "SPECIALPOPULATION",
+      "Title": "RSUD_SPECIAL_POPULATIONS"
+    },
+    {
+      "Code": "SPONSORSHIPORIGINATOR",
+      "Title": "Sponsorship originator"
+    },
+    {
+      "Code": "STANDARDOFCARE",
+      "Title": "RSUD_STANDARDS_OF_CARE"
+    },
+    {
+      "Code": "SUBREGION",
+      "Title": "WHO subregions by child and adult mortality (GBD)"
+    },
+    {
+      "Code": "SUBSTANCETYPE",
+      "Title": "RSUD_SUBSTANCE_TYPES"
+    },
+    {
+      "Code": "SUBSTANCETYPEDISORDER",
+      "Title": "RSUD_SUBSTANCE_TYPE_DISORDERS"
+    },
+    {
+      "Code": "SUNBED_ACCESS",
+      "Title": "Sunbed access restrictions"
+    },
+    {
+      "Code": "SUNBED_CONTROL",
+      "Title": "Restriction and inspection of sunbed facilities"
+    },
+    {
+      "Code": "SUNBED_INFO",
+      "Title": "Sunbed public information requirements"
+    },
+    {
+      "Code": "SUNBED_SAFETY",
+      "Title": "Sunbed facility safety requirements"
+    },
+    {
+      "Code": "SUNBED_TRAINING",
+      "Title": "Sunbed facility staff training requirements"
+    },
+    {
+      "Code": "TB_BENCHMARK",
+      "Title": "TB Benchmark"
+    },
+    {
+      "Code": "TB_CASETYPE",
+      "Title": "TB Case type"
+    },
+    {
+      "Code": "TB_TREATHISTORY",
+      "Title": "TB Treatment history"
+    },
+    {
+      "Code": "TB_TREATMENTTYPE",
+      "Title": "TB Treatment type"
+    },
+    {
+      "Code": "TIMEPERIOD",
+      "Title": "Time period"
+    },
+    {
+      "Code": "TOBACCO_NICOTINE_PRODUCT",
+      "Title": "Tobacco and nicotine product"
+    },
+    {
+      "Code": "UNCERTAINTY_INTERVAL",
+      "Title": "Uncertainty interval"
+    },
+    {
+      "Code": "UNICEFREGION",
+      "Title": "UNICEF region"
+    },
+    {
+      "Code": "UNREGION",
+      "Title": "UN Region"
+    },
+    {
+      "Code": "UNSDGREGION",
+      "Title": "UN SDG Region"
+    },
+    {
+      "Code": "VACCINATIONSTATUS",
+      "Title": "Vaccination status"
+    },
+    {
+      "Code": "VEHICLESTANDARD",
+      "Title": "Vehicle standards"
+    },
+    {
+      "Code": "WEALTHDECILE",
+      "Title": "Wealth decile"
+    },
+    {
+      "Code": "WEALTHQUINTILE",
+      "Title": "Wealth Quintile"
+    },
+    {
+      "Code": "WEALTHTERCILE",
+      "Title": "Wealth tercile"
+    },
+    {
+      "Code": "WHOINCOMEREGION",
+      "Title": "WHO Income Region"
+    },
+    {
+      "Code": "WORLDBANKINCOMEGROUP",
+      "Title": "World Bank income group"
+    },
+    {
+      "Code": "WORLDBANKREGION",
+      "Title": "World Bank Region"
+    },
+    {
+      "Code": "WPR_DATASOURCE",
+      "Title": "WPRO Data Source"
+    },
+    {
+      "Code": "WPR_DEMO_IND",
+      "Title": "WPRO Demo Indicator"
+    },
+    {
+      "Code": "YEAR",
+      "Title": "Year"
+    }
+  ]
+} </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can create callout-tips! Just use the <code>callout-tip</code> class.</p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
