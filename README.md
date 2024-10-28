@@ -9,6 +9,23 @@ Our goal is not to provide a comprehensive guide to showcase the possibilities o
 But by adding yaml metadata to your codesnippets, it allows publishing the content to Github Pages easily and
 others can view the code / results directly in the browser without running the code. 
 
+It is recommanded to follow the steps below to create a reproducible example:
+
+```mermaid
+%%{init: {'themeVariables': { 'fontSize': '10px', 'nodeSpacing': 1, 'rankSpacing': 1 }}}%%
+graph TD
+    A[Start] --> B{Dev Container?}
+    B -- Yes --> C[Follow step 1 for how to use devcontainer]
+    B -- No --> D[Clone the repo locally and<br>
+    setup python or R environment on your own]
+    C --> E[Create a new folder under
+    r/samples or python/sample]
+    D --> E
+    E --> F[Follow step 2 or 3 
+    to add your jupyter notebook or qmd file]
+    F --> G[Follow step 4 to test your example locally]
+    G --> H[Commit your changes and create a pull request]
+```
 ## 1. Use of Devcontainer
 
 The `devcontainer` feature in VS Code allows you to define the development environment using a Docker-based configuration. 
@@ -129,4 +146,48 @@ These options give you flexibility to control how your documents are rendered, e
 You are encouraged to check in your example to this repo! Please create your own folder under `r/samples` or `python/samples` and add your jupyter notebook or .qmd (quarto markdown) file, you do not need to include the html files as 
 all examples checked in to this repo
 will be published to [Github Pages](https://institutefordiseasemodeling.github.io/data_access_library/). automatically when merged to main branch.
+
+Below is an example of how to check in a new example to the repo:
+### Steps
+
+#### 0. Create a new branch based on the main branch
+```bash
+git checkout -b my_branch --track origin/main
+```
+#### 1. Navigate to your example Folder
+
+Open a terminal window and navigate to the folder that you created:
+
+```bash
+cd r/samples/my_example
+# or
+cd python/samples/my_example
+```
+#### 2. Add your Jupyter Notebook or Quarto Document and other necessry files 
+```bash
+git add r/samples/my_example/example.qmd
+
+# if you use python, you can add a jupyter notebook and requirements.txt file
+git add python/samples/my_example/requirements.txt
+git add python/samples/my_example/example.ipynb
+```
+
+#### 3. Commit your changes (provide a commit message)
+```bash
+git commit -m "your_commit_message"
+```
+
+#### 4. Push your changes to your branch
+```bash
+git push origin my_branch
+```
+#### 5. Create a pull request
+Go to the [pull request](https://github.com/InstituteforDiseaseModeling/data_access_library/pulls) 
+page and click "create a new pull request" from your branch to the main branch. 
+Ask a peer to review your code and merge it to the main branch.
+
+
+
+
+
 
