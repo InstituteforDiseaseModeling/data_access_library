@@ -9,6 +9,17 @@ Our goal is not to provide a comprehensive guide to showcase the possibilities o
 But by adding yaml metadata to your codesnippets, it allows publishing the content to Github Pages easily and
 others can view the code / results directly in the browser without running the code. 
 
+## Table of Contents
+
+- [Workflow](#workflow)
+- [DevContainer](#1-use-of-devcontainer)
+- [Quarto Examples Using Jupyter Notebook](#2-quarto-examples-using-jupyter-notebook)
+- [Quarto Examples Using `.qmd` for R](#3-quarto-examples-using-mardown-for-r)
+- [Key Quarto commands](#4-key-quarto-commands)
+- [Contribute your example](#5-contribute-your-example-and-github-page-hosting)
+
+## Workflow 
+
 It is recommanded to follow the steps below to create a reproducible example:
 
 ```mermaid
@@ -24,7 +35,7 @@ graph TD
     E --> F[Follow step 2 or 3 
     to add your jupyter notebook or qmd file]
     F --> G[Follow step 4 to test your example locally]
-    G --> H[Commit your changes and create a pull request]
+    G --> H[Follow step 5 to Commit your changes and create a pull request]
 ```
 ## 1. Use of Devcontainer
 
@@ -73,7 +84,7 @@ inside your notebook to install dependent packages.
 %pip install matplotlib>=3.9
 ```
 
-## 3. Quarto Examples Using `.qmd` for R
+## 3. Quarto Examples Using Mardown for R
 
 In this section, we explore how to use Quarto's `.qmd` format to create reproducible reports in R. 
 Quarto simplifies the process of creating technical documents that include R code, plots, and analysis. 
