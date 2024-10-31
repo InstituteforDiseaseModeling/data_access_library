@@ -52,6 +52,22 @@ Go to github codespaces and create a new codespace using this template as shown 
 
 ![](assets/codespace.png)
 
+**Use the JupyterLab or Rstudio Server instance running in the codespace to edit your Jupyter notebook or Quarto document.**
+
+The default devcontainer configuration has JupyterLab running on port 8888 and Rstudio Server running on port 8787. 
+You can access them directly on the browser:
+![](assets/port.png)
+
+
+**Stopping or deleting a GitHub Codespace are effective ways to control costs!**
+
+Stopping a Codespace pauses the environment and stops billing temporarily, 
+allowing you to save the state and resume work later without accruing charges. 
+Deleting a Codespace will permanently remove the environment, you should make sure to do this 
+when you’ve finished the work and don’t need the environment or data anymore.
+
+![](assets/codespace_manage.png)
+
 If you choose to clone the repo locally, you can also setup your local container to use the same environment, 
 follow this [tutorial](https://code.visualstudio.com/docs/devcontainers/tutorial) to set it up.
 
@@ -105,7 +121,14 @@ a [install_packages.R](r/samples/simple_plot/install_packages.R) file so that ot
 
 ## 4. Key Quarto commands
 
-You can open a terminal window in the codespace and run the following commands to build the quarto document, for example:
+Once you have created a new folder and added your Jupyter notebook or `.qmd` file, 
+you can test it using the `quarto render` command.
+
+You can open a terminal window in your local machine or in the codespace and run the following commands
+to build the quarto document locally:
+
+![](assets/terminal.png)
+
 
 ```bash
 quarto render your_example.qmd
@@ -151,6 +174,7 @@ Quarto allows you to customize the rendering of documents using both the `quarto
   ```
 
 These options give you flexibility to control how your documents are rendered, either through the command line or the YAML configuration in your file.
+See list of all available options [here](https://quarto.org/docs/reference/formats/opml.html).
 
 
 ## 5. Contribute your example and Github Page hosting
@@ -195,6 +219,7 @@ git push origin my_branch
 #### 5. Create a pull request
 Go to the [pull request](https://github.com/InstituteforDiseaseModeling/data_access_library/pulls) 
 page and click "create a new pull request" from your branch to the main branch. 
+You should use the pull reqeust template provided in [pull_request_template.md](./.github/pull_request_template.md).
 Ask a peer to review your code and merge it to the main branch.
 
 
