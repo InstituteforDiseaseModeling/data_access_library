@@ -14,7 +14,7 @@ others can view the code / results directly in the browser without running the c
 - [Workflow](#workflow)
 - [DevContainer](#1-use-of-devcontainer)
 - [Quarto Examples Using Jupyter Notebook](#2-quarto-examples-using-jupyter-notebook)
-- [Quarto Examples Using `.qmd` for R](#3-quarto-examples-using-mardown-for-r)
+- [Quarto Examples Using `.qmd` for R](#3-quarto-examples-using-markdown-for-r)
 - [Key Quarto commands](#4-key-quarto-commands)
 - [Contribute your example](#5-contribute-your-example-and-github-page-hosting)
 
@@ -100,7 +100,7 @@ inside your notebook to install dependent packages.
 %pip install matplotlib>=3.9
 ```
 
-## 3. Quarto Examples Using Mardown for R
+## 3. Quarto Examples Using Markdown for R
 
 In this section, we explore how to use Quarto's `.qmd` format to create reproducible reports in R. 
 Quarto simplifies the process of creating technical documents that include R code, plots, and analysis. 
