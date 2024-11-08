@@ -9,6 +9,34 @@ Our goal is not to provide a comprehensive guide to showcase the possibilities o
 But by adding yaml metadata to your codesnippets, it allows publishing the content to Github Pages easily and
 others can view the code / results directly in the browser without running the code. 
 
+## Table of Contents
+
+- [Workflow](#workflow)
+- [DevContainer](#1-use-of-devcontainer)
+- [Quarto Examples Using Jupyter Notebook](#2-quarto-examples-using-jupyter-notebook)
+- [Quarto Examples Using `.qmd` for R](#3-quarto-examples-using-markdown-for-r)
+- [Key Quarto commands](#4-key-quarto-commands)
+- [Contribute your example](#5-contribute-your-example-and-github-page-hosting)
+
+## Workflow 
+
+It is recommanded to follow the steps below to create a reproducible example:
+
+```mermaid
+%%{init: {'themeVariables': { 'fontSize': '10px', 'nodeSpacing': 1, 'rankSpacing': 1 }}}%%
+graph TD
+    A[Start] --> B{Dev Container?}
+    B -- Yes --> C[Follow step 1 for how to use devcontainer]
+    B -- No --> D[Clone the repo locally and<br>
+    setup python or R environment on your own]
+    C --> E[Create a new folder under
+    r/samples or python/sample]
+    D --> E
+    E --> F[Follow step 2 or 3 
+    to add your jupyter notebook or qmd file]
+    F --> G[Follow step 4 to test your example locally]
+    G --> H[Follow step 5 to Commit your changes and create a pull request]
+```
 ## 1. Use of Devcontainer
 
 The `devcontainer` feature in VS Code allows you to define the development environment using a Docker-based configuration. 
@@ -23,6 +51,22 @@ Go to github codespaces and create a new codespace using this template as shown 
 **(This may take 5-10 minutes, and please be aware of codespace [costs](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts) )**
 
 ![](assets/codespace.png)
+
+**Use the JupyterLab or Rstudio Server instance running in the codespace to edit your Jupyter notebook or Quarto document.**
+
+The default devcontainer configuration has JupyterLab running on port 8888 and Rstudio Server running on port 8787. 
+You can access them directly on the browser:
+![](assets/port.png)
+
+
+**Stopping or deleting a GitHub Codespace are effective ways to control costs!**
+
+Stopping a Codespace pauses the environment and stops billing temporarily, 
+allowing you to save the state and resume work later without accruing charges. 
+Deleting a Codespace will permanently remove the environment, you should make sure to do this 
+when you’ve finished the work and don’t need the environment or data anymore.
+
+![](assets/codespace_manage.png)
 
 If you choose to clone the repo locally, you can also setup your local container to use the same environment, 
 follow this [tutorial](https://code.visualstudio.com/docs/devcontainers/tutorial) to set it up.
@@ -56,7 +100,7 @@ inside your notebook to install dependent packages.
 %pip install matplotlib>=3.9
 ```
 
-## 3. Quarto Examples Using `.qmd` for R
+## 3. Quarto Examples Using Markdown for R
 
 In this section, we explore how to use Quarto's `.qmd` format to create reproducible reports in R. 
 Quarto simplifies the process of creating technical documents that include R code, plots, and analysis. 
@@ -77,7 +121,14 @@ a [install_packages.R](r/samples/simple_plot/install_packages.R) file so that ot
 
 ## 4. Key Quarto commands
 
-You can open a terminal window in the codespace and run the following commands to build the quarto document, for example:
+Once you have created a new folder and added your Jupyter notebook or `.qmd` file, 
+you can test it using the `quarto render` command.
+
+You can open a terminal window in your local machine or in the codespace and run the following commands
+to build the quarto document locally:
+
+![](assets/terminal.png)
+
 
 ```bash
 quarto render your_example.qmd
@@ -123,9 +174,56 @@ Quarto allows you to customize the rendering of documents using both the `quarto
   ```
 
 These options give you flexibility to control how your documents are rendered, either through the command line or the YAML configuration in your file.
+See list of all available options [here](https://quarto.org/docs/reference/formats/opml.html).
 
 
-## 5. Github Page hosting
-All examples checked in to this repo under `r/samples` or `python/samples` 
+## 5. Contribute your example and Github Page hosting
+You are encouraged to check in your example to this repo! Please create your own folder under `r/samples` or `python/samples` and add your jupyter notebook or .qmd (quarto markdown) file, you do not need to include the html files as 
+all examples checked in to this repo
 will be published to [Github Pages](https://institutefordiseasemodeling.github.io/data_access_library/). automatically when merged to main branch.
+
+Below is an example of how to check in a new example to the repo:
+### Steps
+
+#### 0. Create a new branch based on the main branch
+```bash
+git checkout -b my_branch --track origin/main
+```
+#### 1. Navigate to your example Folder
+
+Open a terminal window and navigate to the folder that you created:
+
+```bash
+cd r/samples/my_example
+# or
+cd python/samples/my_example
+```
+#### 2. Add your Jupyter Notebook or Quarto Document and other necessry files 
+```bash
+git add r/samples/my_example/example.qmd
+
+# if you use python, you can add a jupyter notebook and requirements.txt file
+git add python/samples/my_example/requirements.txt
+git add python/samples/my_example/example.ipynb
+```
+
+#### 3. Commit your changes (provide a commit message)
+```bash
+git commit -m "your_commit_message"
+```
+
+#### 4. Push your changes to your branch
+```bash
+git push origin my_branch
+```
+#### 5. Create a pull request
+Go to the [pull request](https://github.com/InstituteforDiseaseModeling/data_access_library/pulls) 
+page and click "create a new pull request" from your branch to the main branch. 
+You should use the pull reqeust template provided in [pull_request_template.md](./.github/pull_request_template.md).
+Ask a peer to review your code and merge it to the main branch.
+
+
+
+
+
 
