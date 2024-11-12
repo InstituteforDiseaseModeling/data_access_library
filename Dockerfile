@@ -38,6 +38,7 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     ffmpeg \
     expect \
+    rsync \
     && apt-get clean
 
 # Install Python 3.12.5
