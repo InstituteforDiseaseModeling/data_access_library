@@ -37,8 +37,8 @@ jobs:
         find gallery -name "*.html" -not -name "index.html" | while read -r file; do
           # Remove the 'gallery/' prefix from the file path
           relative_path="${file#gallery/}"
-          file_name=$(basename "$file")
-          echo "<li><a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
+          file_name=$(basename "$file" .html)
+          echo "<li>$file_name <a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
         done
         echo "</ul></body></html>" >> gallery/index.html
 
