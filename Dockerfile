@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     libharfbuzz-dev \
     libfribidi-dev \
     libfreetype6-dev \
-    libegl1-mesa \
     libxrandr2 \
     libxss1 \
     libxcursor1 \
