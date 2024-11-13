@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install rsync
+apt-get install -y rsync
+
 # Activate the virtual environment
 source /opt/venv/bin/activate
 echo 'activated virtualenv.'
