@@ -45,13 +45,14 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     python3.12-venv \
     python3.12-dev \
     python3-pip \
+    python3-setuptools \
+    python3-wheel \
     && apt-get clean
 
 # Set up Python virtual environment
 # Install Jupyter, Quarto, and ipykernel
-RUN pip install --upgrade pip setuptools wheel
 
-RUN pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
+RUN python3 -m pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
 RUN python3.12 -m venv /opt/venv --system-site-packages
 
 ENV PATH="/opt/venv/bin:$PATH"
