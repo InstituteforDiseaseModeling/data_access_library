@@ -44,22 +44,20 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     python3.12 \
     python3.12-venv \
     python3.12-dev \
+    python3-pip \
     && apt-get clean
 
 # Set up Python virtual environment
 # Install Jupyter, Quarto, and ipykernel
-RUN curl -O https://bootstrap.pypa.io/get-pip.py
-RUN python3.12 get-pip.py
-RUN python3.12 -m pip --version
-RUN python3.12 -m pip install --upgrade pip setuptools wheel
-RUN python3.12 -m pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
-RUN pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
+RUN python3 -m pip install --upgrade pip setuptools wheel
 
+RUN pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
 RUN python3.12 -m venv /opt/venv --system-site-packages
 
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Create an IPython kernel for the virtual environment
+RUN /opt/venv/bin/pip install ipykernel
 RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name "Python 3.12 (venv)"
 
 # Install latest Quarto
