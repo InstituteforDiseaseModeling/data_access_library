@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install rsync
+apt-get install -y rsync
+
 # Activate the virtual environment
 source /opt/venv/bin/activate
 echo 'activated virtualenv.'
@@ -78,19 +81,25 @@ for FOLDER in "${FOLDERS[@]}"; do
     echo "Creating target directory: $target_dir"
     mkdir -p "$target_dir" && echo "Directory $target_dir created."
 
-    # Attempt to render the file with execution
-    echo "Attempting to render $file with execution..."
-    if quarto render "$file" --to html --output-dir "$target_dir"; then
-      echo "Successfully rendered $file with execution."
+    file_dir=$(dirname "$file")
+    if ls "$file_dir"/*.html &>/dev/null; then
+      echo "HTML files already exist in $file_dir. Skipping rendering."
+      rsync -av --exclude="$(basename "$file")" "$file_dir"/ "$target_dir"
+      echo "Files copied to $target_dir."
     else
-      echo "Failed to render $file with execution. Rendering without execution..."
-      if quarto render "$file" --to html --no-execute --output-dir "$target_dir"; then
-        echo "Successfully rendered $file without execution."
+      # Attempt to render the file with execution
+      echo "Attempting to render $file with execution..."
+      if quarto render "$file" --to html --output-dir "$target_dir"; then
+        echo "Successfully rendered $file with execution."
       else
-        echo "Rendering failed for $file, even without execution."
+        echo "Failed to render $file with execution. Rendering without execution..."
+        if quarto render "$file" --to html --no-execute --output-dir "$target_dir"; then
+          echo "Successfully rendered $file without execution."
+        else
+          echo "Rendering failed for $file, even without execution."
+        fi
       fi
     fi
-
     # Deactivate and delete virtual environment for Python folders
     if [[ "$FOLDER" == "python" ]]; then
       deactivate

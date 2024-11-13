@@ -25,19 +25,17 @@ RUN apt-get update && apt-get install -y \
     libharfbuzz-dev \
     libfribidi-dev \
     libfreetype6-dev \
-    libgl1-mesa-glx \
-    libegl1-mesa \
     libxrandr2 \
     libxss1 \
     libxcursor1 \
     libxcomposite1 \
-    libasound2 \
     libxi6 \
     libxtst6 \
     gdebi-core \
     software-properties-common \
     ffmpeg \
     expect \
+    rsync \
     && apt-get clean
 
 # Install Python 3.12.5
@@ -46,19 +44,20 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     python3.12 \
     python3.12-venv \
     python3.12-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
     && apt-get clean
 
 # Set up Python virtual environment
 # Install Jupyter, Quarto, and ipykernel
-RUN python3.12 -m ensurepip --upgrade
-RUN python3.12 -m pip --version
-RUN python3.12 -m pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
-
 RUN python3.12 -m venv /opt/venv --system-site-packages
 
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Create an IPython kernel for the virtual environment
+RUN /opt/venv/bin/pip install --upgrade pip setuptools wheel
+RUN /opt/venv/bin/pip install jupyterlab jupyterlab-quarto jupyter_contrib_nbextensions quarto-cli ipykernel ipython
 RUN /opt/venv/bin/python -m ipykernel install --user --name=venv --display-name "Python 3.12 (venv)"
 
 # Install latest Quarto

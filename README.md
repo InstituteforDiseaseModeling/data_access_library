@@ -216,6 +216,12 @@ git commit -m "your_commit_message"
 ```bash
 git push origin my_branch
 ```
+note that when codespace is created, it generates a temporary authentication token for GitHub CLI and Git commands, which provides access to the repository for the duration of the Codespace session, it may refresh periodically so you may get access denied error when pushing changes, you can use the "Export changes to a new branch" from UI instead:
+
+![](assets/branch.png)
+
+Be aware that any files you added /edited will appear in this branch but if you have created a commit in step (3), it will be shown in the history which you can easily retrieve later.
+
 #### 5. Create a pull request
 Go to the [pull request](https://github.com/InstituteforDiseaseModeling/data_access_library/pulls) 
 page and click "create a new pull request" from your branch to the main branch. 

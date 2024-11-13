@@ -33,12 +33,12 @@ jobs:
     - name: Generate Index HTML
       run: |
         ls -laR gallery
-        echo "<html><body><h1>Gallery Index</h1><ul>" > gallery/index.html
+        echo "<html><body><h1>IDM Data Access / Analysis Gallery</h1><ul>" > gallery/index.html
         find gallery -name "*.html" -not -name "index.html" | while read -r file; do
           # Remove the 'gallery/' prefix from the file path
           relative_path="${file#gallery/}"
-          file_name=$(basename "$file")
-          echo "<li><a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
+          file_name=$(basename "$file" .html)
+          echo "<li>$file_name <a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
         done
         echo "</ul></body></html>" >> gallery/index.html
 

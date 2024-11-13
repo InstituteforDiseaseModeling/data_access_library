@@ -1,0 +1,46 @@
+---
+title: "DHS data plot example"
+date: "2024-11-11"
+author: "YL"
+output: html
+execute:
+  echo: true
+---
+
+# This is a simple DHS Analysis example
+
+
+This is a simple example of how to create a bar plot from curated data showing patterns of family planning in R using ggplot2.
+
+
+```{r error=TRUE, warning=FALSE, message=FALSE, echo=TRUE}
+install.packages("dplyr", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+install.packages("readxl", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+install.packages("ggplot2", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+install.packages("ggpubr", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+library(dplyr)
+library(readxl)
+library(ggplot2)
+library(ggpubr)
+df <- read_excel("DHS_nonuse_other.xlsx")
+head(df)
+df$survey <-paste0(as.character(df$country)," ", as.character(df$year))
+class(df$prevalence)
+#create a binary indicating whether 
+df$Significance <- ifelse(df$CI_low<1, "Not significant", "Significant")
+table(df$Significance) ## 1/3 is significant 
+prop.table(table(df$Significance))
+
+### The prevalence of each survey, low -> high % 
+p1 <- ggplot(df, aes(x=reorder(survey, -prevalence), y=prevalence)) +
+  geom_bar(stat='identity') +
+  coord_flip() +
+  geom_hline(yintercept=5, color="red") +
+  geom_vline(xintercept=43, color="red") 
+```
+
+display the plot 
+
+```{r, fig.height=10, fig.width=8}
+p1
+```
