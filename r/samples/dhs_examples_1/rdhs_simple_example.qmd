@@ -1,0 +1,98 @@
+---
+title: "RDHS package usage example"
+auther: Meikang Wu
+date: "2024-11-14"
+---
+
+## Introduction
+
+## Setup
+```{r results='hide', warning=FALSE, message=FALSE}
+install.packages("rdhs", repos="https://cloud.r-project.org")
+install.packages("dplyr", repos="https://cloud.r-project.org")
+install.packages("ggplot2", repos="https://cloud.r-project.org")
+install.packages("haven", repos="https://cloud.r-project.org")
+
+library(rdhs)
+library(dplyr)
+library(ggplot2)
+library(haven)
+```
+
+## Search for relevant indicators
+```{r results='hide',message=FALSE}
+indicators <- dhs_indicators()
+
+```
+```{r}
+indicators %>%
+  filter(grepl("Family planning", Label)) %>%
+  select(IndicatorId, ShortName, Label) %>%
+  tail()
+```
+
+## Find the countries to work with
+```{r}
+countries <- dhs_countries()
+dhscc <- countries %>%
+    filter(CountryName %in% c("Nigeria", "Ethiopia", "Burkina Faso")) %>%
+    select(DHS_CountryCode)
+dhscc$DHS_CountryCode
+```
+
+## Look for Family planning messages in newspapers or magazines as indicator
+```{r}
+statcomp <- dhs_data(indicatorIds = "FP_EFPM_M_NWS", countryIds = dhscc$DHS_CountryCode) %>%
+  select(Indicator, CountryName, SurveyYear, Value, DenominatorWeighted)
+
+ggplot(statcomp, aes(SurveyYear, Value, col=CountryName)) +
+    geom_point() + geom_line()
+```
+
+## Search Survey using survey characteristics
+```{r}
+surveychar <- dhs_survey_characteristics()
+surveychar %>% filter(grepl("Pregnancy", SurveyCharacteristicName))
+surveys <- dhs_surveys(surveyCharacteristicIds = 30, countryIds = dhscc$DHS_CountryCode)
+s1 <- surveys %>% select(SurveyId, CountryName, SurveyYear, NumberOfWomen, SurveyNum, FieldworkEnd)
+print(s1)
+```
+
+## Download data
+To download datasets we need to first log in to our DHS account, by providing our credentials and setting up our configuration using set_rdhs_config().
+This will require providing as arguments your email and project for which you want to download datasets from.
+You will then be prompted for your password.
+You can also specify a directory for datasets and API calls to be cached to using cache_path.
+In order to comply with CRAN, this function will also ask you for your permission to write to files outside your temporary directory,
+and you must type out the filename for the config_path - “rdhs.json”.
+(See introduction vignette for specific format for config, or ?set_rdhs_config).
+
+```{r eval=FALSE}
+set_rdhs_config(email = "you@email.com", project = "My DHS project")
+```
+
+## Get Dataset
+After this the function get_datasets() returns a list of file paths where the desired datasets are saved in the cache.
+The first time a dataset is accessed, rdhs will download the dataset from the DHS program website using the supplied credentials.
+Subsequently, datasets will be simply be located in the cached repository.
+```{r}
+datasets <- dhs_datasets(surveyIds = surveys$SurveyId, fileType = "IR", fileFormat="flat")
+datasets$path <- unlist(get_datasets(datasets$FileName))
+```
+## Work with Micro-level dataset
+```{r}
+  # search for columns with variable labels
+  head(search_variable_labels(datasets$FileName[1], "Age at death")[,1:2])
+
+  # read dataset
+  ir <- readRDS(datasets$path[1])
+  
+  # get recode label
+  ir <- ir %>%
+    mutate(b6_01_label = factor(b6_01, levels = attributes(b6_01)$labels, labels = names(attributes(b6_01)$labels)))
+  
+  ir %>%
+    group_by(b6_01_label) %>%
+    summarise(count = n())
+
+```
