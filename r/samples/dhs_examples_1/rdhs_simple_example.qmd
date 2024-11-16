@@ -10,13 +10,17 @@ date: "2024-11-14"
 ```{r results='hide', warning=FALSE, message=FALSE}
 install.packages("rdhs", repos="https://cloud.r-project.org")
 install.packages("dplyr", repos="https://cloud.r-project.org")
+install.packages("tidyr", repos="https://cloud.r-project.org")
 install.packages("ggplot2", repos="https://cloud.r-project.org")
 install.packages("haven", repos="https://cloud.r-project.org")
+install.packages("stringr", repos="https://cloud.r-project.org")
 
 library(rdhs)
 library(dplyr)
 library(ggplot2)
 library(haven)
+library(tidyr)
+library(stringr)
 ```
 
 ## Search for relevant indicators
@@ -96,3 +100,36 @@ datasets$path <- unlist(get_datasets(datasets$FileName))
     summarise(count = n())
 
 ```
+
+## Combine all data from wide columns
+``` {r}
+# get the recode mapping
+code_labels <- attributes(ir$b6_01)$labels
+code_labels <- setNames(names(code_labels), code_labels)
+
+# recode the original data for all the b6_n columns
+df <- ir %>%
+    mutate(across(matches("^b6_\\d+$"),
+                  ~ factor(., levels = names(code_labels), labels = code_labels)))
+
+# make a long table from the wide data and summarize the counts of total labels
+df_long <- df %>%
+    pivot_longer(cols = matches("^b6_\\d+$"), names_to = "child_death", values_to = "label")
+
+# calculate the summary of child death
+df_summary <- df_long %>%
+  count(child_death, label) %>% 
+  filter(!is.na(label))
+
+# create bar plot for child death
+ggplot(df_summary, aes(x = label, y = n, fill = child_death)) +
+    geom_bar(stat = "identity") +
+    scale_fill_discrete(
+        name = "Child Death",
+        labels = function(x) paste0(str_remove(x, "b6_"), "th child") 
+    ) +
+    labs(x = "Label", y = "Count") +
+    theme_minimal()
+    
+```
+

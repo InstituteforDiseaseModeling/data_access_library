@@ -12,18 +12,28 @@ execute:
 
 This is a simple example of how to create a bar plot from curated data showing patterns of family planning in R using ggplot2.
 
-
-```{r error=TRUE, warning=FALSE, message=FALSE, echo=TRUE}
-install.packages("dplyr", repos = "https://cloud.r-project.org/", dependencies = TRUE)
-install.packages("readxl", repos = "https://cloud.r-project.org/", dependencies = TRUE)
-install.packages("ggplot2", repos = "https://cloud.r-project.org/", dependencies = TRUE)
-install.packages("ggpubr", repos = "https://cloud.r-project.org/", dependencies = TRUE)
+## Install packages
+```{r results='hide', warning=FALSE, message=FALSE}
+install.packages("dplyr", repos = "https://cloud.r-project.org/")
+install.packages("readxl", repos = "https://cloud.r-project.org/")
+install.packages("ggplot2", repos = "https://cloud.r-project.org/")
+install.packages("ggpubr", repos = "https://cloud.r-project.org/")
 library(dplyr)
 library(readxl)
 library(ggplot2)
 library(ggpubr)
+```
+## Load curated data
+```{r}
 df <- read_excel("DHS_nonuse_other.xlsx")
 head(df)
+```
+About the curated data:
+
+The coefficients (Odds ratio, with confidence intervals) came from logistic regression model within each country. 
+Each model controls for covariates including women's age, education, place of residence.
+
+```{r, error=FALSE, warning=FALSE}
 df$survey <-paste0(as.character(df$country)," ", as.character(df$year))
 class(df$prevalence)
 #create a binary indicating whether 
