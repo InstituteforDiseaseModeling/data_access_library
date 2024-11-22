@@ -4,6 +4,8 @@
 sudo apt-get update -y
 sudo apt-get install libzmq3-dev -y
 
+# Install shared library (libpython3.x.so for reticulate)
+sudo apt-get install python3-dev
 # Install GDAL
 sudo apt-get install gdal-bin libgdal-dev -y
 
