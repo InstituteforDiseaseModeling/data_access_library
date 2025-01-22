@@ -27,13 +27,10 @@ It is recommanded to follow the steps below to create a reproducible example:
 graph TD
     A[Start] --> B{Dev Container?}
     B -- Yes --> C[Follow step 1 for how to use devcontainer]
-    B -- No --> D[Clone the repo locally and<br>
-    setup python or R environment on your own]
-    C --> E[Create a new folder under
-    r/samples or python/sample]
+    B -- No --> D[Clone the repo locally and setup python or R environment on your own]
+    C --> E[Create a new folder under r/samples or python/sample]
     D --> E
-    E --> F[Follow step 2 or 3 
-    to add your jupyter notebook or qmd file]
+    E --> F[Follow step 2 or 3 to add your jupyter notebook or qmd file]
     F --> G[Follow step 4 to test your example locally]
     G --> H[Follow step 5 to Commit your changes and create a pull request]
 ```

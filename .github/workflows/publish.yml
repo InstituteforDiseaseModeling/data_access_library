@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check Python version
+      run: python3 --version
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -30,17 +33,16 @@ jobs:
       run: |
         docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "chmod +x ./run_quarto_publish.sh && ./run_quarto_publish.sh"
 
-    - name: Generate Index HTML
+    - name: Install uv
       run: |
-        ls -laR gallery
-        echo "<html><body><h1>IDM Data Access / Analysis Gallery</h1><ul>" > gallery/index.html
-        find gallery -name "*.html" -not -name "index.html" | while read -r file; do
-          # Remove the 'gallery/' prefix from the file path
-          relative_path="${file#gallery/}"
-          file_name=$(basename "$file" .html)
-          echo "<li>$file_name <a href=\"./$relative_path\">$relative_path</a></li>" >> gallery/index.html
-        done
-        echo "</ul></body></html>" >> gallery/index.html
+        python3 -m pip install --upgrade pip
+        python3 -m pip install uv
+
+    - name: Generate quarto.yml
+      run: uv run --with pyyaml python generate_links.py
+
+    - name: Render Quarto site
+      run:  docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render"
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
