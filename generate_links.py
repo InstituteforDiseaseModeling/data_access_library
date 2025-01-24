@@ -25,7 +25,7 @@ def get_title(qmd_file):
     return None
 
 
-def generate_quarto_config(root_dir, target_folders):
+def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
     """Generate a Quarto configuration file with links to rendered HTML files."""
     sidebar_contents = []
     files_to_copy = []
@@ -52,7 +52,7 @@ def generate_quarto_config(root_dir, target_folders):
 
     # Define the Quarto configuration structure
     quarto_config = {
-        "project": {"type": "website", "render" : ["README.qmd"], "output-dir": "gallery",},
+        "project": {"type": "website", "render" : ["README.qmd"], "output-dir": output_dir,},
         "website": {
             "title": "Knowledge Sharing with Quarto Tutorial Website",
             "description": "A collection of examples using quarto showcasing Python / R code for data access and analysis",
