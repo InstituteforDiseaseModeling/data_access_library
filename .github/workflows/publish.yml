@@ -45,7 +45,7 @@ jobs:
       run:  docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render"
 
     - name: Copy files from _site to galley for globally rendered files only
-      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -n -r gallery/* _site/
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rf gallery/* _site/
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
@@ -63,5 +63,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./gallery  # Path to the folder that you want to publish (the gallery folder)
+        publish_dir: ./_site  # Path to the folder that you want to publish (the gallery folder)
         publish_branch: docs  # The branch used for GitHub Pages
