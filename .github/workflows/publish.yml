@@ -45,13 +45,13 @@ jobs:
       run:  docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render"
 
     - name: Copy files from _site to galley for globally rendered files only
-      run: cp -n -r _site/* gallery/
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -n -r gallery/* _site/
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
       with:
         name: gallery
-        path: gallery/
+        path: _site/
 
     - name: Set up Git user
       run: |
