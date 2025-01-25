@@ -42,10 +42,14 @@ jobs:
       run: uv run --with pyyaml python generate_links.py
 
     - name: Render Quarto site
-      run:  docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render"
+      run:  |
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest ls -R gallery
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render --output-dir _site/"
 
     - name: Copy rendered example from galley to _site
-      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rfv gallery/.* gallery/* _site/
+      run: |
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest ls -R gallery
+        docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rfv gallery/* _site/ 
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
