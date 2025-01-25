@@ -44,8 +44,8 @@ jobs:
     - name: Render Quarto site
       run:  docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render"
 
-    - name: Copy files from _site to galley for globally rendered files only
-      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rf gallery/* _site/
+    - name: Copy rendered example from galley to _site
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rfv gallery/.* gallery/* _site/
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4

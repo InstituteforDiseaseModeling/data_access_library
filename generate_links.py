@@ -44,7 +44,7 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
     # Define the Quarto configuration structure
     quarto_config = {
         "project": {"type": "website",
-                    "render": ["**/*.qmd", "**/*.ipynb", "!r/", "!python/"],
+                    "render": ["**/*.qmd", "**/*.ipynb", "!r/", "!python/", "!gallery/"],
                     "output-dir": output_dir,
                     },
         "website": {
