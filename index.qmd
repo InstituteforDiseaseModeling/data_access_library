@@ -1,0 +1,22 @@
+---
+title: "Quarto Overview"
+author: "Meikang Wu"
+format:
+  html:
+    toc: false
+    number-sections: false
+    self-contained: true
+    stylesheet: style.css
+---
+
+## Introduction
+
+Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites.
+It turns source code, text, and visuals into polished, shareable outputs.
+It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.
+
+[Slide Deck](slide.qmd)
+
+[ReadMe](https://github.com/InstituteforDiseaseModeling/data_access_library/blob/main/README.md)
+
+[Quiz](qna.qmd)

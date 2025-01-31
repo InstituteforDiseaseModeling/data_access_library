@@ -1,0 +1,90 @@
+---
+title: "Test your knowledge about quarto!"
+format:
+  revealjs:
+    controls: true
+    quiz:
+      checkKey: 'c'
+      resetKey: 'q'
+      shuffleKey: 't'
+      allowNumberKeys: true
+      disableOnCheck: false
+      disableReset: false
+      shuffleOptions: true
+      includeScore: false
+revealjs-plugins:
+  - quiz
+---
+
+## How do you install quarto? {.quiz-question}
+
+- Run install.packages("quarto")
+- [Download and install Quarto from quarto.org]{.correct}
+- [It is installed with Rstudio]{.correct}
+- Run pip install quarto
+
+::: footer
+You can find the installation instructions [here](https://quarto.org/docs/download)
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::
+
+## Which Quarto command is used to render a document to HTML? {.quiz-question}
+
+- quarto preview
+- [quarto render]{.correct}
+- quarto build
+- quarto export
+
+::: footer
+You can use <b>quarto --help</b> or <b>quarto help</b> to see the available command options.
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::
+
+## Which command checks if Quarto is installed correctly? {.quiz-question}
+
+- quarto --version
+- quarto --validate
+- [Both quarto --version and quarto check]{.correct}
+- quarto status
+
+::: footer
+Check this site for more information on [Trouble shooting](https://quarto.org/docs/troubleshooting/)
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::
+
+## How do you add a Python code chunk in a Quarto document? {.quiz-question}
+
+- ```{r}
+- [```{python}]{.correct}
+- ```{py}
+- ```python
+
+::: footer
+Check this site for more information on [Python usage](https://quarto.org/docs/computations/python.html)
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::
+
+## What is the purpose of Quarto extensions?{.quiz-question}
+
+- To add support for new programming languages
+- [To enhance functionality with templates, themes, and custom formats]{.correct}
+- To debug code
+- To install user interface
+
+
+::: footer
+Check this site for more information on [Extensions](https://quarto.org/docs/extensions/)
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::
+
+## How to prevent execution for a specific R code chunk in Quarto? {.quiz-question}
+
+- Use #| echo: FALSE
+- [Use #| eval: FALSE]{.correct}
+- Use #| include: FALSE
+- Use #| cache: TRUE
+
+::: footer
+Check this site for more information on [Code execution options](https://quarto.org/docs/computations/execution-options.html)
+<br><a href="./index.html" class="btn btn-primary">Back to Home Page</a>
+:::

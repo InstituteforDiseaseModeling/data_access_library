@@ -55,9 +55,16 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
                 "right": [{"text": "GitHub", "href": "https://github.com/InstituteforDiseaseModeling/data_access_library"}],
             },
             "sidebar": {
-                "contents": [{"section": "Examples Gallery", "contents": sidebar_contents}]
+                "contents": [{"section": "<span class='sidebar-header'>Repo Examples Gallery</span>", "contents": sidebar_contents},
+                             {"section": "<span class='sidebar-header'>Other Quarto Examples</span>", "contents":
+                                 [{"text": "Quarto example by Amelia", "href":"https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/"}]}]
             }
         },
+        "format": {
+            "html":{
+                "css": "style.css"
+            }
+        }
     }
     return quarto_config
 
@@ -70,7 +77,7 @@ def write_quarto_config(config, output_file="_quarto.yml"):
 
 if __name__ == "__main__":
     root_dir = "."  # Root directory of the repository
-    convert_md_to_qmd( Path(root_dir)/ "README.md", Path(root_dir)/ "index.qmd")
+    # convert_md_to_qmd( Path(root_dir)/ "README.md", Path(root_dir)/ "index.qmd")
     quarto_config = generate_quarto_config(root_dir, ["r", "python"])
     write_quarto_config(quarto_config)
     print("Generated quarto.yml with sidebar links to HTML files.")

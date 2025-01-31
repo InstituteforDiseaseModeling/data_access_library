@@ -1,0 +1,13 @@
+.sidebar-header {
+    color: indigo;
+    font-weight:bold;
+}
+
+.standard-slide {
+    background-image: url('./assets/slide_template/gf_slide.png');
+    font-size: 36px;
+    padding-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
+} 

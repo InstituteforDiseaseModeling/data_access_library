@@ -41,17 +41,20 @@ jobs:
     - name: Generate quarto.yml
       run: uv run --with pyyaml python generate_links.py
 
+    - name: Install quarto extensions
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest chmod +x /workspace/install_quarto_extensions.expect && /workspace/install_quarto_extensions.expect parmsam/quarto-flashcards parmsam/quarto-quiz
+
     - name: Render Quarto site
       run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render --output-dir _site/"
 
     - name: Copy rendered example from galley to _site
-      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rfv gallery/* _site/
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest cp -rvn _site/* gallery/
 
     - name: Upload HTML output
       uses: actions/upload-artifact@v4
       with:
         name: gallery
-        path: _site/
+        path: gallery/
 
     - name: Set up Git user
       run: |
@@ -63,5 +66,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site  # Path to the folder that you want to publish (the gallery folder)
+        publish_dir: ./gallery  # Path to the folder that you want to publish (the gallery folder)
         publish_branch: docs  # The branch used for GitHub Pages
