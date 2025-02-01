@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "slide.html#initiative",
+    "href": "slide.html#initiative",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Initiative",
+    "text": "Initiative\n\n\nBrief Description: Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.\nMotivation and Framing: Uploading some notebook samples to GitHub repositories sounds simple, but creating and persisting a long-term modeling asset for IDM is a challenge that calls on skills from across the whole of IDM.\nExample: DHS survey data is used across IDM but it can be challenging due to its complex structure and different recode scheme. How do we maintain a reusable code base to ease the handling of DHS data?\nFor More Details See: One Pager"
+  },
+  {
+    "objectID": "slide.html#milestones",
+    "href": "slide.html#milestones",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Milestones",
+    "text": "Milestones"
+  },
+  {
+    "objectID": "slide.html#quarto-a-versatile-publishing-tool",
+    "href": "slide.html#quarto-a-versatile-publishing-tool",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Quarto: A versatile publishing tool",
+    "text": "Quarto: A versatile publishing tool\n\n\nDoesn’t have a dependency or requirement for R.\nMultilingual, support for R, Python, Javascript, and Julia…\nBest suited for collaborating on scientific and technical documents\nLearn More here"
+  },
+  {
+    "objectID": "slide.html#racap-of-quarto-features",
+    "href": "slide.html#racap-of-quarto-features",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Racap of Quarto Features",
+    "text": "Racap of Quarto Features\n\n\n\n\nQuarto\nRMardown\n\n\n\n\nSupports Python, R, Julia, and Observable.\nPrimarily uses R for dynamic content.\n\n\nOffers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.\nLimited publishing format: HTML, PDF, and MS Word.\n\n\nSupport a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor.\nTypically uses RStudio as its primary authoring environment.\n\n\nFacilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifes the usage.\nOffers interactivity but require additional complicated setup."
+  },
+  {
+    "objectID": "slide.html#yaml-header-document-structure",
+    "href": "slide.html#yaml-header-document-structure",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "YAML Header & Document Structure",
+    "text": "YAML Header & Document Structure\n\n\nYAML Header: Defines metadata (title, author, date, output format, etc.).\nDocument Structure:\n\nText: For narratives and explanations.\nCode Chunks: Embedded Python / R code for analysis and visualizations.\nExecution options: Supports multiple outputs with easy configuration for code execution.\nTables, Figures, and Equations: Compatible with markdown syntax.\nCallouts: For highlighting important points."
+  },
+  {
+    "objectID": "slide.html#quarto-markdown-.qmd-examples",
+    "href": "slide.html#quarto-markdown-.qmd-examples",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Quarto Markdown (.qmd) Examples",
+    "text": "Quarto Markdown (.qmd) Examples\n\n---\ntitle: \"Quarto Document Example with Labeled Code\"\nauthor: \"John Smith\"\ndate: \"2025-02-15\"\nformat: html\n---\n# Introduction\nThis document demonstrates Quarto’s R code chunk.\n\n## Basic Calculation Example\nThis section calculates the mean of a vector.\nThe code chunk below is labeled as `calculate_mean` for easier reference.\n\n` ` `{r calculate_mean}\n#| echo: true\n#| eval: false\n# This chunk calculates the mean of a vector of numbers\nnumbers &lt;- c(1, 2, 3, 4, 5)\nmean_value &lt;- mean(numbers)\nmean_value\n` ` `"
+  },
+  {
+    "objectID": "slide.html#execution-options",
+    "href": "slide.html#execution-options",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Execution Options",
+    "text": "Execution Options\n\n\nwarning=FALSE: Suppresses warnings.\ninclude=FALSE: Hides code and output but runs the code.\necho=FALSE: Hides code but shows output, useful for report-style documents.\neval=FALSE:Do not run the code. (some code may need special setup or prompts for credentials)\n\n` ` `{r warning=FALSE}\n\nOR\n\n` ` `{r}\n#| warning: false\n\n` ` `\n\nCheck here for more options."
+  },
+  {
+    "objectID": "slide.html#rstudio-support",
+    "href": "slide.html#rstudio-support",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Rstudio Support",
+    "text": "Rstudio Support"
+  },
+  {
+    "objectID": "slide.html#quarto-extensions",
+    "href": "slide.html#quarto-extensions",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Quarto Extensions",
+    "text": "Quarto Extensions\n\n\nIncludes new formats (e.g. Journal articles), shortcodes (Reusable custom components), and templates.\nUse quarto add quarto-ext/{ext-name} to install extensions distributed from the quarto-ext GitHub\nManage with quarto list extensions | quarto remove quarto-ext/{ext-name} | quarto update quarto-ext/{ext-name} \nRather than installing into a global library, Quarto extensions are stored locally, directly alongside your project / files.\nFor more information, visit Quarto Extensions.\n\n\n\n\n\n← Back to Home"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quarto Overview",
+    "section": "",
+    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nSlide Deck\nReadMe\nQuiz"
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Quarto Overview",
+    "section": "",
+    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nSlide Deck\nReadMe\nQuiz"
+  },
+  {
+    "objectID": "qna.html#how-do-you-install-quarto",
+    "href": "qna.html#how-do-you-install-quarto",
+    "title": "Test your knowledge about quarto!",
+    "section": "How do you install quarto?",
+    "text": "How do you install quarto?\n\nRun install.packages(“quarto”)\nDownload and install Quarto from quarto.org\nIt is installed with Rstudio\nRun pip install quarto\n\n\nYou can find the installation instructions here Back to Home Page"
+  },
+  {
+    "objectID": "qna.html#which-quarto-command-is-used-to-render-a-document-to-html",
+    "href": "qna.html#which-quarto-command-is-used-to-render-a-document-to-html",
+    "title": "Test your knowledge about quarto!",
+    "section": "Which Quarto command is used to render a document to HTML?",
+    "text": "Which Quarto command is used to render a document to HTML?\n\nquarto preview\nquarto render\nquarto build\nquarto export\n\n\nYou can use quarto –help or quarto help to see the available command options. Back to Home Page"
+  },
+  {
+    "objectID": "qna.html#which-command-checks-if-quarto-is-installed-correctly",
+    "href": "qna.html#which-command-checks-if-quarto-is-installed-correctly",
+    "title": "Test your knowledge about quarto!",
+    "section": "Which command checks if Quarto is installed correctly?",
+    "text": "Which command checks if Quarto is installed correctly?\n\nquarto –version\nquarto –validate\nBoth quarto –version and quarto check\nquarto status\n\n\nCheck this site for more information on Trouble shooting Back to Home Page"
+  },
+  {
+    "objectID": "qna.html#how-do-you-add-a-python-code-chunk-in-a-quarto-document",
+    "href": "qna.html#how-do-you-add-a-python-code-chunk-in-a-quarto-document",
+    "title": "Test your knowledge about quarto!",
+    "section": "How do you add a Python code chunk in a Quarto document?",
+    "text": "How do you add a Python code chunk in a Quarto document?\n\n```{r}\n```{python}\n```{py}\n```python\n\n\nCheck this site for more information on Python usage Back to Home Page"
+  },
+  {
+    "objectID": "qna.html#what-is-the-purpose-of-quarto-extensions",
+    "href": "qna.html#what-is-the-purpose-of-quarto-extensions",
+    "title": "Test your knowledge about quarto!",
+    "section": "What is the purpose of Quarto extensions?",
+    "text": "What is the purpose of Quarto extensions?\n\nTo add support for new programming languages\nTo enhance functionality with templates, themes, and custom formats\nTo debug code\nTo install user interface\n\n\nCheck this site for more information on Extensions Back to Home Page"
+  },
+  {
+    "objectID": "qna.html#how-to-prevent-execution-for-a-specific-r-code-chunk-in-quarto",
+    "href": "qna.html#how-to-prevent-execution-for-a-specific-r-code-chunk-in-quarto",
+    "title": "Test your knowledge about quarto!",
+    "section": "How to prevent execution for a specific R code chunk in Quarto?",
+    "text": "How to prevent execution for a specific R code chunk in Quarto?\n\nUse #| echo: FALSE\nUse #| eval: FALSE\nUse #| include: FALSE\nUse #| cache: TRUE\n\n\nCheck this site for more information on Code execution options Back to Home Page"
+  }
+]
