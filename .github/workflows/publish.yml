@@ -42,7 +42,7 @@ jobs:
       run: uv run --with pyyaml python generate_links.py
 
     - name: Install quarto extensions
-      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "chmod +x ./install_quarto_extensions.expect && ./install_quarto_extensions.expect parmsam/quarto-flashcards parmsam/quarto-quiz"
+      run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "chmod +x ./install_quarto_extensions.sh && ./install_quarto_extensions.sh parmsam/quarto-flashcards parmsam/quarto-quiz"
 
     - name: Render Quarto site
       run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace mewu/data_access:latest bash -c "quarto render --output-dir _site/"
