@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # install rsync
+apt-get update -y
 apt-get install -y rsync
 
 # Activate the virtual environment

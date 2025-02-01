@@ -4,6 +4,8 @@
 sudo apt-get update -y
 sudo apt-get install libzmq3-dev -y
 
+# Install shared library (libpython3.x.so for reticulate)
+sudo apt-get install python3-dev -y
 # Install GDAL
 sudo apt-get install gdal-bin libgdal-dev -y
 
@@ -21,3 +23,4 @@ R -e "IRkernel::installspec()"
 
 # change the default working directory for RStudio
 echo "session-default-working-dir=/workspaces/data_access_library/" | sudo tee -a /etc/rstudio/rsession.conf
+echo "copilot-enabled=1" | sudo tee -a /etc/rstudio/rsession.conf

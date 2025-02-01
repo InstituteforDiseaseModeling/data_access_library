@@ -17,4 +17,7 @@ if ! pgrep -x "jupyter-lab" > /dev/null; then
     jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' > jupyter_lab.log 2>&1 &
 fi
 
+# Install reticulate
+Rscript -e "install.packages('reticulate', repos='https://cran.r-project.org/')"
+
 echo "Dev environment startup completed!"

@@ -1,5 +1,5 @@
 ---
-title: "Simple R Example"
+title: "Simple R Example with Map and Video"
 date: "2024-09-23"
 output: html
 execute:
