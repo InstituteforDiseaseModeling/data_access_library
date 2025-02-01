@@ -1,0 +1,158 @@
+---
+title: "<br><br>Using <b>Quarto</b> for Knowledge Sharing"
+format:
+  revealjs:
+    css: style.css
+    slide-number: true
+    transition: slide
+    scrollable: true
+    controls: true     # Enables Prev/Next navigation buttons
+    progress: true     # Adds a progress bar at the bottom
+    footer: '<br><br><a href="index.html" style="text-decoration: none;">← Back to Home</a>'
+title-slide-attributes:
+  data-background-image: ./assets/slide_template/gf_title.png
+  data-vertical-align: bottom
+  data-background-size: 100% 100%
+  data-background-position: center
+
+---
+
+## Initiative
+:::{.nonincremental style="color: black; background-image: url('./assets/slide_template/gf_slide.png'); font-size: 36px; padding-bottom: 20px;"}
+
+- **Brief Description:**
+  Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.
+
+- **Motivation and Framing:**
+  Uploading some notebook samples to GitHub repositories sounds simple, but creating and persisting a long-term modeling asset for IDM is a challenge that calls on skills from across the whole of IDM.
+
+- **Example:**
+  DHS survey data is used across IDM but it can be challenging due to its complex structure and different recode scheme. How do we maintain a reusable code base to ease the handling of DHS data?
+
+- **For More Details**
+See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
+:::
+---
+
+## Milestones
+
+:::{.standard-slide}
+![](./assets/slide_intro/slide_3.png){width=100% align=right}
+:::
+---
+
+## Quarto: A versatile publishing tool
+
+:::{.standard-slide}
+
+- Doesn’t have a dependency or requirement for R.
+
+- Multilingual, support for R, Python, Javascript, and Julia…
+
+- Best suited for collaborating on scientific and technical documents
+
+- Learn More [here](https://quarto.org/docs/faq/rmarkdown.html)
+
+![](./assets/slide_intro/slide_7.png){width=100% height=100% align=center}
+
+:::
+---
+
+## Racap of Quarto Features
+:::{.standard-slide style="font-size: 28px;"}
+
+
+| **Quarto** | **RMardown** |
+|-------------|-------------|
+| Supports Python, R, Julia, and  [Observable](https://observablehq.com/). | Primarily uses R for dynamic content.|
+| Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.  | Limited publishing format: HTML, PDF, and MS Word. |
+| Support a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor. | Typically uses RStudio as its primary authoring environment.  |
+| Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifes the usage.  | Offers interactivity but require additional complicated setup. |
+
+
+:::
+---
+
+## YAML Header & Document Structure
+
+:::{.standard-slide height=100%}
+
+
+- **YAML Header**: Defines metadata (title, author, date, output format, etc.).
+
+- **Document Structure**:
+  - Text: For narratives and explanations.
+  - Code Chunks: Embedded Python / R code for analysis and visualizations.
+  - Execution options: Supports multiple outputs with easy configuration for code execution.
+  - Tables, Figures, and Equations: Compatible with markdown syntax.
+  - Callouts: For highlighting important points.
+
+:::
+---
+
+## Quarto Markdown (.qmd) Examples
+
+:::{.standard-slide style="font-size: 32px;"}
+
+````markdown
+---
+title: "Quarto Document Example with Labeled Code"
+author: "John Smith"
+date: "2025-02-15"
+format: html
+---
+# Introduction
+This document demonstrates Quarto’s R code chunk.
+
+## Basic Calculation Example
+This section calculates the mean of a vector.
+The code chunk below is labeled as `calculate_mean` for easier reference.
+
+` ` `{r calculate_mean}
+#| echo: true
+#| eval: false
+# This chunk calculates the mean of a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+mean_value <- mean(numbers)
+mean_value
+` ` `
+````
+:::
+
+---
+## Execution Options
+
+:::{.standard-slide style="font-size: 32px;"}
+
+- `warning=FALSE`: Suppresses warnings.
+- `include=FALSE`: Hides code and output but runs the code.
+- `echo=FALSE`: Hides code but shows output, useful for report-style documents.
+- `eval=FALSE`:Do not run the code. (some code may need special setup or prompts for credentials)
+
+```markdown
+` ` `{r warning=FALSE}
+
+OR
+
+` ` `{r}
+#| warning: false
+
+` ` `
+````
+- Check [here](https://quarto.org/docs/computations/execution-options.html) for more options.
+:::
+
+
+## Rstudio Support
+:::{.standard-slide}
+![](./assets/slide_intro/slide_12.png){width=100% align=right}
+:::
+
+## Quarto Extensions
+:::{.standard-slide}
+- Includes new formats (e.g. Journal articles), shortcodes (Reusable custom components), and templates.
+- Use <b>quarto add quarto-ext/{ext-name}</b> to install extensions distributed from the [quarto-ext](https://github.com/quarto-ext/) GitHub
+- Manage with <b>quarto list extensions</b> | <b>quarto remove quarto-ext/{ext-name} | quarto update quarto-ext/{ext-name} </b>
+- Rather than installing into a global library, Quarto extensions are stored locally, directly alongside your project / files.
+- For more information, visit [Quarto Extensions](https://quarto.org/docs/extensions/).
+:::
