@@ -1,6 +1,6 @@
 ---
 title: "RDHS package usage example"
-auther: Meikang Wu
+author: "Meikang Wu"
 date: "2024-11-14"
 ---
 

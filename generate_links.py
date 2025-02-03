@@ -18,11 +18,17 @@ def convert_md_to_qmd(input_file, output_file):
 
 def get_title(qmd_file):
     """Extract the title from a Quarto file or return None if not found."""
+    text = None
+    author = None
     with open(qmd_file, "r", encoding="utf-8") as file:
         for line in file:
             if line.lower().startswith("title:"):
-                return line.split(":", 1)[1].strip().replace("\"", "")
-    return None
+                text = line.split(":", 1)[1].strip().replace("\"", "")
+            # if line.lower().startswith("author:"):
+            #     author = line.split(":", 1)[1].strip().replace("\"", "")
+    if text:
+        text = f'<span class="side-link-text">- {text}</span> ({author})' if author is not None else f'<span class="side-link-text">- {text}</span>'
+    return text
 
 
 def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
@@ -39,7 +45,7 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
                 # Check for corresponding .qmd file to extract the title
                 title = get_title(f)
                 html_file = f.with_suffix(".html")
-                sidebar_contents.append({"text": html_file.stem if title is None else title, "href": str(html_file.relative_to(root_dir).as_posix())})
+                sidebar_contents.append({"text": f'<span class="side-link-text>- {html_file.stem}</span>' if title is None else title, "href": str(html_file.relative_to(root_dir).as_posix())})
 
     # Define the Quarto configuration structure
     quarto_config = {
@@ -57,7 +63,7 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
             "sidebar": {
                 "contents": [{"section": "<span class='sidebar-header'>Repo Examples Gallery</span>", "contents": sidebar_contents},
                              {"section": "<span class='sidebar-header'>Other Quarto Examples</span>", "contents":
-                                 [{"text": "Quarto example by Amelia", "href":"https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/"}]}]
+                                 [{"text": f"<span class='side-link-text'>Quarto example by Amelia</span>", "href":"https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/"}]}]
             }
         },
         "format": {

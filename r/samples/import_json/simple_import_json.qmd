@@ -1,5 +1,6 @@
 ---
 title: "Simple R Example to Import JSON"
+author: "Jennifer Simeon"
 date: "2024-10-24"
 output: html
 execute:

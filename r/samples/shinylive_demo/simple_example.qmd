@@ -1,5 +1,6 @@
 ---
 title: "Template for r-shinylive Quarto document (Covid Example)"
+author: "Meikang Wu"
 format:
   html:
     resources: 

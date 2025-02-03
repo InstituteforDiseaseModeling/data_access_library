@@ -1,6 +1,17 @@
 .sidebar-header {
-    color: indigo;
+    color: cornflowerblue;
     font-weight:bold;
+    font-size: large;
+}
+
+.side-link-text {
+    font-weight:normal;
+    font-style: italic;
+    display: inline-block;
+    min-width: 200px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .standard-slide {
