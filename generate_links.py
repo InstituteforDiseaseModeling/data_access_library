@@ -61,9 +61,13 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
                 "right": [{"text": "GitHub", "href": "https://github.com/InstituteforDiseaseModeling/data_access_library"}],
             },
             "sidebar": {
-                "contents": [{"section": "<span class='sidebar-header'>Repo Examples Gallery</span>", "contents": sidebar_contents},
-                             {"section": "<span class='sidebar-header'>Other Quarto Examples</span>", "contents":
-                                 [{"text": f"<span class='side-link-text'>Quarto example by Amelia</span>", "href":"https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/"}]}]
+                "contents": [   {"section": "<span class='sidebar-header'>Repo Examples Gallery</span>", "contents": sidebar_contents},
+                                {"section": "<span class='sidebar-header'>Other Quarto Resources</span>", "contents":
+                                    [{"text": f"<span class='side-link-text'>Quarto example by Amelia</span>", "href":"https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/"},
+                                    {"text": f"<span class='side-link-text'>Quarto Pub</span>", "href":"https://quarto.org/docs/publishing/quarto-pub.html"}
+                                    ]
+                                },
+                            ]
             }
         },
         "format": {
