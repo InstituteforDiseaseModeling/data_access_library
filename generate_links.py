@@ -45,7 +45,7 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
                 # Check for corresponding .qmd file to extract the title
                 title = get_title(f)
                 html_file = f.with_suffix(".html")
-                sidebar_contents.append({"text": f'<span class="side-link-text>- {html_file.stem}</span>' if title is None else title, "href": str(html_file.relative_to(root_dir).as_posix())})
+                sidebar_contents.append({"text": f'<span class="side-link-text">- {html_file.stem}</span>' if title is None else title, "href": str(html_file.relative_to(root_dir).as_posix())})
 
     # Define the Quarto configuration structure
     quarto_config = {
