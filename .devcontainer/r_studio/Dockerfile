@@ -24,5 +24,8 @@ RUN Rscript -e "install.packages(c('tidyverse', 'data.table', 'shiny', 'ggplot2'
 # Expose port for RStudio
 EXPOSE 8787
 
-# Set Workdir 
+# Set default working directory for RStudio
+RUN echo "session-default-working-dir=/workspace/codespaces_demo" >> /etc/rstudio/rsession.conf
+
+# Set Workdir
 WORKDIR /workspace/codespaces_demo

@@ -19,5 +19,7 @@
   "workspaceFolder": "/workspace/codespaces_demo",
   "mounts": [
     "source=renv-cache,target=/renv,type=volume"
-  ]
+  ],
+  "postCreateCommand": "rstudio-server start",
+  "postAttachCommand": "rstudio-server start"
 }
