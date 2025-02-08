@@ -1,0 +1,46 @@
+---
+title: "<br><br><br><b>Introduction of Github Codespace</b>"
+format:
+  revealjs:
+    css: style.css
+    slide-number: true
+    transition: slide
+    scrollable: true
+    controls: true     # Enables Prev/Next navigation buttons
+    progress: true     # Adds a progress bar at the bottom
+    footer: '<br><br><a href="index.html" style="text-decoration: none;">← Back to Home</a>'
+title-slide-attributes:
+  data-background-image: ./assets/slide_template/gf_title.png
+  data-vertical-align: bottom
+  data-background-size: 100% 100%
+  data-background-position: center
+  data-background-opacity: "0.9"
+  data-text-size: 25px
+
+---
+
+## What is Codespace
+:::{.standard-slide}
+![](./assets/slide_intro/c1.png)
+:::
+
+## Advantages
+:::{.standard-slide}
+- Connect from anywhere (with internet access)
+- Use a preconfigured development environment
+- Scale compute resources as needed
+- Pair programming with a teammate (through [VSCode live share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare))
+- Fast deploy and host your application in the early stage for peer review and demo
+- Git ready
+:::
+
+## Considerations
+:::{.standard-slide}
+- Must connect to the internet
+- Limited IDE choices (VSCode, JetBrains), however it can be solved by adding devcontainer features or docker images
+- Cost for long term usage, see
+ [Free usage](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
+ and [Billing](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#pricing-for-paid-usage)
+- No GA for GPU Support
+- Persistence and Storage Challenges
+:::

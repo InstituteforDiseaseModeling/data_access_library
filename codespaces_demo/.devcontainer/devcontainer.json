@@ -1,0 +1,23 @@
+{
+  "name": "RStudio Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/renv-cache:0": {}
+  },
+  "containerEnv": {
+    "DISABLE_AUTH": "true",
+    "RSTUDIO_SESSION_TIMEOUT": "0",
+    "RENV_PATHS_CACHE": "/renv/cache"
+  },
+  "ports": ["8787:8787"],
+  "runArgs": ["--user=root"],
+  "workspaceFolder": "/workspace/codespaces_demo",
+  "mounts": [
+    "source=renv-cache,target=/renv,type=volume"
+  ]
+}

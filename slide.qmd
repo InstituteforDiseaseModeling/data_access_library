@@ -24,11 +24,7 @@ title-slide-attributes:
   Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.
 
 - **Motivation and Framing:**
-  Uploading some notebook samples to GitHub repositories sounds simple, but creating and persisting a long-term modeling asset for IDM is a challenge that calls on skills from across the whole of IDM.
-
-- **Example:**
-  DHS survey data is used across IDM but it can be challenging due to its complex structure and different recode scheme. How do we maintain a reusable code base to ease the handling of DHS data?
-
+  Uploading notebook samples to GitHub is straightforward, but how do we ensure their content truly benefits the Global Public Good? Researchers seek to share their algorithms, models, and visualizations in a reproducible, interactive format, promoting open collaboration, peer review, and knowledge exchange.
 - **For More Details**
 See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
 :::
@@ -147,6 +143,16 @@ OR
 :::{.standard-slide}
 ![](./assets/slide_intro/slide_12.png){width=100% align=right}
 :::
+
+
+## Quarto for Python
+:::{.standard-slide}
+- **Jupyter Engine Integration**: Quarto natively supports Jupyter notebooks (.ipynb) as well as Quarto markdown documents (.qmd) by leveraging the Jupyter engine for execution.
+- **Execution control**: When rendering an .ipynb Quarto will not execute the cells within the notebook by default (use <i>quarto render notebook.ipynb --execute</i>)
+- For more information, visit [Quarto for Python](https://quarto.org/docs/computations/python.html)
+- [VS code extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) is available.
+:::
+
 
 ## Quarto Extensions
 :::{.standard-slide}

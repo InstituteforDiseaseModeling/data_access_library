@@ -15,7 +15,9 @@ Quarto is a modern, open-source publishing system that combines the power of R, 
 It turns source code, text, and visuals into polished, shareable outputs.
 It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.
 
-[Slide Deck](slide.qmd)
+[Quarto Slide Deck](slide.qmd)
+
+[Codespace Slide Deck](codespace_slide.qmd)
 
 [ReadMe](https://github.com/InstituteforDiseaseModeling/data_access_library/blob/main/README.md)
 
