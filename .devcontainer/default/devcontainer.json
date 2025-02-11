@@ -29,8 +29,8 @@
             ]
         }
     },
-    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-    "postAttachCommand": "bash ./.devcontainer/postAttachCommand.sh",
+    "postCreateCommand": "bash ./.devcontainer/default/postCreateCommand.sh",
+    "postAttachCommand": "bash ./.devcontainer/default/postAttachCommand.sh",
     "portsAttributes": {
         "8888": {
             "label": "Jupyter Lab"
