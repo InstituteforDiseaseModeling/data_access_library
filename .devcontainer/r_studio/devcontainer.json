@@ -25,7 +25,7 @@
   "mounts": [
     "source=renv-cache,target=/renv,type=volume"
   ],
-  "postCreateCommand": "rstudio-server start",
+  "postCreateCommand": "bash ./postCreateCommand.sh",
   "postAttachCommand": "rstudio-server restart",
   "postStartCommand": "rstudio-server restart"
 }
