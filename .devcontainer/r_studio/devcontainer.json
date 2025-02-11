@@ -14,12 +14,17 @@
     "RSTUDIO_SESSION_TIMEOUT": "0",
     "RENV_PATHS_CACHE": "/renv/cache"
   },
-  "ports": ["8787:8787"],
+  "portsAttributes": {
+        "8787": {
+          "label": "R Studio"
+        }
+    },
+  "forwardPorts": [8787],
   "runArgs": ["--user=root"],
   "workspaceFolder": "/workspaces/data_access_library",
   "mounts": [
     "source=renv-cache,target=/renv,type=volume"
   ],
   "postCreateCommand": "rstudio-server start",
-  "postAttachCommand": "rstudio-server start"
+  "postAttachCommand": "rstudio-server restart"
 }
