@@ -26,5 +26,6 @@
     "source=renv-cache,target=/renv,type=volume"
   ],
   "postCreateCommand": "rstudio-server start",
-  "postAttachCommand": "rstudio-server restart"
+  "postAttachCommand": "rstudio-server restart",
+  "postStartCommand": "rstudio-server restart"
 }
