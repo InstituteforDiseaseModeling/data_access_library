@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /renv/cache && chown rstudio:rstudio /renv/cache
 
 # Pre-install R packages into renv cache
-RUN Rscript -e "install.packages(c('tidyverse', 'data.table', 'shiny', 'ggplot2', 'dplyr', 'remotes', 'renv'), repos='https://cran.rstudio.com/')"
+RUN Rscript -e "install.packages(c('tidyverse', 'data.table', 'shiny', 'ggplot2', 'dplyr', 'remotes', 'renv'), repos='https://cran.rstudio.com/', Ncpus = parallel::detectCores())"
 
 # Expose port for RStudio
 EXPOSE 8787
