@@ -18,8 +18,9 @@ title-slide-attributes:
 ---
 
 ## Initiative
-:::{.nonincremental style="color: black; background-image: url('./assets/slide_template/gf_slide.png'); font-size: 36px; padding-bottom: 20px;"}
+:::{.nonincremental style="color: black; background-image: url('./assets/slide_template/gf_slide.png'); font-size: 28px; padding-bottom: 20px;"}
 
+::: {.column width="50%"}
 - **Brief Description:**
   Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.
 
@@ -27,6 +28,11 @@ title-slide-attributes:
   Uploading notebook samples to GitHub is straightforward, but how do we ensure their content truly benefits the Global Public Good? Researchers seek to share their algorithms, models, and visualizations in a reproducible, interactive format, promoting open collaboration, peer review, and knowledge exchange.
 - **For More Details**
 See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
+:::
+
+::: {.column width="50%"}
+![](./assets/slide_intro/beta.png)
+:::
 :::
 ---
 

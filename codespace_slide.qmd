@@ -21,26 +21,50 @@ title-slide-attributes:
 
 ## What is Codespace
 :::{.standard-slide}
-![](./assets/slide_intro/c1.png)
+![](./assets/slide_intro/c1.png){width=100% height=100% align=center}
+:::
+
+## Seamless cloud development
+:::{.standard-slide}
+![](./assets/slide_intro/c2.png){width=100% height=100% align=center}
 :::
 
 ## Advantages
-:::{.standard-slide}
+:::{.standard-slide  style="font-size: 36px;"}
 - Connect from anywhere (with internet access)
-- Use a preconfigured development environment
+- Use a preconfigured development environment (Reproducibility)
 - Scale compute resources as needed
 - Pair programming with a teammate (through [VSCode live share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare))
 - Fast deploy and host your application in the early stage for peer review and demo
-- Git ready
+- Seamless GitHub Integration
 :::
 
 ## Considerations
-:::{.standard-slide}
+:::{.standard-slide style="font-size: 40px;"}
+
 - Must connect to the internet
-- Limited IDE choices (VSCode, JetBrains), however it can be solved by adding devcontainer features or docker images
+- Limited IDE choices (VSCode, JetBrains)
 - Cost for long term usage, see
  [Free usage](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
  and [Billing](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#pricing-for-paid-usage)
 - No GA for GPU Support
 - Persistence and Storage Challenges
+
+:::
+
+## How to use Codespace
+:::{.standard-slide}
+- Create a new Codespace
+![](./assets/codespace.png)
+- Manage your Codespace
+![](./assets/codespace_manage.png)
+:::
+
+## Advanced Features
+:::{.standard-slide style="font-size: 40px;"}
+- [Custom configurations](https://github.com/settings/codespaces)
+- [Prebuild](https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds) can accelerate the start time of your Codespace
+- [Deep Link](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-repository/facilitating-quick-creation-and-resumption-of-codespaces) can share your Codespace configuration with others
+- [Port Forwarding](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace) can share your application to public or private within organization
+- Work Offline with [VSCode](https://code.visualstudio.com/docs/devcontainers/containers)
 :::

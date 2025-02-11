@@ -16,7 +16,7 @@
   },
   "ports": ["8787:8787"],
   "runArgs": ["--user=root"],
-  "workspaceFolder": "/workspace/codespaces_demo",
+  "workspaceFolder": "/workspaces/data_access_library/codespaces_demo",
   "mounts": [
     "source=renv-cache,target=/renv,type=volume"
   ],
