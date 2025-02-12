@@ -10,7 +10,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>Knowledge Sharing with Quarto Tutorial Website –  Using Quarto for Knowledge Sharing</title>
+  <title>Knowledge Sharing with Quarto Tutorial Website –  Introduction of Github Codespace</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,71 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style.css">
@@ -391,165 +326,69 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="./assets/slide_template/gf_title.png" data-background-position="center" data-background-size="100% 100%" data-vertical-align="bottom" class="quarto-title-block center">
-  <h1 class="title"><br><br>Using <b>Quarto</b> for Knowledge Sharing</h1>
+<section id="title-slide" data-background-image="./assets/slide_template/gf_title.png" data-background-opacity="0.9" data-background-position="center" data-background-size="100% 100%" data-text-size="25px" data-vertical-align="bottom" class="quarto-title-block center">
+  <h1 class="title"><br><br><br><b>Introduction of Github Codespace</b></h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="initiative" class="slide level2">
-<h2>Initiative</h2>
-<div style="color: black; background-image: url('./assets/slide_template/gf_slide.png'); font-size: 28px; padding-bottom: 20px;">
-<div class="column" style="width:50%;">
-<ul>
-<li><p><strong>Brief Description:</strong> Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.</p></li>
-<li><p><strong>Motivation and Framing:</strong> Uploading code samples to GitHub is easy, but ensuring they truly serve the Global Public Good requires more. Researchers strive to make their algorithms, models, and visualizations accessible through reproducibility, interactivity, and open collaboration.</p></li>
-<li><p><strong>For More Details</strong> See: <a href="https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D">One Pager</a></p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="./assets/slide_intro/beta.png"></p>
-</div></div>
-</section>
-<section id="milestones" class="slide level2">
-<h2>Milestones</h2>
+<section id="what-is-codespace" class="slide level2">
+<h2>What is Codespace</h2>
 <div class="standard-slide">
-<p><img data-src="./assets/slide_intro/slide_3.png" style="width:100.0%" data-align="right"></p>
+<p><img data-src="./assets/slide_intro/c1.png" style="width:100.0%;height:100.0%" data-align="center"></p>
 </div>
 </section>
-<section id="quarto-a-versatile-publishing-tool" class="slide level2">
-<h2>Quarto: A versatile publishing tool</h2>
+<section id="seamless-cloud-development" class="slide level2">
+<h2>Seamless cloud development</h2>
 <div class="standard-slide">
-<ul>
-<li><p>Doesn’t have a dependency or requirement for R.</p></li>
-<li><p>Multilingual, support for R, Python, Javascript, and Julia…</p></li>
-<li><p>Enables reproducible code, rich outputs, and seamless format conversion.</p></li>
-<li><p>Learn More <a href="https://quarto.org/docs/faq/rmarkdown.html">here</a></p></li>
-</ul>
-<p><img data-src="./assets/slide_intro/slide_7.png" style="width:100.0%;height:100.0%" data-align="center"></p>
+<p><img data-src="./assets/slide_intro/c2.png" style="width:100.0%" data-align="right"></p>
 </div>
 </section>
-<section id="racap-of-quarto-features" class="slide level2">
-<h2>Racap of Quarto Features</h2>
-<div class="standard-slide" style="font-size: 28px;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong>Quarto</strong></th>
-<th><strong>RMardown</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Supports Python, R, Julia, and <a href="https://observablehq.com/">Observable</a>.</td>
-<td>Primarily uses R for dynamic content.</td>
-</tr>
-<tr class="even">
-<td>Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.</td>
-<td>Limited publishing format: HTML, PDF, and MS Word.</td>
-</tr>
-<tr class="odd">
-<td>Support a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor.</td>
-<td>Typically uses RStudio as its primary authoring environment.</td>
-</tr>
-<tr class="even">
-<td>Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifes the usage.</td>
-<td>Offers interactivity but require additional complicated setup.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="yaml-header-document-structure" class="slide level2">
-<h2>YAML Header &amp; Document Structure</h2>
-<div class="standard-slide" height="100%">
+<section id="advantages" class="slide level2">
+<h2>Advantages</h2>
+<div class="standard-slide" style="font-size: 36px;">
 <ul>
-<li><p><strong>YAML Header</strong>: Defines metadata (title, author, date, output format, etc.).</p></li>
-<li><p><strong>Document Structure</strong>:</p>
-<ul>
-<li>Text: For narratives and explanations.</li>
-<li>Code Chunks: Embedded Python / R code for analysis and visualizations.</li>
-<li>Execution options: Supports multiple outputs with easy configuration for code execution.</li>
-<li>Tables, Figures, and Equations: Compatible with markdown syntax.</li>
-<li>Callouts: For highlighting important points.</li>
-</ul></li>
+<li>Connect from anywhere (with internet access)</li>
+<li>Use a preconfigured development environment (Reproducibility)</li>
+<li>Scale compute resources as needed</li>
+<li>Pair programming with a teammate (through <a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">VSCode live share</a>)</li>
+<li>Fast deploy and host your application in the early stage for peer review and demo</li>
+<li>Seamless GitHub Integration</li>
 </ul>
 </div>
 </section>
-<section id="quarto-markdown-.qmd-examples" class="slide level2">
-<h2>Quarto Markdown (.qmd) Examples</h2>
-<div class="standard-slide" style="font-size: 32px;">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a></a><span class="co">---</span></span>
-<span id="cb1-2"><a></a><span class="an">title:</span><span class="co"> "Quarto Document Example with Labeled Code"</span></span>
-<span id="cb1-3"><a></a><span class="an">author:</span><span class="co"> "John Smith"</span></span>
-<span id="cb1-4"><a></a><span class="an">date:</span><span class="co"> "2025-02-15"</span></span>
-<span id="cb1-5"><a></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-6"><a></a><span class="co">---</span></span>
-<span id="cb1-7"><a></a><span class="fu"># Introduction</span></span>
-<span id="cb1-8"><a></a>This document demonstrates Quarto’s R code chunk.</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="fu">## Basic Calculation Example</span></span>
-<span id="cb1-11"><a></a>This section calculates the mean of a vector.</span>
-<span id="cb1-12"><a></a>The code chunk below is labeled as <span class="in">`calculate_mean`</span> for easier reference.</span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a><span class="in">` `</span> `{r calculate_mean}</span>
-<span id="cb1-15"><a></a>#| echo: true</span>
-<span id="cb1-16"><a></a>#| eval: false</span>
-<span id="cb1-17"><a></a><span class="fu"># This chunk calculates the mean of a vector of numbers</span></span>
-<span id="cb1-18"><a></a>numbers &lt;- c(1, 2, 3, 4, 5)</span>
-<span id="cb1-19"><a></a>mean_value &lt;- mean(numbers)</span>
-<span id="cb1-20"><a></a>mean_value</span>
-<span id="cb1-21"><a></a><span class="in">` `</span> `</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="execution-options" class="slide level2">
-<h2>Execution Options</h2>
-<div class="standard-slide" style="font-size: 32px;">
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<div class="standard-slide" style="font-size: 40px;">
 <ul>
-<li><code>warning=FALSE</code>: Suppresses warnings.</li>
-<li><code>include=FALSE</code>: Hides code and output but runs the code.</li>
-<li><code>echo=FALSE</code>: Hides code but shows output, useful for report-style documents.</li>
-<li><code>eval=FALSE</code>:Do not run the code. (some code may need special setup or prompts for credentials)</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="in">` `</span> `{r warning=FALSE}</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>OR</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="in">` `</span> `{r}</span>
-<span id="cb2-6"><a></a>#| warning: false</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="in">` `</span> `</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Check <a href="https://quarto.org/docs/computations/execution-options.html">here</a> for more options.</li>
+<li>Must connect to the internet</li>
+<li>Limited IDE choices (VSCode, JetBrains)</li>
+<li>Cost for long term usage, see <a href="https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts">Free usage</a> and <a href="https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#pricing-for-paid-usage">Billing</a></li>
+<li>No GA for GPU Support</li>
+<li>Persistence and Storage Challenges</li>
 </ul>
 </div>
 </section>
-<section id="rstudio-support" class="slide level2">
-<h2>Rstudio Support</h2>
-<div class="standard-slide">
-<p><img data-src="./assets/slide_intro/slide_12.png" style="width:100.0%" data-align="right"></p>
-</div>
-</section>
-<section id="quarto-for-python" class="slide level2">
-<h2>Quarto for Python</h2>
+<section id="how-to-use-codespace" class="slide level2">
+<h2>How to use Codespace</h2>
 <div class="standard-slide">
 <ul>
-<li><strong>Jupyter Engine Integration</strong>: Quarto natively supports Jupyter notebooks (.ipynb) as well as Quarto markdown documents (.qmd) by leveraging the Jupyter engine for execution.</li>
-<li><strong>Execution control</strong>: When rendering an .ipynb Quarto will not execute the cells within the notebook by default (use <i>quarto render notebook.ipynb –execute</i>)</li>
-<li>For more information, visit <a href="https://quarto.org/docs/computations/python.html">Quarto for Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">VS code extension</a> is available.</li>
+<li>Create a new Codespace <img data-src="./assets/codespace.png"></li>
+<li>Use <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#using-the-default-dev-container-configuration">default configuration</a></li>
+<li>Manage your Codespace <img data-src="./assets/codespace_manage.png"></li>
 </ul>
 </div>
 </section>
-<section id="quarto-extensions" class="slide level2">
-<h2>Quarto Extensions</h2>
-<div class="standard-slide">
+<section id="advanced-features" class="slide level2">
+<h2>Advanced Features</h2>
+<div class="standard-slide" style="font-size: 40px;">
 <ul>
-<li>Includes new formats (e.g.&nbsp;Journal articles), shortcodes (Reusable custom components), and templates.</li>
-<li>Use <b>quarto add quarto-ext/{ext-name}</b> to install extensions distributed from the <a href="https://github.com/quarto-ext/">quarto-ext</a> GitHub</li>
-<li>Manage with <b>quarto list extensions</b> | <b>quarto remove quarto-ext/{ext-name} | quarto update quarto-ext/{ext-name} </b></li>
-<li>Rather than installing into a global library, Quarto extensions are stored locally, directly alongside your project / files.</li>
-<li>For more information, visit <a href="https://quarto.org/docs/extensions/">Quarto Extensions</a>.</li>
+<li><a href="https://github.com/settings/codespaces">Custom configurations</a></li>
+<li><a href="https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds">Prebuild</a> can accelerate the start time of your Codespace</li>
+<li><a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/setting-up-your-repository/facilitating-quick-creation-and-resumption-of-codespaces">Deep Link</a> can share your Codespace configuration with others</li>
+<li><a href="https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace">Port Forwarding</a> can share your application to public or private within organization</li>
+<li>Work Offline with <a href="https://code.visualstudio.com/docs/devcontainers/containers">VSCode</a></li>
 </ul>
 </div>
 

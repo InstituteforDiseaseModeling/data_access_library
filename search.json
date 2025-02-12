@@ -4,7 +4,7 @@
     "href": "slide.html#initiative",
     "title": "Using Quarto for Knowledge Sharing",
     "section": "Initiative",
-    "text": "Initiative\n\n\nBrief Description: Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.\nMotivation and Framing: Uploading some notebook samples to GitHub repositories sounds simple, but creating and persisting a long-term modeling asset for IDM is a challenge that calls on skills from across the whole of IDM.\nExample: DHS survey data is used across IDM but it can be challenging due to its complex structure and different recode scheme. How do we maintain a reusable code base to ease the handling of DHS data?\nFor More Details See: One Pager"
+    "text": "Initiative\n\n\n\nBrief Description: Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.\nMotivation and Framing: Uploading code samples to GitHub is easy, but ensuring they truly serve the Global Public Good requires more. Researchers strive to make their algorithms, models, and visualizations accessible through reproducibility, interactivity, and open collaboration.\nFor More Details See: One Pager"
   },
   {
     "objectID": "slide.html#milestones",
@@ -18,7 +18,7 @@
     "href": "slide.html#quarto-a-versatile-publishing-tool",
     "title": "Using Quarto for Knowledge Sharing",
     "section": "Quarto: A versatile publishing tool",
-    "text": "Quarto: A versatile publishing tool\n\n\nDoesn’t have a dependency or requirement for R.\nMultilingual, support for R, Python, Javascript, and Julia…\nBest suited for collaborating on scientific and technical documents\nLearn More here"
+    "text": "Quarto: A versatile publishing tool\n\n\nDoesn’t have a dependency or requirement for R.\nMultilingual, support for R, Python, Javascript, and Julia…\nEnables reproducible code, rich outputs, and seamless format conversion.\nLearn More here"
   },
   {
     "objectID": "slide.html#racap-of-quarto-features",
@@ -56,6 +56,13 @@
     "text": "Rstudio Support"
   },
   {
+    "objectID": "slide.html#quarto-for-python",
+    "href": "slide.html#quarto-for-python",
+    "title": "Using Quarto for Knowledge Sharing",
+    "section": "Quarto for Python",
+    "text": "Quarto for Python\n\n\nJupyter Engine Integration: Quarto natively supports Jupyter notebooks (.ipynb) as well as Quarto markdown documents (.qmd) by leveraging the Jupyter engine for execution.\nExecution control: When rendering an .ipynb Quarto will not execute the cells within the notebook by default (use quarto render notebook.ipynb –execute)\nFor more information, visit Quarto for Python\nVS code extension is available."
+  },
+  {
     "objectID": "slide.html#quarto-extensions",
     "href": "slide.html#quarto-extensions",
     "title": "Using Quarto for Knowledge Sharing",
@@ -67,14 +74,56 @@
     "href": "index.html",
     "title": "Quarto Overview",
     "section": "",
-    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nSlide Deck\nReadMe\nQuiz"
+    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nQuarto Slide Deck\nCodespace Slide Deck\nReadMe\nQuiz"
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
     "title": "Quarto Overview",
     "section": "",
-    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nSlide Deck\nReadMe\nQuiz"
+    "text": "Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites. It turns source code, text, and visuals into polished, shareable outputs. It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.\nQuarto Slide Deck\nCodespace Slide Deck\nReadMe\nQuiz"
+  },
+  {
+    "objectID": "codespace_slide.html#what-is-codespace",
+    "href": "codespace_slide.html#what-is-codespace",
+    "title": "Introduction of Github Codespace",
+    "section": "What is Codespace",
+    "text": "What is Codespace"
+  },
+  {
+    "objectID": "codespace_slide.html#seamless-cloud-development",
+    "href": "codespace_slide.html#seamless-cloud-development",
+    "title": "Introduction of Github Codespace",
+    "section": "Seamless cloud development",
+    "text": "Seamless cloud development"
+  },
+  {
+    "objectID": "codespace_slide.html#advantages",
+    "href": "codespace_slide.html#advantages",
+    "title": "Introduction of Github Codespace",
+    "section": "Advantages",
+    "text": "Advantages\n\n\nConnect from anywhere (with internet access)\nUse a preconfigured development environment (Reproducibility)\nScale compute resources as needed\nPair programming with a teammate (through VSCode live share)\nFast deploy and host your application in the early stage for peer review and demo\nSeamless GitHub Integration"
+  },
+  {
+    "objectID": "codespace_slide.html#considerations",
+    "href": "codespace_slide.html#considerations",
+    "title": "Introduction of Github Codespace",
+    "section": "Considerations",
+    "text": "Considerations\n\n\nMust connect to the internet\nLimited IDE choices (VSCode, JetBrains)\nCost for long term usage, see Free usage and Billing\nNo GA for GPU Support\nPersistence and Storage Challenges"
+  },
+  {
+    "objectID": "codespace_slide.html#how-to-use-codespace",
+    "href": "codespace_slide.html#how-to-use-codespace",
+    "title": "Introduction of Github Codespace",
+    "section": "How to use Codespace",
+    "text": "How to use Codespace\n\n\nCreate a new Codespace \nUse default configuration\nManage your Codespace"
+  },
+  {
+    "objectID": "codespace_slide.html#advanced-features",
+    "href": "codespace_slide.html#advanced-features",
+    "title": "Introduction of Github Codespace",
+    "section": "Advanced Features",
+    "text": "Advanced Features\n\n\nCustom configurations\nPrebuild can accelerate the start time of your Codespace\nDeep Link can share your Codespace configuration with others\nPort Forwarding can share your application to public or private within organization\nWork Offline with VSCode\n\n\n\n\n\n← Back to Home"
   },
   {
     "objectID": "qna.html#how-do-you-install-quarto",
