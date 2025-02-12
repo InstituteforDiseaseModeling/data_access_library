@@ -26,7 +26,7 @@ title-slide-attributes:
 
 ## Seamless cloud development
 :::{.standard-slide}
-![](./assets/slide_intro/c2.png){width=100% height=100% align=center}
+![](./assets/slide_intro/c2.png){width=100% align=right}
 :::
 
 ## Advantages
@@ -56,6 +56,7 @@ title-slide-attributes:
 :::{.standard-slide}
 - Create a new Codespace
 ![](./assets/codespace.png)
+- Use [default configuration](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#using-the-default-dev-container-configuration)
 - Manage your Codespace
 ![](./assets/codespace_manage.png)
 :::
