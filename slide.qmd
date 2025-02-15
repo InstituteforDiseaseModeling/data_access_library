@@ -1,5 +1,5 @@
 ---
-title: "<br><br>Using <b>Quarto</b> for Knowledge Sharing"
+title: "<br><br>- Knowledge Sharing - Data Access and Analysis Library<br>"
 format:
   revealjs:
     css: style.css
@@ -17,37 +17,49 @@ title-slide-attributes:
 
 ---
 
-## Initiative
-:::{.nonincremental style="color: black; background-image: url('./assets/slide_template/gf_slide.png'); font-size: 28px; padding-bottom: 20px;"}
+## Overview
+:::{.standard-slide}
+- Introduction of the Data Access and Analysis Library
+- Problems and Challenges
+- Technology Exploration
+    + Quarto: A versatile publishing tool
+    + Codespace: A easy-to-use cloud development environment
+- Piloting workshop
+- Q&A Discussions
+:::
 
-::: {.column width="50%"}
-- **Brief Description:**
-  Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.
+## Problems / Challenges
+:::{.standard-slide}
+- **Is checking code to Github enough?**
+  + Challenges
+    - Reproducibility
+    - Interactivity
+    - Collaboration
+    - Learning curve
+:::
 
-- **Motivation and Framing:**
-  Uploading code samples to GitHub is easy, but ensuring they truly serve the Global Public Good requires more. Researchers strive to make their algorithms, models, and visualizations accessible through reproducibility, interactivity, and open collaboration.
+## Data Access and Analysis Library
+:::{.standard-slide}
+
+- **Project Goals:**
+  + Knowledge Sharing & Collaboration.
+  + Reusability & Reproducibility.
+  + High-Quality and Comprehensive Code.
+  + Multilingual solution (R, Python, Julia etc.)
+
+<br><br>
 - **For More Details**
 See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
 :::
 
-::: {.column width="50%"}
-![](./assets/slide_intro/beta.png)
-:::
-:::
----
-
-## Milestones
-
-:::{.standard-slide}
-![](./assets/slide_intro/slide_3.png){width=100% align=right}
-:::
----
 
 ## Quarto: A versatile publishing tool
 
 :::{.standard-slide}
 
-- Doesn’t have a dependency or requirement for R.
+- Why choose Quarto? Reproducible, Open source, multi-lingual, multi-format
+
+- Familiar Syntax & Workflow for Markdown Users.
 
 - Multilingual, support for R, Python, Javascript, and Julia…
 
@@ -73,24 +85,6 @@ See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJl
 
 
 :::
----
-
-## YAML Header & Document Structure
-
-:::{.standard-slide height=100%}
-
-
-- **YAML Header**: Defines metadata (title, author, date, output format, etc.).
-
-- **Document Structure**:
-  - Text: For narratives and explanations.
-  - Code Chunks: Embedded Python / R code for analysis and visualizations.
-  - Execution options: Supports multiple outputs with easy configuration for code execution.
-  - Tables, Figures, and Equations: Compatible with markdown syntax.
-  - Callouts: For highlighting important points.
-
-:::
----
 
 ## Quarto Markdown (.qmd) Examples
 
@@ -122,7 +116,7 @@ mean_value
 :::
 
 ---
-## Execution Options
+## Control how your code runs: Execution Options
 
 :::{.standard-slide style="font-size: 32px;"}
 
@@ -144,6 +138,20 @@ OR
 - Check [here](https://quarto.org/docs/computations/execution-options.html) for more options.
 :::
 
+## Quarto Tables
+:::{.standard-slide}
+![](./assets/slide_intro/qmd_table.png){width=100% align=right}
+:::
+
+## Quarto Figures
+:::{.standard-slide}
+![](./assets/slide_intro/qmd_figure.png){width=100% height=60% align=right}
+:::
+
+## Quarto callouts
+:::{.standard-slide}
+![](./assets/slide_intro/qmd_callouts.png){width=100% height=60% align=right}
+:::
 
 ## Rstudio Support
 :::{.standard-slide}
@@ -153,8 +161,12 @@ OR
 
 ## Quarto for Python
 :::{.standard-slide}
-- **Jupyter Engine Integration**: Quarto natively supports Jupyter notebooks (.ipynb) as well as Quarto markdown documents (.qmd) by leveraging the Jupyter engine for execution.
-- **Execution control**: When rendering an .ipynb Quarto will not execute the cells within the notebook by default (use <i>quarto render notebook.ipynb --execute</i>)
+::: {.column width="50%"}
+![](./assets/slide_intro/qmd_python.png){align=right}
+:::
+::: {.column width="50%"}
+![](./assets/slide_intro/qmd_jupyter.png){height=80% align=left}
+:::
 - For more information, visit [Quarto for Python](https://quarto.org/docs/computations/python.html)
 - [VS code extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) is available.
 :::
@@ -162,9 +174,28 @@ OR
 
 ## Quarto Extensions
 :::{.standard-slide}
-- Includes new formats (e.g. Journal articles), shortcodes (Reusable custom components), and templates.
-- Use <b>quarto add quarto-ext/{ext-name}</b> to install extensions distributed from the [quarto-ext](https://github.com/quarto-ext/) GitHub
-- Manage with <b>quarto list extensions</b> | <b>quarto remove quarto-ext/{ext-name} | quarto update quarto-ext/{ext-name} </b>
-- Rather than installing into a global library, Quarto extensions are stored locally, directly alongside your project / files.
+
+<iframe src="https://quarto.org/docs/gallery/" width="100%" height="800px"></iframe>
+
 - For more information, visit [Quarto Extensions](https://quarto.org/docs/extensions/).
+:::
+
+## Reproducibility
+:::{.standard-slide}
+![](./assets/slide_intro/c2.png){width=100% height=100% align=center}
+:::
+
+## Piloting Workshop
+::: {.column width="60%" style="font-size: 26px;"}
+- **Date**: 2024-12-10
+- Participants tried out using Codespace <br>
+![](./assets/slide_intro/cs_usage.png){align=right height=250px}
+- Active discussion bewteen participants
+    + Need copilot enabled IDE to trouble shoot scripts
+    + Setup quarto environment and package management
+    + Need to work with large dataset
+
+:::
+::: {.column width="40%"}
+![](./assets/slide_intro/beta.png)
 :::
