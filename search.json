@@ -1,73 +1,108 @@
 [
   {
-    "objectID": "slide.html#initiative",
-    "href": "slide.html#initiative",
-    "title": "Using Quarto for Knowledge Sharing",
-    "section": "Initiative",
-    "text": "Initiative\n\n\n\nBrief Description: Build and maintain a curated library of high-quality samples created by IDM researchers and software engineers demonstrating data access and data analysis techniques worth sharing with colleagues.\nMotivation and Framing: Uploading code samples to GitHub is easy, but ensuring they truly serve the Global Public Good requires more. Researchers strive to make their algorithms, models, and visualizations accessible through reproducibility, interactivity, and open collaboration.\nFor More Details See: One Pager"
+    "objectID": "slide.html#overview",
+    "href": "slide.html#overview",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction of the Data Access and Analysis Library\nProblems and Challenges\nTechnology Exploration\n\nQuarto: A versatile publishing tool\nCodespace: A easy-to-use cloud development environment\n\nPiloting workshop\nQ&A Discussions"
   },
   {
-    "objectID": "slide.html#milestones",
-    "href": "slide.html#milestones",
-    "title": "Using Quarto for Knowledge Sharing",
-    "section": "Milestones",
-    "text": "Milestones"
+    "objectID": "slide.html#problems-challenges",
+    "href": "slide.html#problems-challenges",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Problems / Challenges",
+    "text": "Problems / Challenges\n\n\nIs checking code to Github enough?\n\nChallenges\n\nReproducibility\nInteractivity\nCollaboration\nLearning curve"
+  },
+  {
+    "objectID": "slide.html#data-access-and-analysis-library",
+    "href": "slide.html#data-access-and-analysis-library",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Data Access and Analysis Library",
+    "text": "Data Access and Analysis Library\n\n\nProject Goals:\n\nKnowledge Sharing & Collaboration.\nReusability & Reproducibility.\nHigh-Quality and Comprehensive Code.\nMultilingual solution (R, Python, Julia etc.)\n\n\n - For More Details See: One Pager"
   },
   {
     "objectID": "slide.html#quarto-a-versatile-publishing-tool",
     "href": "slide.html#quarto-a-versatile-publishing-tool",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Quarto: A versatile publishing tool",
-    "text": "Quarto: A versatile publishing tool\n\n\nDoesn’t have a dependency or requirement for R.\nMultilingual, support for R, Python, Javascript, and Julia…\nEnables reproducible code, rich outputs, and seamless format conversion.\nLearn More here"
+    "text": "Quarto: A versatile publishing tool\n\n\nWhy choose Quarto? Reproducible, Open source, multi-lingual, multi-format\nFamiliar Syntax & Workflow for Markdown Users.\nMultilingual, support for R, Python, Javascript, and Julia…\nEnables reproducible code, rich outputs, and seamless format conversion.\nLearn More here"
   },
   {
     "objectID": "slide.html#racap-of-quarto-features",
     "href": "slide.html#racap-of-quarto-features",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Racap of Quarto Features",
     "text": "Racap of Quarto Features\n\n\n\n\nQuarto\nRMardown\n\n\n\n\nSupports Python, R, Julia, and Observable.\nPrimarily uses R for dynamic content.\n\n\nOffers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.\nLimited publishing format: HTML, PDF, and MS Word.\n\n\nSupport a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor.\nTypically uses RStudio as its primary authoring environment.\n\n\nFacilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifes the usage.\nOffers interactivity but require additional complicated setup."
   },
   {
-    "objectID": "slide.html#yaml-header-document-structure",
-    "href": "slide.html#yaml-header-document-structure",
-    "title": "Using Quarto for Knowledge Sharing",
-    "section": "YAML Header & Document Structure",
-    "text": "YAML Header & Document Structure\n\n\nYAML Header: Defines metadata (title, author, date, output format, etc.).\nDocument Structure:\n\nText: For narratives and explanations.\nCode Chunks: Embedded Python / R code for analysis and visualizations.\nExecution options: Supports multiple outputs with easy configuration for code execution.\nTables, Figures, and Equations: Compatible with markdown syntax.\nCallouts: For highlighting important points."
-  },
-  {
     "objectID": "slide.html#quarto-markdown-.qmd-examples",
     "href": "slide.html#quarto-markdown-.qmd-examples",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Quarto Markdown (.qmd) Examples",
     "text": "Quarto Markdown (.qmd) Examples\n\n---\ntitle: \"Quarto Document Example with Labeled Code\"\nauthor: \"John Smith\"\ndate: \"2025-02-15\"\nformat: html\n---\n# Introduction\nThis document demonstrates Quarto’s R code chunk.\n\n## Basic Calculation Example\nThis section calculates the mean of a vector.\nThe code chunk below is labeled as `calculate_mean` for easier reference.\n\n` ` `{r calculate_mean}\n#| echo: true\n#| eval: false\n# This chunk calculates the mean of a vector of numbers\nnumbers &lt;- c(1, 2, 3, 4, 5)\nmean_value &lt;- mean(numbers)\nmean_value\n` ` `"
   },
   {
-    "objectID": "slide.html#execution-options",
-    "href": "slide.html#execution-options",
-    "title": "Using Quarto for Knowledge Sharing",
-    "section": "Execution Options",
-    "text": "Execution Options\n\n\nwarning=FALSE: Suppresses warnings.\ninclude=FALSE: Hides code and output but runs the code.\necho=FALSE: Hides code but shows output, useful for report-style documents.\neval=FALSE:Do not run the code. (some code may need special setup or prompts for credentials)\n\n` ` `{r warning=FALSE}\n\nOR\n\n` ` `{r}\n#| warning: false\n\n` ` `\n\nCheck here for more options."
+    "objectID": "slide.html#control-how-your-code-runs-execution-options",
+    "href": "slide.html#control-how-your-code-runs-execution-options",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Control how your code runs: Execution Options",
+    "text": "Control how your code runs: Execution Options\n\n\nwarning=FALSE: Suppresses warnings.\ninclude=FALSE: Hides code and output but runs the code.\necho=FALSE: Hides code but shows output, useful for report-style documents.\neval=FALSE:Do not run the code. (some code may need special setup or prompts for credentials)\n\n` ` `{r warning=FALSE}\n\nOR\n\n` ` `{r}\n#| warning: false\n\n` ` `\n\nCheck here for more options."
+  },
+  {
+    "objectID": "slide.html#quarto-tables",
+    "href": "slide.html#quarto-tables",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Quarto Tables",
+    "text": "Quarto Tables"
+  },
+  {
+    "objectID": "slide.html#quarto-figures",
+    "href": "slide.html#quarto-figures",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Quarto Figures",
+    "text": "Quarto Figures"
+  },
+  {
+    "objectID": "slide.html#quarto-callouts",
+    "href": "slide.html#quarto-callouts",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Quarto callouts",
+    "text": "Quarto callouts"
   },
   {
     "objectID": "slide.html#rstudio-support",
     "href": "slide.html#rstudio-support",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Rstudio Support",
     "text": "Rstudio Support"
   },
   {
     "objectID": "slide.html#quarto-for-python",
     "href": "slide.html#quarto-for-python",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Quarto for Python",
-    "text": "Quarto for Python\n\n\nJupyter Engine Integration: Quarto natively supports Jupyter notebooks (.ipynb) as well as Quarto markdown documents (.qmd) by leveraging the Jupyter engine for execution.\nExecution control: When rendering an .ipynb Quarto will not execute the cells within the notebook by default (use quarto render notebook.ipynb –execute)\nFor more information, visit Quarto for Python\nVS code extension is available."
+    "text": "Quarto for Python\n\n\n\n\n\n\nFor more information, visit Quarto for Python\nVS code extension is available."
   },
   {
     "objectID": "slide.html#quarto-extensions",
     "href": "slide.html#quarto-extensions",
-    "title": "Using Quarto for Knowledge Sharing",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Quarto Extensions",
-    "text": "Quarto Extensions\n\n\nIncludes new formats (e.g. Journal articles), shortcodes (Reusable custom components), and templates.\nUse quarto add quarto-ext/{ext-name} to install extensions distributed from the quarto-ext GitHub\nManage with quarto list extensions | quarto remove quarto-ext/{ext-name} | quarto update quarto-ext/{ext-name} \nRather than installing into a global library, Quarto extensions are stored locally, directly alongside your project / files.\nFor more information, visit Quarto Extensions.\n\n\n\n\n\n← Back to Home"
+    "text": "Quarto Extensions\n\n\n\n\nFor more information, visit Quarto Extensions."
+  },
+  {
+    "objectID": "slide.html#reproducibility",
+    "href": "slide.html#reproducibility",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Reproducibility",
+    "text": "Reproducibility"
+  },
+  {
+    "objectID": "slide.html#piloting-workshop",
+    "href": "slide.html#piloting-workshop",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Piloting Workshop",
+    "text": "Piloting Workshop\n\n\nDate: 2024-12-10\nParticipants tried out using Codespace  \nActive discussion bewteen participants\n\nNeed copilot enabled IDE to trouble shoot scripts\nSetup quarto environment and package management\nNeed to work with large dataset\n\n\n\n\n\n\n← Back to Home"
   },
   {
     "objectID": "index.html",
