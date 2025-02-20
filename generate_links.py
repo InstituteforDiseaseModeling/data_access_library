@@ -48,7 +48,7 @@ def generate_quarto_config(root_dir, target_folders, output_dir="_site"):
                     "output-dir": output_dir,
                     },
         "website": {
-            "title": "Knowledge Sharing with Quarto Tutorial Website",
+            "title": "Data access and analysis library",
             "description": "A collection of examples using quarto showcasing Python / R code for data access and analysis",
             "navbar": {
                 "left": [{"text": "Home", "href": "index.html"}],

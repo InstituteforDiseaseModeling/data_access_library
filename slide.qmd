@@ -19,8 +19,8 @@ title-slide-attributes:
 
 ## Overview
 :::{.standard-slide}
-- Introduction of the Data Access and Analysis Library
 - Problems and Challenges
+- Introduction of the Data Access and Analysis Library
 - Technology Exploration
     + Quarto: A versatile publishing tool
     + Codespace: A easy-to-use cloud development environment
@@ -52,41 +52,55 @@ title-slide-attributes:
 See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
 :::
 
+## Knowledge Sharing <br>with Literate Programming Ideas
 
-## Quarto: A versatile publishing tool
+::: {.standard-slide style="font-size: 20px;"}
+![](./assets/concept.png){height=90% align=right}
+<br>
+* More about [Donald E. Knuth](https://www-cs-faculty.stanford.edu/~knuth/)
+<br>
+* More about [Literate Programming](https://en.wikipedia.org/wiki/Literate_programming)
+<br><br>
+:::
+
+## Technology Exploration
+#### Quarto: A versatile publishing tool
 
 :::{.standard-slide}
 
-- Why choose Quarto? Reproducible, Open source, multi-lingual, multi-format
+- Why choose Quarto?
 
-- Familiar Syntax & Workflow for Markdown Users.
+    + Open Source, actively developed and maintained by Posit Community.
 
-- Multilingual, support for R, Python, Javascript, and Julia…
+    + Familiar Syntax & Workflow for Markdown Users.
 
-- Enables reproducible code, rich outputs, and seamless format conversion.
+    + Multilingual, support for R, Python, Javascript, and Julia…
 
-- Learn More [here](https://quarto.org/docs/faq/rmarkdown.html)
+    + Enables reproducible code, rich outputs, and seamless format conversion.
+
+ - Learn More [here](https://quarto.org/docs/faq/rmarkdown.html)
 
 ![](./assets/slide_intro/slide_7.png){width=100% height=100% align=center}
 
 :::
 ---
 
-## Racap of Quarto Features
+## Technology Exploration
+#### Recap of Quarto Features
 :::{.standard-slide style="font-size: 28px;"}
 
 
-| **Quarto** | **RMardown** |
+| **Quarto** | **RMarkdown** |
 |-------------|-------------|
 | Supports Python, R, Julia, and  [Observable](https://observablehq.com/). | Primarily uses R for dynamic content.|
 | Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.  | Limited publishing format: HTML, PDF, and MS Word. |
 | Support a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor. | Typically uses RStudio as its primary authoring environment.  |
-| Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifes the usage.  | Offers interactivity but require additional complicated setup. |
+| Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.  | Offers interactivity but require additional complicated setup. |
 
 
 :::
-
-## Quarto Markdown (.qmd) Examples
+## Technology Exploration
+#### Quarto Markdown (.qmd) Examples
 
 :::{.standard-slide style="font-size: 32px;"}
 
@@ -116,7 +130,8 @@ mean_value
 :::
 
 ---
-## Control how your code runs: Execution Options
+## Technology Exploration
+#### Control how your code runs: Execution Options
 
 :::{.standard-slide style="font-size: 32px;"}
 
@@ -138,28 +153,32 @@ OR
 - Check [here](https://quarto.org/docs/computations/execution-options.html) for more options.
 :::
 
-## Quarto Tables
+## Technology Exploration
+#### Quarto Tables
 :::{.standard-slide}
 ![](./assets/slide_intro/qmd_table.png){width=100% align=right}
 :::
 
-## Quarto Figures
+## Technology Exploration
+#### Quarto Figures
 :::{.standard-slide}
 ![](./assets/slide_intro/qmd_figure.png){width=100% height=60% align=right}
 :::
 
-## Quarto callouts
+## Technology Exploration
+#### Quarto callouts
 :::{.standard-slide}
 ![](./assets/slide_intro/qmd_callouts.png){width=100% height=60% align=right}
 :::
 
-## Rstudio Support
+## Technology Exploration
+#### Rstudio Support
 :::{.standard-slide}
 ![](./assets/slide_intro/slide_12.png){width=100% align=right}
 :::
 
-
-## Quarto for Python
+## Technology Exploration
+#### Quarto for Python
 :::{.standard-slide}
 ::: {.column width="50%"}
 ![](./assets/slide_intro/qmd_python.png){align=right}
@@ -171,8 +190,8 @@ OR
 - [VS code extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto) is available.
 :::
 
-
-## Quarto Extensions
+## Technology Exploration
+#### Quarto Extensions
 :::{.standard-slide}
 
 <iframe src="https://quarto.org/docs/gallery/" width="100%" height="800px"></iframe>
@@ -180,7 +199,8 @@ OR
 - For more information, visit [Quarto Extensions](https://quarto.org/docs/extensions/).
 :::
 
-## Reproducibility
+## Technology Exploration
+#### Reproducibility with Github Codespace
 :::{.standard-slide}
 ![](./assets/slide_intro/c2.png){width=100% height=100% align=center}
 :::
@@ -188,9 +208,9 @@ OR
 ## Piloting Workshop
 ::: {.column width="60%" style="font-size: 26px;"}
 - **Date**: 2024-12-10
-- Participants tried out using Codespace <br>
+- Participants tried out using Codespace and learned to use Quarto <br>
 ![](./assets/slide_intro/cs_usage.png){align=right height=250px}
-- Active discussion bewteen participants
+- Active discussion between participants
     + Need copilot enabled IDE to trouble shoot scripts
     + Setup quarto environment and package management
     + Need to work with large dataset

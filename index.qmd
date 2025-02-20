@@ -1,5 +1,5 @@
 ---
-title: "Quarto Overview"
+title: "<b>Knowledge sharing:</b> <br>Data access and analysis library"
 author: "Meikang Wu"
 format:
   html:
@@ -9,11 +9,25 @@ format:
     stylesheet: style.css
 ---
 
-## Introduction
+## The Concept of Literate Programming
+Literate programming, introduced by Donald Knuth, is a methodology that intertwines code with human-readable explanations,
+fostering better knowledge sharing and comprehension.
+In data access, processing, and analysis pipelines, literate programming enables analysts, engineers, and researchers to document
+and share their work transparently.
+Clear documentation ensures that complex data transformations, model evaluations, and analytical decisions
+are easily understood and reproducible.
+![](./assets/concept.png)
+
+## Modern literate programming using Quarto
 
 Quarto is a modern, open-source publishing system that combines the power of R, Python, and Markdown to create dynamic documents, reports, presentations, and websites.
 It turns source code, text, and visuals into polished, shareable outputs.
 It is designed for seamless collaboration and reproducibility, making it an ideal tool for knowledge sharing amongst IDM data scientists, researchers, and developers.
+
+Rich Quarto documents and notebooks also offer powerful potential for fine-tuning LLMs
+by integrating structured metadata, natural language explanations, and executable code.
+Leveraging front matter (YAML metadata) and code sections, we can extract clear, labeled training data,
+where explanations act as prompts and code as completions, advancing literate programming to a new level in the LLM era.
 
 [Quarto Slide Deck](slide.qmd)
 
