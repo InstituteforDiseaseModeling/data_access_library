@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import yaml
 import re
+import json
 
 def convert_md_to_qmd(input_file, output_file):
     """
@@ -19,9 +20,18 @@ def convert_md_to_qmd(input_file, output_file):
 def get_title(qmd_file):
     """Extract the title from a Quarto file or return None if not found."""
     with open(qmd_file, "r", encoding="utf-8") as file:
-        for line in file:
-            if line.lower().startswith("title:"):
-                return line.split(":", 1)[1].strip().replace("\"", "")
+        if qmd_file.suffix == ".ipynb":
+            # read notebook as json and get title from metadata
+            data = json.load(file)
+            for cell in data["cells"]:
+                if cell["cell_type"] == "raw":
+                    for s in cell["source"]:
+                       if "title:" in s:
+                        return s.split(":", 1)[1].strip().replace("\"", "").replace("\n", "")
+        else:
+            for line in file:
+                if line.lower().startswith("title:"):
+                    return line.split(":", 1)[1].strip().replace("\"", "")
     return None
 
 
