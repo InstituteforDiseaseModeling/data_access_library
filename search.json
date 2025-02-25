@@ -109,7 +109,7 @@
     "href": "slide.html#piloting-workshop",
     "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Piloting Workshop",
-    "text": "Piloting Workshop\n\n\nDate: 2024-12-10\nParticipants tried out using Codespace and learned to use Quarto  \nActive discussion between participants\n\nNeed copilot enabled IDE to trouble shoot scripts\nSetup quarto environment and package management\nNeed to work with large dataset\n\n\n\n\n\n\n← Back to Home"
+    "text": "Piloting Workshop\n\n\nDate: 2024-12-10\nParticipants tried out using Codespace and learned to use Quarto  \nActive discussion between participants\n\nNeed copilot enabled IDE to trouble shoot scripts\nSetup quarto environment and package management\nNeed to work with private dataset or large dataset (Tony Ting’s example using Azure blob storage)\n\n\n\n\n\n\n← Back to Home"
   },
   {
     "objectID": "index.html",
@@ -158,7 +158,7 @@
     "href": "codespace_slide.html#considerations",
     "title": "Introduction of Github Codespace",
     "section": "Considerations",
-    "text": "Considerations\n\n\nMust connect to the internet\nLimited IDE choices (VSCode, JetBrains)\nCost for long term usage, see Free usage and Billing\nNo GA for GPU Support\nPersistence and Storage Challenges"
+    "text": "Considerations\n\n\nMust connect to the internet\nLimited IDE choices (VSCode, JetBrains)\nCost for long term usage, see Free usage and Billing\nNo GA for GPU Support (Limited to Enterprise accounts)\nPersistence and Storage Challenges"
   },
   {
     "objectID": "codespace_slide.html#how-to-use-codespace",
