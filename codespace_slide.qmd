@@ -47,7 +47,7 @@ title-slide-attributes:
 - Cost for long term usage, see
  [Free usage](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
  and [Billing](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#pricing-for-paid-usage)
-- No GA for GPU Support
+- No GA for GPU Support (Limited to Enterprise accounts)
 - Persistence and Storage Challenges
 
 :::

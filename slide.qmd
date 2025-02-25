@@ -211,9 +211,9 @@ OR
 - Participants tried out using Codespace and learned to use Quarto <br>
 ![](./assets/slide_intro/cs_usage.png){align=right height=250px}
 - Active discussion between participants
-    + Need copilot enabled IDE to trouble shoot scripts
-    + Setup quarto environment and package management
-    + Need to work with large dataset
+    + Need [copilot enabled](https://docs.github.com/en/codespaces/reference/using-github-copilot-in-github-codespaces) IDE to trouble shoot scripts
+    + Setup [quarto environment](https://quarto.org/docs/extensions/managing.html) and [package management](https://scientificcoder.com/comparing-package-management-in-python-r-julia-and-rust#heading-overview-table)
+    + Need to work with private dataset or large dataset ([Tony Ting's](https://github.com/gatesfoundation/idm-azurestorage-codepsaces-example/) example using Azure blob storage)
 
 :::
 ::: {.column width="40%"}

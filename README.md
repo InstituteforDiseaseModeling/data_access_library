@@ -6,7 +6,7 @@ this setup ensures a smooth experience for researchers to share their code and i
 
 Contributors are encouraged to submit code examples using Quarto in `r/samples` or `python/samples` folders. 
 Our goal is not to provide a comprehensive guide to showcase the possibilities of using Quarto for technical publishing. 
-But by adding yaml metadata to your codesnippets, it allows publishing the content to Github Pages easily and
+But by adding yaml metadata to your code-snippets, it allows publishing the content to Github Pages easily and
 others can view the code / results directly in the browser without running the code. 
 
 ## Table of Contents
@@ -20,7 +20,7 @@ others can view the code / results directly in the browser without running the c
 
 ## Workflow 
 
-It is recommanded to follow the steps below to create a reproducible example:
+It is recommended to follow the steps below to create a reproducible example:
 
 ```mermaid
 %%{init: {'themeVariables': { 'fontSize': '10px', 'nodeSpacing': 1, 'rankSpacing': 1 }}}%%
@@ -64,6 +64,16 @@ Deleting a Codespace will permanently remove the environment, you should make su
 when you’ve finished the work and don’t need the environment or data anymore.
 
 ![](assets/codespace_manage.png)
+
+**Use credentials in Github codespaces**
+
+Codespace account-specific secrets is tied to an individual GitHub account and are available in any Codespace the user launches. 
+These are particularly useful for storing credentials that should not be shared across a team, such as personal API tokens or SSH keys. 
+Unlike repository-level secrets, personal user secrets persist across all repositories and organizations where the user has access, 
+making them ideal for cross-project authentication without exposing credentials in shared environments.
+See reference [here](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-your-account-specific-secrets-for-github-codespaces).
+
+**Use your local development environment**
 
 If you choose to clone the repo locally, you can also setup your local container to use the same environment, 
 follow this [tutorial](https://code.visualstudio.com/docs/devcontainers/tutorial) to set it up.
@@ -195,7 +205,7 @@ cd r/samples/my_example
 # or
 cd python/samples/my_example
 ```
-#### 2. Add your Jupyter Notebook or Quarto Document and other necessry files 
+#### 2. Add your Jupyter Notebook or Quarto Document and other necessary files 
 ```bash
 git add r/samples/my_example/example.qmd
 
