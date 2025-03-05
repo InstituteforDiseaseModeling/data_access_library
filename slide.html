@@ -398,12 +398,22 @@
 </div>
 
 </section>
+<section id="intro" class="slide level2">
+<h2>Intro</h2>
+<div class="standard-slide" style="font-size: 20px;">
+<ul>
+<li><a href="https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D">One Pager</a> <br> Creating Repository of high-quality codes for data access and analysis, making sharing and understanding easier. <br></li>
+<li><a href="https://institutefordiseasemodeling.github.io/data_access_library/">Project Website</a> <br> <img data-src="./assets/slide_intro/dilbert.png" style="width:60.0%;height:50.0%" data-align="center"></li>
+</ul>
+</div>
+</section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <div class="standard-slide">
+<div class="column" style="font-size: 32px;">
 <ul>
 <li>Problems and Challenges</li>
-<li>Introduction of the Data Access and Analysis Library</li>
+<li>Project Goals and Concepts</li>
 <li>Technology Exploration
 <ul>
 <li>Quarto: A versatile publishing tool</li>
@@ -412,7 +422,9 @@
 <li>Piloting workshop</li>
 <li>Q&amp;A Discussions</li>
 </ul>
-</div>
+</div><div class="column" style="height: 100%;">
+<p><br><br> <img data-src="./assets/slide_intro/salespitch.png" style="width:100.0%;height:100.0%" data-align="center"></p>
+</div></div>
 </section>
 <section id="problems-challenges" class="slide level2">
 <h2>Problems / Challenges</h2>
@@ -426,7 +438,8 @@
 <li>Interactivity</li>
 <li>Collaboration</li>
 <li>Learning curve</li>
-</ul></li>
+</ul>
+<img data-src="./assets/slide_intro/git_1.png" style="height:50.0%" data-align="center"></li>
 </ul></li>
 </ul>
 </div>
@@ -455,7 +468,7 @@
 <section id="technology-exploration" class="slide level2">
 <h2>Technology Exploration</h2>
 <h4 id="quarto-a-versatile-publishing-tool">Quarto: A versatile publishing tool</h4>
-<div class="standard-slide">
+<div class="standard-slide" style="font-size: 26px;">
 <ul>
 <li><p>Why choose Quarto?</p>
 <ul>
@@ -464,38 +477,44 @@
 <li><p>Multilingual, support for R, Python, Javascript, and Julia…</p></li>
 <li><p>Enables reproducible code, rich outputs, and seamless format conversion.</p></li>
 </ul></li>
-<li><p>Learn More <a href="https://quarto.org/docs/faq/rmarkdown.html">here</a></p></li>
 </ul>
-<p><img data-src="./assets/slide_intro/slide_7.png" style="width:100.0%;height:100.0%" data-align="center"></p>
+<iframe src="https://rdatatoolbox.github.io/course-quarto/#/literate-programming" width="100%" height="500px" align="center">
+</iframe>
 </div>
 </section>
 <section id="technology-exploration-1" class="slide level2">
 <h2>Technology Exploration</h2>
 <h4 id="recap-of-quarto-features">Recap of Quarto Features</h4>
-<div class="standard-slide" style="font-size: 28px;">
+<div class="standard-slide" style="font-size: 26px;">
+<p><img data-src="./assets/slide_intro/slide_7.png" style="width:50.0%;height:50.0%" data-align="right"> <br></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th><strong>Quarto</strong></th>
 <th><strong>RMarkdown</strong></th>
+<th><strong>Jupyter Notebook</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Supports Python, R, Julia, and <a href="https://observablehq.com/">Observable</a>.</td>
+<td>Natively supports Python, R, Julia, <a href="https://observablehq.com/">Observable</a> and other programming languages.</td>
 <td>Primarily uses R for dynamic content.</td>
+<td>Python (default) but can extend using jupyter kernels (e.g.&nbsp;IRkernel for R)</td>
 </tr>
 <tr class="even">
 <td>Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.</td>
 <td>Limited publishing format: HTML, PDF, and MS Word.</td>
+<td>Need nbconvert to convert to other formats.</td>
 </tr>
 <tr class="odd">
-<td>Support a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor.</td>
+<td>Support a variety of authoring tools like <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">VS Code</a>, RStudio, <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html">Jupyter Lab</a>, any text editor that supports markdown (including <a href="https://github.com/danieltomasz/qmd-as-md-obsidian">Obsidian</a>).</td>
 <td>Typically uses RStudio as its primary authoring environment.</td>
+<td>Primarily designed for Python IDEs</td>
 </tr>
 <tr class="even">
 <td>Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.</td>
 <td>Offers interactivity but require additional complicated setup.</td>
+<td>Interactivity is available but requires extra libraries (ipywidgets, plotly etc).</td>
 </tr>
 </tbody>
 </table>

@@ -1,10 +1,17 @@
 [
   {
+    "objectID": "slide.html#intro",
+    "href": "slide.html#intro",
+    "title": "- Knowledge Sharing - Data Access and Analysis Library",
+    "section": "Intro",
+    "text": "Intro\n\n\nOne Pager  Creating Repository of high-quality codes for data access and analysis, making sharing and understanding easier. \nProject Website"
+  },
+  {
     "objectID": "slide.html#overview",
     "href": "slide.html#overview",
     "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Overview",
-    "text": "Overview\n\n\nProblems and Challenges\nIntroduction of the Data Access and Analysis Library\nTechnology Exploration\n\nQuarto: A versatile publishing tool\nCodespace: A easy-to-use cloud development environment\n\nPiloting workshop\nQ&A Discussions"
+    "text": "Overview\n\n\n\nProblems and Challenges\nProject Goals and Concepts\nTechnology Exploration\n\nQuarto: A versatile publishing tool\nCodespace: A easy-to-use cloud development environment\n\nPiloting workshop\nQ&A Discussions"
   },
   {
     "objectID": "slide.html#problems-challenges",
@@ -32,14 +39,14 @@
     "href": "slide.html#technology-exploration",
     "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Technology Exploration",
-    "text": "Technology Exploration\nQuarto: A versatile publishing tool\n\n\nWhy choose Quarto?\n\nOpen Source, actively developed and maintained by Posit Community.\nFamiliar Syntax & Workflow for Markdown Users.\nMultilingual, support for R, Python, Javascript, and Julia…\nEnables reproducible code, rich outputs, and seamless format conversion.\n\nLearn More here"
+    "text": "Technology Exploration\nQuarto: A versatile publishing tool\n\n\nWhy choose Quarto?\n\nOpen Source, actively developed and maintained by Posit Community.\nFamiliar Syntax & Workflow for Markdown Users.\nMultilingual, support for R, Python, Javascript, and Julia…\nEnables reproducible code, rich outputs, and seamless format conversion."
   },
   {
     "objectID": "slide.html#technology-exploration-1",
     "href": "slide.html#technology-exploration-1",
     "title": "- Knowledge Sharing - Data Access and Analysis Library",
     "section": "Technology Exploration",
-    "text": "Technology Exploration\nRecap of Quarto Features\n\n\n\n\nQuarto\nRMarkdown\n\n\n\n\nSupports Python, R, Julia, and Observable.\nPrimarily uses R for dynamic content.\n\n\nOffers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.\nLimited publishing format: HTML, PDF, and MS Word.\n\n\nSupport a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor.\nTypically uses RStudio as its primary authoring environment.\n\n\nFacilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.\nOffers interactivity but require additional complicated setup."
+    "text": "Technology Exploration\nRecap of Quarto Features\n\n \n\n\n\nQuarto\nRMarkdown\nJupyter Notebook\n\n\n\n\nNatively supports Python, R, Julia, Observable and other programming languages.\nPrimarily uses R for dynamic content.\nPython (default) but can extend using jupyter kernels (e.g. IRkernel for R)\n\n\nOffers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.\nLimited publishing format: HTML, PDF, and MS Word.\nNeed nbconvert to convert to other formats.\n\n\nSupport a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor that supports markdown (including Obsidian).\nTypically uses RStudio as its primary authoring environment.\nPrimarily designed for Python IDEs\n\n\nFacilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.\nOffers interactivity but require additional complicated setup.\nInteractivity is available but requires extra libraries (ipywidgets, plotly etc)."
   },
   {
     "objectID": "slide.html#technology-exploration-2",
