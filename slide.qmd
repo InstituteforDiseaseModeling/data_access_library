@@ -48,12 +48,11 @@ Creating Repository of high-quality codes for data access and analysis, making s
 ## Problems / Challenges
 :::{.standard-slide}
 
-- **Is checking code to Github enough?**
-  + Challenges
-    - Reproducibility
-    - Interactivity
-    - Collaboration
-    - Learning curve
+- **What are barriers to knowledge sharing and why is using Github repo not enough?**
+   - Reproducibility
+   - Interactivity
+   - Collaboration
+   - Learning curve
 
     ![](./assets/slide_intro/git_1.png){height=50% align="center"}
 :::
@@ -113,7 +112,7 @@ See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJl
 |-------------|-------------|-------------|
 | Natively supports Python, R, Julia, [Observable](https://observablehq.com/) and other programming languages. | Primarily uses R for dynamic content.| Python (default) but can extend using jupyter kernels (e.g. IRkernel for R) |
 | Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.  | Limited publishing format: HTML, PDF, and MS Word. | Need nbconvert to convert to other formats. |
-| Support a variety of authoring tools like [VS Code](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), RStudio, [Jupyter Lab](https://quarto.org/docs/tools/jupyter-lab-extension.html), any text editor that supports markdown (including [Obsidian](https://github.com/danieltomasz/qmd-as-md-obsidian)). | Typically uses RStudio as its primary authoring environment.  |  Primarily designed for Python IDEs |
+| Supports a variety of authoring tools like [VS Code](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), RStudio, [Jupyter Lab](https://quarto.org/docs/tools/jupyter-lab-extension.html), any text editor that supports markdown (including [Obsidian](https://github.com/danieltomasz/qmd-as-md-obsidian)). | Typically uses RStudio as its primary authoring environment.  |  Primarily designed for Python IDEs |
 | Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.  | Offers interactivity but require additional complicated setup. | Interactivity is available but requires extra libraries (ipywidgets, plotly etc). |
 
 
@@ -200,9 +199,11 @@ OR
 #### Quarto for Python
 :::{.standard-slide}
 ::: {.column width="50%"}
+- Run Python code in Quarto document. <br>
 ![](./assets/slide_intro/qmd_python.png){align=right}
 :::
 ::: {.column width="50%"}
+- Run Python code in Jupyter notebook. <br>
 ![](./assets/slide_intro/qmd_jupyter.png){height=80% align=left}
 :::
 - For more information, visit [Quarto for Python](https://quarto.org/docs/computations/python.html)
@@ -238,3 +239,36 @@ OR
 ::: {.column width="40%"}
 ![](./assets/slide_intro/beta.png)
 :::
+
+## <font size=16px>Some examples contributed by team members participating in the workshop</font><br>
+:::{.standard-slide style="font-size: 26px;"}
+<details>
+  <summary style="cursor: pointer; font-size: 1.2em; font-weight: bold; color: blue;">
+    Simple Example using Quarto
+  </summary>
+  <iframe src="https://institutefordiseasemodeling.github.io/data_access_library/r/samples/simple_plot/simple_plot.html" width="100%" height="400px" style="border: none; margin-top: 10px;"></iframe>
+</details>
+<details>
+  <summary style="cursor: pointer; font-size: 1.2em; font-weight: bold; color: blue;">
+    SIR Model Simulation using Jupyter Notebook (Python)
+  </summary>
+  <iframe src="https://institutefordiseasemodeling.github.io/data_access_library/python/samples/sir/sir_model_simulation.html" width="100%" height="400px" style="border: none; margin-top: 10px;"></iframe>
+</details>
+<details>
+  <summary style="cursor: pointer; font-size: 1.2em; font-weight: bold; color: blue;">
+    Ying-yi's R script for visualizing logistic regression model results from Family planning survey
+  </summary>
+  <iframe src="https://institutefordiseasemodeling.github.io/data_access_library/r/samples/yl_DHS/simple_dhs_fp_plot.html" width="100%" height="400px" style="border: none; margin-top: 10px;"></iframe>
+</details>
+<details>
+  <summary style="cursor: pointer; font-size: 1.2em; font-weight: bold; color: blue;">
+    Hil shows a step-by-step data exploration for examining age structure and household age contacts
+  </summary>
+  <iframe src="https://institutefordiseasemodeling.github.io/data_access_library/r/samples/dhs_examples_pakistan.hl/dhs_example_pakistan_hl.html" width="100%" height="400px" style="border: none; margin-top: 10px;"></iframe>
+</details>
+<details>
+  <summary style="cursor: pointer; font-size: 1.2em; font-weight: bold; color: blue;">
+    Amelia used Quarto to create a website for a Data visualization workshop
+  </summary>
+  <iframe src="https://bertozzivill.github.io/Principles-and-Practice-of-Data-Visualization-in-R/" width="100%" height="400px" style="border: none; margin-top: 10px;"></iframe>
+</details>
