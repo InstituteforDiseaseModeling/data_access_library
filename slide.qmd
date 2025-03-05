@@ -16,11 +16,22 @@ title-slide-attributes:
   data-background-position: center
 
 ---
+## Intro
+:::{.standard-slide style="font-size: 20px;"}
+- [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJlcG9pbnQuY29tL3NpdGVzL2lkbWxlYWRlcnNoaXA%2FbmF2PWN6MGxNa1p6YVhSbGN5VXlSbWxrYld4bFlXUmxjbk5vYVhBbVpEMWlKVEl4UWxOYWRrZ3hia0ZtUlV0bFNWOUdNa2xZZWtWclluWlVWREZHWlUwM05VMTBaek5zV1VObmEwTXhTMkp4UzBZM1ZXOUhhMUZNZUd4NFVISlhUMnhtVkNabVBUQXhSRFJPV0VFMFFsTktVa00zUlZkRVEwRkdSRnBVVXpKSVRGUTFXVFpYTlZrbVl6MGxNa1ltWVQxTWIyOXdRWEJ3In0%3D)
+<br>
+Creating Repository of high-quality codes for data access and analysis, making sharing and understanding easier.
+<br>
+- [Project Website](https://institutefordiseasemodeling.github.io/data_access_library/)
+<br>
+![](./assets/slide_intro/dilbert.png){height=50% width=60% align=center}
+:::
 
 ## Overview
 :::{.standard-slide}
+::: {.column width="60%" style="font-size: 32px;"}
 - Problems and Challenges
-- Introduction of the Data Access and Analysis Library
+- Project Goals and Concepts
 - Technology Exploration
     + Quarto: A versatile publishing tool
     + Codespace: A easy-to-use cloud development environment
@@ -28,14 +39,23 @@ title-slide-attributes:
 - Q&A Discussions
 :::
 
+::: {.column width="40%" style="height: 100%;"}
+<br><br>
+![](./assets/slide_intro/salespitch.png){height=100% width=100% align=center}
+:::
+:::
+
 ## Problems / Challenges
 :::{.standard-slide}
+
 - **Is checking code to Github enough?**
   + Challenges
     - Reproducibility
     - Interactivity
     - Collaboration
     - Learning curve
+
+    ![](./assets/slide_intro/git_1.png){height=50% align="center"}
 :::
 
 ## Data Access and Analysis Library
@@ -66,7 +86,7 @@ See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJl
 ## Technology Exploration
 #### Quarto: A versatile publishing tool
 
-:::{.standard-slide}
+:::{.standard-slide style="font-size: 26px;"}
 
 - Why choose Quarto?
 
@@ -78,24 +98,23 @@ See: [One Pager](https://loop.cloud.microsoft/p/eyJ1IjoiaHR0cHM6Ly9ibWdmLnNoYXJl
 
     + Enables reproducible code, rich outputs, and seamless format conversion.
 
- - Learn More [here](https://quarto.org/docs/faq/rmarkdown.html)
-
-![](./assets/slide_intro/slide_7.png){width=100% height=100% align=center}
+<iframe src="https://rdatatoolbox.github.io/course-quarto/#/literate-programming" width="100%" height="500px" align="center"></iframe>
 
 :::
 ---
 
 ## Technology Exploration
 #### Recap of Quarto Features
-:::{.standard-slide style="font-size: 28px;"}
+:::{.standard-slide style="font-size: 26px;"}
+![](./assets/slide_intro/slide_7.png){width=50% height=50% align="right"}
+<br>
 
-
-| **Quarto** | **RMarkdown** |
-|-------------|-------------|
-| Supports Python, R, Julia, and  [Observable](https://observablehq.com/). | Primarily uses R for dynamic content.|
-| Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.  | Limited publishing format: HTML, PDF, and MS Word. |
-| Support a variety of authoring tools like VS Code, RStudio, Jupyter Lab, any text editor, and a visual markdown editor. | Typically uses RStudio as its primary authoring environment.  |
-| Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.  | Offers interactivity but require additional complicated setup. |
+| **Quarto** | **RMarkdown** |**Jupyter Notebook** |
+|-------------|-------------|-------------|
+| Natively supports Python, R, Julia, [Observable](https://observablehq.com/) and other programming languages. | Primarily uses R for dynamic content.| Python (default) but can extend using jupyter kernels (e.g. IRkernel for R) |
+| Offers a wider range of publishing options, including articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.  | Limited publishing format: HTML, PDF, and MS Word. | Need nbconvert to convert to other formats. |
+| Support a variety of authoring tools like [VS Code](https://marketplace.visualstudio.com/items?itemName=quarto.quarto), RStudio, [Jupyter Lab](https://quarto.org/docs/tools/jupyter-lab-extension.html), any text editor that supports markdown (including [Obsidian](https://github.com/danieltomasz/qmd-as-md-obsidian)). | Typically uses RStudio as its primary authoring environment.  |  Primarily designed for Python IDEs |
+| Facilitates advanced interactivity with Jupyter Widgets, htmlwidgets for R, Observable JS, and Shiny. Quarto extensions simplifies the usage.  | Offers interactivity but require additional complicated setup. | Interactivity is available but requires extra libraries (ipywidgets, plotly etc). |
 
 
 :::
