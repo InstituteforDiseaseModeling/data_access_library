@@ -1,0 +1,192 @@
+---
+title: "DHS family planning Analysis"
+format: html
+---
+
+### Libraries needed for ODBC / Spark connection to Databricks
+
+```{r setup, message=FALSE, warning=FALSE}
+# Load required libraries 
+
+# Helper function to install required packages if not already installed
+install_if_missing <- function(pkg) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg, repos = "https://cloud.r-project.org")
+    library(pkg, character.only = TRUE)
+  }
+}
+
+# Install and load necessary packages
+packages <- c("DBI", "odbc", "haven", "dplyr", "dbplyr", "janitor", "purrr", "sparklyr", "pysparklyr", "reticulate", "usethis")
+invisible(lapply(packages, install_if_missing))
+
+```
+
+### connect to databricks
+
+-   make sure you have downloaded and installed databricks ODBC driver <https://www.databricks.com/spark/odbc-drivers-download>
+
+```{r}
+# Make sure driver is installed
+print((odbc::odbcListDrivers() %>% filter(grepl("Spark",value )))$name)
+
+# Set these variables or use usethis::edit_r_environ() to store them
+# Sys.setenv(DATABRICKS_HOST = "")
+# Sys.setenv(DATABRICKS_HTTP_PATH = "")
+# Sys.setenv(DATABRICKS_TOKEN = "") 
+# Sys.setenv(DATABRICKS_CLUSTER_ID = "")
+
+server_hostname <- Sys.getenv("DATABRICKS_HOST")
+http_path       <- Sys.getenv("DATABRICKS_HTTP_PATH")
+access_token    <- Sys.getenv("DATABRICKS_TOKEN")
+
+con <- dbConnect(odbc::odbc(),
+  Driver       = "Simba Spark ODBC Driver",
+  Host         = server_hostname,
+  Port         = 443,
+  HTTPPath     = http_path,
+  AuthMech     = 3,  # Token-based authentication
+  UID          = "token",
+  PWD          = access_token,
+  SSL          = 1,
+  ThriftTransport = 2  # Required for HTTPS
+)
+
+```
+
+### Query Volumes available (where stata files are located)
+
+```{r}
+# Run SQL query to get volumes from information_schema
+volume_info <- DBI::dbGetQuery(con, "
+  SELECT volume_catalog, volume_schema, volume_name, storage_location
+  FROM system.information_schema.volumes
+  WHERE volume_catalog = 'dhs_indicator_dev'
+  AND volume_schema = 'variables'
+")
+
+# View results
+# print(volume_info)
+
+```
+
+### Helper function to recursively list file
+
+```{r}
+list_dta_files <- function(con, root_path, filename_prefix = NULL) {
+  results <- data.frame()
+  paths_to_check <- c(root_path)
+
+  while (length(paths_to_check) > 0) {
+    current_path <- paths_to_check[1]
+    paths_to_check <- paths_to_check[-1]
+
+    # LIST current path
+    query <- paste0("LIST '", current_path, "'")
+    res <- tryCatch(DBI::dbGetQuery(con, query), error = function(e) NULL)
+    if (is.null(res) || nrow(res) == 0) next
+
+    # Heuristic: entries with a dot in name are likely files
+    is_file <- grepl("\\.", res$name)
+
+    # Queue subdirectories (no dot in name)
+    paths_to_check <- c(paths_to_check, file.path(current_path, res$name[!is_file]))
+
+    # Filter to .dta files only
+    dta_hits <- res[is_file & grepl("\\.dta$", res$name, ignore.case = TRUE), ]
+
+    # Optional: filter by filename prefix
+    if (!is.null(filename_prefix)) {
+      prefix_pattern <- paste0("^(", paste0(filename_prefix, collapse = "|"), ")")
+      dta_hits <- dta_hits[grepl(prefix_pattern, basename(dta_hits$name), ignore.case = TRUE), ]
+    }
+
+    results <- bind_rows(results, dta_hits)
+  }
+
+  return(results)
+}
+
+```
+
+### List files with filename prefix
+
+```{r}
+volume_path <- "/Volumes/dhs_indicator_dev/variables/chap07_fp"
+# volume_path <- "/Volumes/{volume_catalog}/{volume_schema}/{volume_name}"
+filename_prefix = c("NGIR", "ETIR", "NGMR", "ETMR")
+dta_files <- list_dta_files(con, volume_path, filename_prefix)
+
+print(dta_files)
+
+```
+
+### Get Recoded IR data from table using SQL interface
+
+```{r}
+
+query = "SELECT * from dhs_recode.et.etir71fl limit 10"
+result <- DBI::dbGetQuery(con, query)
+```
+
+### Connect to your own cluster using Spark
+Use Reticulate and databricks-connect package to connect 
+
+```{r}
+#| output: false
+#| warning: false
+
+library(here)
+# inctall client that match your cluster
+cluster_id = Sys.getenv("DATABRICKS_CLUSTER_ID")
+py_path <- reticulate::install_python(version = "3.11")
+venv_path <- here(".venv")
+reticulate::virtualenv_create(envname = venv_path, python = py_path)
+reticulate::use_virtualenv(venv_path)
+Sys.setenv(UV_PYTHON_EXECUTABLE = file.path(venv_path, "Scripts", "python.exe"))
+reticulate::py_install("databricks-connect==16.4")
+# pysparklyr::install_databricks(cluster_id = cluster_id) 
+reticulate::py_module_available("databricks.connect") 
+```
+
+### Connect to databricks cluster
+```{r}
+#| output: false
+#| warning: false
+
+library(sparklyr)
+library(dplyr)
+library(dbplyr)
+
+spark_disconnect_all()
+sc <- sparklyr::spark_connect(
+  master     = paste0("https://",Sys.getenv("DATABRICKS_HOST")),
+  cluster_id = Sys.getenv("DATABRICKS_CLUSTER_ID"),
+  token      = Sys.getenv("DATABRICKS_TOKEN"),
+  method     = "databricks_connect",
+)
+
+```
+
+### Use Spark to Query / analyze DHS data if size is too large
+```{r}
+library(sparklyr)
+library(dplyr)
+library(DBI)
+
+# Analysis of age_at_first_birth by region, education_level
+df_ir <- sdf_sql(sc, sql("SELECT v511, v106, v024 FROM dhs_recode.ia.iair74fl"))
+row_count <- df_ir %>% 
+  summarise(count = n()) %>% 
+  pull(count)
+print(paste0("processing ", row_count, " rows"))
+result <- df_ir %>%
+  filter(!is.na(v511), !is.na(v106), !is.na(v024)) %>%
+  group_by(region = v024, education = v106) %>%
+  summarise(age_at_first_birth = mean(v511, na.rm = TRUE), .groups = "drop")
+
+# Collect results into R
+result_r <- collect(result)
+print(result_r)
+
+```
